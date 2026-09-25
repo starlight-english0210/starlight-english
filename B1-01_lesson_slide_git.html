@@ -105,7 +105,7 @@
   .translation-ja-prompt { font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 10px; }
   .translation-reveal-btn { background: none; border: 1.5px solid var(--ocean); color: var(--ocean); border-radius: 6px; padding: 5px 14px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 500; transition: all .15s; }
   .translation-reveal-btn:hover { background: var(--ocean); color: #fff; }
-  .translation-en-answer { display: none; margin-top: 10px; font-size: 15px; color: var(--ocean-deep); font-weight: 600; padding: 8px 12px; background: var(--sky); border-radius: 6px; border-left: 3px solid var(--ocean); cursor: pointer; }
+  .translation-en-answer { display: none; margin-top: 10px; font-size: 15px; color: var(--ocean-deep); font-weight: 600; padding: 8px 12px; background: var(--sky); border-radius: 6px; border-left: 3px solid var(--ocean); }
   .translation-en-answer.shown { display: block; }
 
   /* ── Listen answer (hidden until revealed) ── */
@@ -888,7 +888,7 @@ function buildTranslations() {
     div.innerHTML = `
       <div class="translation-ja-prompt">${i+1}. ${t.ja}</div>
       <button class="translation-reveal-btn" id="trans-btn-${i}" onclick="revealTrans(${i})">英語を見る</button>
-      <div class="translation-en-answer" id="trans-${i}" onclick="speak('${t.en.replace(/'/g,"\\'")}')">🔊 ${t.en}</div>
+      <div class="translation-en-answer" id="trans-${i}">${t.en}</div>
     `;
     container.appendChild(div);
   });
