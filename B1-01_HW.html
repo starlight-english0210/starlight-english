@@ -189,6 +189,17 @@ main {
 }
 .reveal-btn:hover { background: var(--ocean); color: #fff; }
 .reveal-btn.hidden { display: none; }
+.qt-play-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 6px;
+  opacity: 0.7;
+  transition: opacity .15s;
+  vertical-align: middle;
+}
+.qt-play-btn:hover { opacity: 1; }
 
 /* ── Multiple choice ── */
 .mc-item {
@@ -783,6 +794,8 @@ function buildTrans() {
       <td>
         <button class="reveal-btn" id="rbtn-${i}" onclick="revealTrans(${i})">答えを見る</button>
         <span class="trans-answer" id="rans-${i}">${t.en}</span>
+        <button class="qt-play-btn" onclick="playQT(${i})" title="音声を再生">🔊</button>
+        <audio id="qt-audio-${i}" src="quick_tranlation/B1_01_QT${i+1}.mp3"></audio>
       </td>`;
     tbody.appendChild(tr);
   });
@@ -799,6 +812,13 @@ function revealTrans(i) {
     btn.textContent = '答えを隠す';
   }
   updateProgress();
+}
+
+function playQT(i) {
+  const audio = document.getElementById(`qt-audio-${i}`);
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
 }
 
 // ── Build MC ───────────────────────────────────
