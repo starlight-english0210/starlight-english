@@ -524,6 +524,23 @@ main {
   font-weight: 600;
 }
 .fitb-block .fitb-input { width: 130px; }
+
+/* ── Grammar Focus ── */
+.gf-sec { margin-bottom: 18px; }
+.gf-sec:last-child { margin-bottom: 0; }
+.gf-h { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--ocean-deep); background: var(--sky); border-radius: 8px; padding: 6px 10px; margin-bottom: 8px; }
+.gf-h .l { background: var(--ocean-deep); color: #fff; border-radius: 5px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+.gf-lead { font-size: 13px; color: var(--ink); line-height: 1.6; margin-bottom: 8px; }
+.gf-row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid #EEF2F7; }
+.gf-lead + .gf-row { border-top: none; }
+.gf-form { font-weight: 700; font-size: 13.5px; color: var(--ocean-deep); line-height: 1.4; }
+.gf-mean { font-size: 12.5px; color: var(--slate); margin-bottom: 4px; line-height: 1.5; }
+.gf-ex { font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+.gf-ex .hl { color: var(--ocean); }
+.gf-ja { font-size: 12px; color: var(--slate); }
+.gf-note { font-size: 12px; color: var(--slate); background: var(--sand); border-radius: 6px; padding: 7px 10px; margin-top: 6px; line-height: 1.6; }
+.gf-sec.neg .gf-form { color: #A63D3D; }
+@media (max-width: 480px) { .gf-row { grid-template-columns: 1fr; gap: 3px; } }
 </style>
 </head>
 <body>
@@ -540,6 +557,52 @@ main {
 <div id="progress-strip"><div id="progress-fill"></div></div>
 
 <main>
+
+<!-- ⓪ Grammar Focus -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-icon icon-blue">📘</div>
+    <div>
+      <div class="section-title">Grammar Focus — must / have to / should</div>
+      <div class="section-sub">今日の文法のポイントを確認しましょう。</div>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">A</span>強さのイメージ：must ＞ have to ＞ should</div>
+      <div class="gf-lead"><b>must / have to</b> は「〜しなければならない（選択肢なし）」、<b>should</b> は「〜したほうがいい（アドバイス）」。should は must / have to より<b>弱い</b>言い方です。</div>
+      <div class="gf-row"><div class="gf-form">must<br>have to</div><div><div class="gf-mean">「〜しなければならない」強い義務。選択肢はない。</div><div class="gf-ex">You <span class="hl">have to</span> show your passport at the airport.</div><div class="gf-ja">（空港ではパスポートを見せなければならない。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">should</div><div><div class="gf-mean">「〜したほうがいい」アドバイス・意見。選ぶのは相手。</div><div class="gf-ex">It's cold outside. You <span class="hl">should</span> take a jacket.</div><div class="gf-ja">（外は寒いよ。上着を持っていったほうがいい。）</div></div></div>
+    </div>
+
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">B</span>must と have to の違い</div>
+      <div class="gf-lead">意味はどちらも「〜しなければならない」ですが、<b>誰がそう決めているか</b>で使い分けます。</div>
+      <div class="gf-row"><div class="gf-form">must</div><div><div class="gf-mean">話し手自身が「必要だ」と思う時（話し手の気持ち）。</div><div class="gf-ex">I haven't seen my grandma for ages. I <span class="hl">must</span> visit her.</div><div class="gf-ja">（長い間祖母に会っていない。会いに行かなきゃ。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">have to</div><div><div class="gf-mean">外から決められたルール・事実。</div><div class="gf-ex">My sister <span class="hl">has to</span> wear a uniform at work.</div><div class="gf-ja">（姉は職場で制服を着なければならない。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">must<br><span style="font-size:11.5px;font-weight:500">（書かれた規則）</span></div><div><div class="gf-mean">掲示・案内・規則など、書かれたルール。</div><div class="gf-ex">All visitors <span class="hl">must</span> sign in at reception.</div><div class="gf-ja">（来訪者は全員、受付で記帳しなければならない。）</div></div></div>
+      <div class="gf-note">※ 日常会話では <b>have to</b> の方がよく使われます。疑問文は <b>do / does</b> を使います：<i><b>Do</b> you <b>have to</b> work this weekend?</i></div>
+    </div>
+
+    <div class="gf-sec neg">
+      <div class="gf-h"><span class="l">C</span>否定形は意味がまったく違う！</div>
+      <div class="gf-lead">肯定文では似ていますが、否定形にすると意味が大きく変わります。特に <b>mustn't</b> と <b>don't have to</b> の違いに注意しましょう。</div>
+      <div class="gf-row"><div class="gf-form">mustn't</div><div><div class="gf-mean">「〜してはいけない」禁止（Don't do it!）</div><div class="gf-ex">You <span class="hl">mustn't</span> use your phone during the test.</div><div class="gf-ja">（テスト中に携帯を使ってはいけない。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">don't have to<br>= don't need to</div><div><div class="gf-mean">「〜しなくてもいい」必要はない（でも、してもよい）。</div><div class="gf-ex">You <span class="hl">don't have to</span> bring anything. We have plenty of food.</div><div class="gf-ja">（何も持ってこなくていいよ。食べ物はたくさんあるから。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">shouldn't</div><div><div class="gf-mean">「〜しないほうがいい」アドバイス。</div><div class="gf-ex">You <span class="hl">shouldn't</span> drink coffee so late at night.</div><div class="gf-ja">（夜遅くにコーヒーを飲まないほうがいいよ。）</div></div></div>
+    </div>
+
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">D</span>過去の話をするとき</div>
+      <div class="gf-lead"><b>must には過去形がありません</b>。過去の義務は <b>had to</b> を使います。「〜すべきだった（のにしなかった）」は <b>should have + 過去分詞</b> です。</div>
+      <div class="gf-row"><div class="gf-form">had to</div><div><div class="gf-mean">「〜しなければならなかった」（×musted ／ ×must … yesterday）</div><div class="gf-ex">My car broke down, so I <span class="hl">had to</span> walk to work.</div><div class="gf-ja">（車が故障して、歩いて出勤しなければならなかった。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">didn't have to</div><div><div class="gf-mean">「〜する必要はなかった」</div><div class="gf-ex">The shop was empty, so we <span class="hl">didn't have to</span> wait.</div><div class="gf-ja">（店は空いていたので、待つ必要はなかった。）</div></div></div>
+      <div class="gf-row"><div class="gf-form">should have<br>+ 過去分詞</div><div><div class="gf-mean">「〜すべきだった」実際にはしなかった（後悔）。</div><div class="gf-ex">I'm so tired today. I <span class="hl">should have gone</span> to bed earlier.</div><div class="gf-ja">（今日はすごく眠い。もっと早く寝るべきだった。）</div></div></div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ① Quick Translation -->
 <div class="section-card">
