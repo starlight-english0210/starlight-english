@@ -521,6 +521,22 @@ main {
   font-size: 12px;
   font-weight: 600;
 }
+
+/* ── Grammar Focus ── */
+.gf-sec { margin-bottom: 18px; }
+.gf-sec:last-child { margin-bottom: 0; }
+.gf-h { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--ocean-deep); background: var(--sky); border-radius: 8px; padding: 6px 10px; margin-bottom: 8px; }
+.gf-h .l { background: var(--ocean-deep); color: #fff; border-radius: 5px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+.gf-lead { font-size: 13px; color: var(--ink); line-height: 1.6; margin-bottom: 8px; }
+.gf-row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid #EEF2F7; }
+.gf-lead + .gf-row { border-top: none; }
+.gf-form { font-weight: 700; font-size: 13.5px; color: var(--ocean-deep); line-height: 1.4; }
+.gf-mean { font-size: 12.5px; color: var(--slate); margin-bottom: 4px; line-height: 1.5; }
+.gf-ex { font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+.gf-ex .hl { color: var(--ocean); }
+.gf-ja { font-size: 12px; color: var(--slate); }
+.gf-note { font-size: 12px; color: var(--slate); background: var(--sand); border-radius: 6px; padding: 7px 10px; margin-top: 6px; line-height: 1.6; }
+@media (max-width: 480px) { .gf-row { grid-template-columns: 1fr; gap: 3px; } }
 </style>
 </head>
 <body>
@@ -537,6 +553,172 @@ main {
 <div id="progress-strip"><div id="progress-fill"></div></div>
 
 <main>
+
+<!-- ⓪ Grammar Focus -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-icon icon-blue">📘</div>
+    <div>
+      <div class="section-title">Grammar Focus — Practical English 実践英語①</div>
+      <div class="section-sub">今日の文法のポイントを確認しましょう。</div>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- A -->
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">A</span>Opening a Conversation　会話を始める</div>
+      <div class="gf-lead">久しぶりに会った人や気軽に話しかける時に使う表現です。どちらも自然な挨拶として使えます。</div>
+      <div class="gf-row">
+        <div class="gf-form">How's it going?</div>
+        <div>
+          <div class="gf-mean">カジュアルな挨拶。How are you? より口語的で、友人・同僚によく使う。</div>
+          <div class="gf-ex">Hey, Maiko! <span class="hl">How's it going?</span></div>
+          <div class="gf-ja">（やあ、まいこ！調子はどう？）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">Long time no see!</div>
+        <div>
+          <div class="gf-mean">しばらく会っていない人に使う。さらに強調したい時は I haven't seen you in ages!</div>
+          <div class="gf-ex"><span class="hl">Long time no see!</span> How have you been?</div>
+          <div class="gf-ja">（お久しぶり！元気にしてた？）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">B</span>Asking About Recent Activities　近況を聞く</div>
+      <div class="gf-lead"><strong>What have you been up to?</strong> は会話の始め方として最も使われる頻出フレーズです。</div>
+      <div class="gf-row">
+        <div class="gf-form">What have you been up to?</div>
+        <div>
+          <div class="gf-mean">「最近何してた？」近況を幅広く聞く。lately / recently を添えると自然。</div>
+          <div class="gf-ex">So, <span class="hl">what have you been up to</span> lately?</div>
+          <div class="gf-ja">（最近、何してた？）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">How have you been?</div>
+        <div>
+          <div class="gf-mean">「元気にしてた？」前回会って以降の状態を尋ねる。How's everything? も同じ意味。</div>
+          <div class="gf-ex"><span class="hl">How have you been</span> since I last saw you?</div>
+          <div class="gf-ja">（前に会って以来、元気にしてた？）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">How was your weekend / trip?</div>
+        <div>
+          <div class="gf-mean">最近の具体的な出来事（週末・旅行など）を聞く。</div>
+          <div class="gf-ex"><span class="hl">How was your trip</span> to Osaka?</div>
+          <div class="gf-ja">（大阪への旅行はどうだった？）</div>
+        </div>
+      </div>
+      <div class="gf-note">THE STRUCTURE IS: &nbsp; What / How &nbsp;＋&nbsp; have / has + 主語 &nbsp;＋&nbsp; been up to? &nbsp;／&nbsp; been?</div>
+    </div>
+
+    <!-- C -->
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">C</span>Responding About Recent Activities　近況を答える</div>
+      <div class="gf-lead">近況を聞かれた時の答え方です。<strong>I've been + 形容詞 / 動詞-ing</strong> の形で短く伝えましょう。</div>
+      <div class="gf-row">
+        <div class="gf-form">I've been + 形容詞</div>
+        <div>
+          <div class="gf-mean">状態を答える。</div>
+          <div class="gf-ex">I've been <span class="hl">really busy</span> with work lately.</div>
+          <div class="gf-ja">（最近、仕事でとても忙しくしてたよ。）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">I've been + 動詞-ing</div>
+        <div>
+          <div class="gf-mean">取り組んでいたことを答える。</div>
+          <div class="gf-ex">I've been <span class="hl">working on</span> a big project.</div>
+          <div class="gf-ja">（大きなプロジェクトに取り組んでたんだ。）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">Not much, just ...</div>
+        <div>
+          <div class="gf-mean">特に何もない場合の答え方。</div>
+          <div class="gf-ex"><span class="hl">Not much</span> — just working and relaxing.</div>
+          <div class="gf-ja">（特に何も。仕事してのんびりしてただけ。）</div>
+        </div>
+      </div>
+      <div class="gf-note">THE STRUCTURE IS: &nbsp; I've been + 形容詞（busy / tired / great）&nbsp;／&nbsp; 動詞-ing（working / traveling）</div>
+    </div>
+
+    <!-- D -->
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">D</span>Keeping the Conversation Going　会話を続ける</div>
+      <div class="gf-lead">相槌を打ったり詳しく聞いたりして会話を続けましょう。短いフレーズひとつで会話がスムーズになります。</div>
+      <div class="gf-row">
+        <div class="gf-form">Oh really? That sounds great!</div>
+        <div>
+          <div class="gf-ex">Oh <span class="hl">really</span>? That <span class="hl">sounds great</span>!</div>
+          <div class="gf-ja">（本当に？それはいいね！）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">How did it go? / How was it?</div>
+        <div>
+          <div class="gf-ex"><span class="hl">How did it go</span>? Tell me about it.</div>
+          <div class="gf-ja">（どうだった？教えて。）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">Tell me more!</div>
+        <div>
+          <div class="gf-ex">That sounds interesting — <span class="hl">tell me more</span>!</div>
+          <div class="gf-ja">（面白そう！もっと教えて！）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">How about you?</div>
+        <div>
+          <div class="gf-ex"><span class="hl">How about you</span>? Anything going on?</div>
+          <div class="gf-ja">（あなたはどう？何かあった？）</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="gf-sec">
+      <div class="gf-h"><span class="l">E</span>Wrapping Up　会話を締める</div>
+      <div class="gf-lead">会話を自然に終わらせる表現です。<strong>Anyway</strong>・<strong>Well</strong> などで切り出すと自然に締められます。</div>
+      <div class="gf-row">
+        <div class="gf-form">Anyway, I should get going.</div>
+        <div>
+          <div class="gf-ex"><span class="hl">Anyway</span>, I should get going — I have a meeting.</div>
+          <div class="gf-ja">（じゃあ、もう行かなきゃ。会議があるので。）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">It was great catching up!</div>
+        <div>
+          <div class="gf-ex">It was <span class="hl">great catching up</span>!</div>
+          <div class="gf-ja">（久しぶりにいろいろ話せてよかった！）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">Let's get together again soon!</div>
+        <div>
+          <div class="gf-ex">Let's <span class="hl">get together</span> again soon!</div>
+          <div class="gf-ja">（また近いうちに会おう！）</div>
+        </div>
+      </div>
+      <div class="gf-row">
+        <div class="gf-form">Take care!</div>
+        <div>
+          <div class="gf-ex"><span class="hl">Take care</span>! See you around.</div>
+          <div class="gf-ja">（じゃあ、気をつけて。またね。）</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ① Quick Translation -->
 <div class="section-card">
@@ -560,7 +742,7 @@ main {
   <div class="section-header">
     <div class="section-icon icon-amber">✅</div>
     <div>
-      <div class="section-title">Getting Ready — Choose the Right Answer</div>
+      <div class="section-title">Getting Ready — Choose the Right Answer (in class)</div>
       <div class="section-sub">Which expression fits best? Check your answers in class.</div>
     </div>
   </div>
@@ -686,17 +868,10 @@ main {
   <div class="section-body">
     <div class="fw-prompt">
       You run into a classmate or colleague you haven't seen for about a month at a convenience store. You have a few minutes to chat before you both need to head off.
-      <div style="font-weight:700;margin-top:12px;margin-bottom:6px;">Think about the conversation you would have and write down your ideas below.</div>
+      <div style="font-weight:700;margin-top:12px;margin-bottom:6px;">Think about the conversation you would have and write down your ideas.</div>
       <div class="fw-example">e.g. Oh! I haven't seen you in ages. How's it going?</div>
       <div class="fw-example" style="margin-top:6px;">e.g. How's school? / How's work been lately?</div>
-    </div>
-    <textarea class="fw-textarea" id="fw-text" placeholder="Write your ideas here in English..." oninput="updateChar()"></textarea>
-    <div class="fw-actions">
-      <div class="fw-char-count" style="margin-top:0;"><span id="char-count">0</span> characters</div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span class="fw-save-status" id="save-status">✓ Saved</span>
-        <button class="fw-save-btn" onclick="saveText()">💾 Save</button>
-      </div>
+      <div class="fw-example" style="margin-top:6px;">e.g. I visited Osaka last weekend. / I started a new job.</div>
     </div>
   </div>
 </div>
