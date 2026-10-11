@@ -31,7 +31,7 @@ body {
   background: #F0F4F8;
   color: var(--ink);
   min-height: 100vh;
-  padding-bottom: 80px;
+  padding-bottom: 32px;
 }
 
 /* ── Header ── */
@@ -456,45 +456,6 @@ main {
 }
 .fw-save-status.show { opacity: 1; }
 
-/* ── Score bar (bottom) ── */
-#score-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(26,26,46,.95);
-  backdrop-filter: blur(12px);
-  padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-.score-chip {
-  background: rgba(255,255,255,.1);
-  color: #fff;
-  border-radius: 20px;
-  padding: 6px 18px;
-  font-size: 13px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.score-chip .num { font-size: 17px; font-weight: 700; color: #81D4C6; }
-.reset-btn {
-  background: rgba(255,255,255,.1);
-  color: rgba(255,255,255,.7);
-  border: none;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 12px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background .15s;
-}
-.reset-btn:hover { background: rgba(255,255,255,.2); }
 
 /* ── Completion banner ── */
 #completion-banner {
@@ -891,12 +852,6 @@ main {
 
 </main>
 
-<!-- Score bar -->
-<div id="score-bar">
-  <div class="score-chip">Quiz <span class="num" id="score-num">0</span> / <span class="num" id="score-total">6</span></div>
-  <div class="score-chip">Progress <span class="num" id="pct-num">0</span>%</div>
-  <button class="reset-btn" onclick="resetAll()">↺ Reset</button>
-</div>
 
 <script>
 // ── Data ─────────────────────────────────────────
