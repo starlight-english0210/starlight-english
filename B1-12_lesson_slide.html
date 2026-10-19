@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B1-12 Verb + -ing / to</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sky:        #EBF4FA;
+    --ocean:      #1B6CA8;
+    --ocean-deep: #124E7E;
+    --mint:       #D6F0E8;
+    --sage:       #2D9A6E;
+    --sand:       #F7F3EE;
+    --ink:        #1A1A2E;
+    --slate:      #5C6B82;
+    --cloud:      #FFFFFF;
+    --blush:      #FDE8DC;
+    --amber:      #E8703A;
+    --correct:    #2D9A6E;
+    --wrong:      #C94040;
+    --radius:     12px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 0;
+    color: var(--ink);
+  }
+
+  /* ── Top bar ── */
+  #topbar {
+    width: 100%;
+    background: var(--ocean-deep);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 16px;
+  }
+  #topbar .lesson-id    { font-size: 11px; letter-spacing: .08em; opacity: .65; font-weight: 500; }
+  #topbar .lesson-title { font-family: 'DM Serif Display', serif; font-size: 16px; flex: 1; text-align: center; }
+  #topbar .timer        { font-size: 13px; font-weight: 600; background: rgba(255,255,255,.12); border-radius: 20px; padding: 4px 14px; min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+
+  /* ── Progress ── */
+  #progress-bar-wrap { width: 100%; height: 4px; background: rgba(255,255,255,.15); position: sticky; top: 52px; z-index: 99; }
+  #progress-bar { height: 100%; background: linear-gradient(90deg, #4FC3F7, #81D4C6); transition: width .4s ease; width: 0%; }
+
+  /* ── Slides ── */
+  #slides { width: 100%; max-width: 820px; padding: 32px 20px 80px; }
+
+  .slide { display: none; animation: fadeUp .35s ease both; }
+  .slide.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── Section header ── */
+  .section-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--ocean); color: #fff; font-size: 14px; font-weight: 600; letter-spacing: .05em; border-radius: 20px; padding: 7px 18px; margin-bottom: 14px; }
+  .slide-heading  { font-family: 'DM Serif Display', serif; font-size: 28px; color: #fff; line-height: 1.2; margin-bottom: 6px; }
+  .slide-sub      { font-size: 14px; color: rgba(255,255,255,.55); margin-bottom: 24px; }
+
+  /* ── Cards ── */
+  .card       { background: var(--cloud); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 14px; }
+  .card-sky   { background: var(--sky); }
+  .card-sand  { background: var(--sand); }
+  .card-mint  { background: var(--mint); }
+  .card-blush { background: var(--blush); }
+
+  /* ── Expression section label ── */
+  .expr-section-label {
+    font-size: 17px; font-weight: 700; color: var(--ocean); margin: 18px 0 12px;
+    padding-bottom: 8px; border-bottom: 2px solid var(--sky);
+  }
+  .expr-section-label:first-child { margin-top: 0; }
+  .expr-sub-label { font-size: 12px; font-weight: 600; color: var(--slate); letter-spacing: .05em; margin-bottom: 8px; }
+
+  /* ── Expression rows ── */
+  .expr-group { margin-bottom: 12px; }
+  .expr-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+  .expr-phrase {
+    background: var(--ocean); color: #fff; border-radius: 8px; padding: 11px 14px;
+    font-weight: 500; font-size: 15px; cursor: pointer; transition: background .15s, transform .1s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .expr-phrase:hover { background: var(--ocean-deep); transform: scale(1.01); }
+  .expr-phrase .play-icon { font-size: 16px; flex-shrink: 0; }
+  .expr-nuance { background: var(--sky); border-radius: 8px; padding: 11px 14px; font-size: 13px; color: var(--slate); display: flex; align-items: center; }
+  .example-block { background: var(--sand); border-left: 3px solid var(--ocean); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 14px; color: var(--ink); margin-top: 8px; font-style: italic; cursor: pointer; }
+
+  /* ── Translation ── */
+  .translation-item { background: var(--cloud); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+  .translation-ja-prompt { font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 10px; }
+  .translation-reveal-btn { background: none; border: 1.5px solid var(--ocean); color: var(--ocean); border-radius: 6px; padding: 5px 14px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 500; transition: all .15s; }
+  .translation-reveal-btn:hover { background: var(--ocean); color: #fff; }
+  .translation-en-answer { display: none; margin-top: 10px; font-size: 15px; color: var(--ocean-deep); font-weight: 600; padding: 8px 12px; background: var(--sky); border-radius: 6px; border-left: 3px solid var(--ocean); cursor: pointer; }
+  .translation-en-answer.shown { display: block; }
+
+  /* ── Listen answer (hidden until revealed) ── */
+  .listen-answer { display: none; margin-top: 8px; font-size: 14px; color: var(--sage); font-weight: 600; padding: 8px 12px; background: var(--mint); border-radius: 6px; }
+  .listen-answer.shown { display: block; }
+
+  /* ── Quiz ── */
+  .quiz-question  { background: var(--cloud); border-radius: 12px; padding: 20px 22px; margin-bottom: 16px; }
+  .quiz-situation { font-size: 12px; font-weight: 600; color: var(--ocean); letter-spacing: .06em; margin-bottom: 8px; }
+  .quiz-q-text    { font-size: 15px; color: var(--ink); margin-bottom: 14px; line-height: 1.55; }
+  .quiz-options   { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-option    { background: var(--sky); border: 2px solid transparent; border-radius: 8px; padding: 12px 16px; font-size: 14px; cursor: pointer; transition: all .15s; font-family: inherit; text-align: left; color: var(--ink); font-weight: 400; }
+  .quiz-option:hover:not(:disabled) { border-color: var(--ocean); background: #DCE9F5; }
+  .quiz-option.correct { background: #D6F0E8; border-color: var(--correct); color: var(--correct); font-weight: 600; }
+  .quiz-option.wrong   { background: #F9DEDE; border-color: var(--wrong); color: var(--wrong); }
+  .quiz-feedback  { display: none; margin-top: 12px; font-size: 13.5px; padding: 10px 14px; border-radius: 8px; line-height: 1.5; }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.good { background: var(--mint); color: #1A5C42; }
+  .quiz-feedback.bad  { background: #F9DEDE; color: #7A2020; }
+
+  /* ── Situation card ── */
+  .situation-card {
+    background: linear-gradient(135deg, var(--ocean-deep) 0%, #1B6CA8 100%);
+    color: #fff; border-radius: 12px; padding: 18px 22px; margin-bottom: 14px;
+  }
+  .situation-card .sit-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; opacity: .65; text-transform: uppercase; margin-bottom: 6px; }
+  .situation-card p { font-size: 14px; line-height: 1.65; opacity: .9; }
+
+  /* ── Audio player ── */
+  .audio-player-card { background: var(--ocean-deep); border-radius: 14px; padding: 22px 24px; margin-bottom: 16px; color: #fff; }
+  .audio-title       { font-size: 12px; font-weight: 600; letter-spacing: .07em; opacity: .65; margin-bottom: 6px; }
+  .audio-subtitle    { font-size: 15px; font-weight: 500; margin-bottom: 16px; }
+  .audio-controls    { display: flex; align-items: center; gap: 12px; }
+  .play-btn { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.18); border: none; color: #fff; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .15s; flex-shrink: 0; }
+  .play-btn:hover { background: rgba(255,255,255,.3); }
+  .audio-track-wrap { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .audio-track-bar  { height: 4px; background: rgba(255,255,255,.2); border-radius: 4px; overflow: hidden; cursor: pointer; }
+  .audio-track-fill { height: 100%; background: #81D4C6; width: 0%; transition: width .1s linear; }
+  .audio-time  { font-size: 11px; opacity: .55; font-variant-numeric: tabular-nums; }
+  .tts-label   { font-size: 11px; opacity: .5; margin-top: 6px; font-style: italic; }
+
+  /* ── Script ── */
+  .script-card    { background: var(--sand); border-radius: 10px; padding: 18px 20px; margin-top: 14px; }
+  .script-toggle  { background: none; border: none; font-family: inherit; font-size: 13px; color: var(--ocean); cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 6px; margin-bottom: 12px; padding: 0; }
+  .script-body    { display: none; }
+  .script-body.shown { display: block; }
+  .script-line    { font-size: 14px; line-height: 1.7; color: var(--ink); }
+  .script-speaker { font-weight: 600; color: var(--ocean); }
+
+  /* ── Fill blanks ── */
+  .blank-input { border: none; border-bottom: 2px solid var(--ocean); background: transparent; font-size: 15px; font-family: inherit; color: var(--ink); width: 180px; padding: 2px 4px; outline: none; transition: border-color .15s; }
+  .blank-input:focus { border-color: var(--amber); }
+  .blank-input.correct-input { border-color: var(--correct); color: var(--correct); }
+  .blank-input.wrong-input   { border-color: var(--wrong); color: var(--wrong); }
+  .check-blanks-btn { background: var(--ocean); color: #fff; border: none; border-radius: 8px; padding: 10px 22px; font-size: 14px; font-family: inherit; font-weight: 600; cursor: pointer; margin-top: 16px; transition: background .15s; }
+  .check-blanks-btn:hover { background: var(--ocean-deep); }
+
+  /* ── Dialogue ── */
+  .dialogue-line { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+  .dialogue-speaker-tag { font-size: 15px; font-weight: 700; color: var(--ocean); min-width: 64px; padding-top: 2px; flex-shrink: 0; }
+  .dialogue-text { font-size: 14px; line-height: 1.6; color: var(--ink); background: var(--sky); border-radius: 0 10px 10px 10px; padding: 9px 14px; flex: 1; }
+  .phrase-highlight { background: #FFF3CD; border-radius: 4px; padding: 1px 4px; font-weight: 600; cursor: pointer; position: relative; }
+  .phrase-highlight:hover::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; font-size: 12px; padding: 6px 10px; border-radius: 6px; white-space: nowrap; z-index: 10; font-weight: 400; pointer-events: none; }
+
+  /* ── Roleplay ── */
+  .roleplay-prompt { background: linear-gradient(135deg, var(--ocean-deep) 0%, #2D6D9E 100%); color: #fff; border-radius: 12px; padding: 22px 24px; margin-bottom: 16px; }
+  .roleplay-prompt h3 { font-family: 'DM Serif Display', serif; font-size: 20px; margin-bottom: 8px; }
+  .roleplay-prompt p  { font-size: 14px; line-height: 1.6; opacity: .85; }
+
+  /* ── Starter list ── */
+  .starter-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .starter-item { background: var(--cloud); border-radius: 8px; padding: 12px 16px; font-size: 14px; color: var(--ink); border-left: 3px solid var(--ocean); cursor: pointer; transition: background .15s; }
+  .starter-item:hover { background: var(--sky); }
+
+  /* ── Vocab ── */
+  .vocab-pill { display: inline-block; background: var(--mint); color: var(--sage); font-size: 12px; font-weight: 600; border-radius: 20px; padding: 4px 12px; margin: 3px; }
+  .vocab-item { background: var(--cloud); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; border-left: 3px solid var(--ocean); }
+  .vocab-term { font-weight: 700; font-size: 15px; color: var(--ocean-deep); margin-bottom: 4px; }
+  .vocab-def  { font-size: 14px; color: var(--ink); }
+  .vocab-ja   { font-size: 13px; color: var(--slate); margin-top: 3px; font-style: italic; }
+  .vocab-eg   { font-size: 13px; color: var(--ocean-deep); margin-top: 6px; font-style: italic; }
+
+  /* ── Teacher notes ── */
+  .teacher-card { background: #FFF8E1; border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; border-left: 4px solid #F9A825; }
+  .teacher-label { font-size: 11px; font-weight: 700; color: #B07800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  .teacher-card ul { font-size: 14px; color: var(--ink); line-height: 1.7; padding-left: 20px; }
+
+  /* ── Feedback ── */
+  .feedback-box { background: linear-gradient(135deg, #1A4A2E 0%, #1B6CA8 100%); border-radius: 14px; padding: 24px; color: #fff; margin-bottom: 16px; }
+  .feedback-box h3 { font-family: 'DM Serif Display', serif; font-size: 22px; margin-bottom: 10px; }
+  .feedback-box p  { font-size: 14px; line-height: 1.6; opacity: .85; }
+  .feedback-textarea { width: 100%; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25); border-radius: 8px; padding: 12px; color: #fff; font-family: inherit; font-size: 14px; resize: vertical; min-height: 90px; margin-top: 12px; outline: none; }
+  .feedback-textarea::placeholder { opacity: .45; }
+  .feedback-textarea:focus { border-color: rgba(255,255,255,.5); }
+
+  /* ── Nav ── */
+  #nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(26,26,46,.95); backdrop-filter: blur(12px); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(255,255,255,.08); }
+  .nav-dots   { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; flex: 1; }
+  .nav-dot    { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.2); cursor: pointer; transition: background .2s, transform .15s; }
+  .nav-dot.done    { background: var(--sage); }
+  .nav-dot.current { background: #4FC3F7; transform: scale(1.4); }
+  .nav-btn    { background: var(--ocean); color: #fff; border: none; border-radius: 10px; padding: 11px 22px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; transition: background .15s; flex-shrink: 0; }
+  .nav-btn:hover { background: var(--ocean-deep); }
+  .nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .nav-btn.secondary { background: rgba(255,255,255,.1); }
+  .nav-btn.secondary:hover { background: rgba(255,255,255,.18); }
+
+  /* ── Timer ring ── */
+  .time-ring { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,.1); border-radius: 20px; padding: 4px 12px; font-size: 12px; color: rgba(255,255,255,.7); font-weight: 500; margin-bottom: 12px; }
+  .time-ring span { color: #fff; font-weight: 700; }
+
+  /* ── Utility ── */
+  .divider  { height: 1px; background: rgba(0,0,0,.07); margin: 14px 0; }
+  .row      { display: flex; gap: 12px; }
+  .flex-1   { flex: 1; }
+  .mb-12    { margin-bottom: 12px; }
+  .mb-20    { margin-bottom: 20px; }
+  .text-slate { color: var(--slate); }
+  .text-sm    { font-size: 13px; }
+
+  /* ── Checklist ── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--ink); line-height: 1.5; }
+  .check-circle { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--ocean); flex-shrink: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; color: transparent; transition: all .15s; margin-top: 1px; }
+  .check-circle.checked { background: var(--sage); border-color: var(--sage); color: #fff; }
+
+  /* ── Teacher mode ── */
+  #teacher-toggle { font-size: 11px; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25); color: rgba(255,255,255,.8); border-radius: 16px; padding: 4px 10px; cursor: pointer; font-family: inherit; font-weight: 600; letter-spacing: .04em; transition: all .2s; white-space: nowrap; }
+  #teacher-toggle.active { background: #F9A825; border-color: #F9A825; color: #1A1A2E; }
+  .teacher-panel { display: none; background: #FFF8E1; border: 2px dashed #F9A825; border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+  body.teacher-mode .teacher-panel { display: block; }
+  .teacher-panel-label { font-size: 11px; font-weight: 700; color: #B07800; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  .teacher-ans-item { font-size: 13px; color: var(--ink); padding: 5px 0; border-bottom: 1px solid #F0DFA0; line-height: 1.5; }
+  .teacher-ans-item:last-child { border-bottom: none; }
+  .teacher-ans-q { font-weight: 600; color: #7A5800; }
+  .teacher-ans-a { color: #1A5C42; font-weight: 600; }
+
+
+  /* ── Strength scale (Grammar Focus) ── */
+  .strength-scale { display: flex; flex-direction: column; gap: 8px; }
+  .strength-row { display: grid; grid-template-columns: 84px 1fr; gap: 10px; align-items: center; }
+  .strength-word { font-weight: 700; font-size: 16px; color: var(--ocean-deep); }
+  .strength-bar-wrap { background: var(--sky); border-radius: 8px; min-height: 32px; overflow: hidden; display: flex; }
+  .strength-bar { height: 100%; border-radius: 8px; display: flex; align-items: center; padding: 6px 12px; font-size: 12.5px; color: #fff; font-weight: 500; line-height: 1.35; }
+  .strength-hi  { background: var(--ocean-deep); width: 100%; }
+  .strength-mid { background: var(--ocean); width: 88%; }
+  .strength-lo  { background: var(--sage); width: 58%; }
+  .expr-phrase.neg { background: #8A3B3B; }
+  .expr-phrase.neg:hover { background: #6E2C2C; }
+  .expr-phrase.past { background: #4A5A78; }
+  .expr-phrase.past:hover { background: #3A4862; }
+  .grammar-tip { background: #FFF8E1; border-left: 3px solid #F9A825; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: #6B5200; margin-top: 10px; line-height: 1.6; }
+
+  /* ── True / False ── */
+  .tf-item { margin-bottom: 14px; }
+  .tf-text { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .tf-btns { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .tf-btn { background: var(--sky); border: 2px solid transparent; border-radius: 8px; padding: 6px 18px; font-size: 13px; font-weight: 600; font-family: inherit; color: var(--ink); cursor: pointer; transition: all .15s; }
+  .tf-btn:hover:not(:disabled) { border-color: var(--ocean); }
+  .tf-btn.correct { background: #D6F0E8; border-color: var(--correct); color: var(--correct); }
+  .tf-btn.wrong   { background: #F9DEDE; border-color: var(--wrong); color: var(--wrong); }
+  .tf-btn:disabled { cursor: default; }
+  .blank-input.short { width: 140px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <span class="lesson-id">B1 · LESSON 12</span>
+  <span class="lesson-title">Verb + -ing / Verb + to …</span>
+  <button id="teacher-toggle" onclick="openTeacherWindow()">🔒 Teacher</button>
+  <span class="timer" id="timer">50:00</span>
+</div>
+<div id="progress-bar-wrap"><div id="progress-bar"></div></div>
+
+<div id="slides">
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 0 — Today's Grammar Focus + Today's Goal
+══════════════════════════════════════════════ -->
+<div class="slide active" data-slide="0">
+  <div class="section-badge">📐 B1-12 · Grammar — Verb + -ing / to</div>
+  <h1 class="slide-heading">Doing or To Do?</h1>
+  <p class="slide-sub">enjoy doing / decide to do / want someone to do — 50-min lesson</p>
+
+  <div class="card" style="background:linear-gradient(135deg,#1B6CA8,#2D9A6E);color:#fff;padding:26px 28px;margin-bottom:14px;">
+    <div style="font-size:13px;opacity:.7;margin-bottom:10px;font-weight:500;">Today's Grammar Focus</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:10px;">verb + -ing &nbsp;/&nbsp; verb (+ someone) + to …</div>
+    <div style="font-size:14px;opacity:.85;line-height:1.6;">The first verb decides the form of the second verb.</div>
+  </div>
+
+  <div class="card card-sky">
+    <div style="font-size:12px;font-weight:600;color:var(--ocean);margin-bottom:10px;letter-spacing:.04em;">📌 TODAY'S GOAL</div>
+    <div style="font-size:14px;color:var(--ink);line-height:1.7;">By the end of today's lesson, you will be able to:</div>
+    <ul style="font-size:14px;color:var(--ink);line-height:1.8;padding-left:20px;margin-top:8px;">
+      <li>Choose <strong>-ing</strong> or <strong>to …</strong> after common verbs (<strong>enjoy doing</strong> / <strong>decide to do</strong>)</li>
+      <li>Say what you want others to do with <strong>want / ask / tell + someone + to …</strong></li>
+      <li>Talk about rules with <strong>make / let + someone + do</strong></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 1 — Grammar Focus
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="1">
+  <div class="section-badge">📘 Section 1 · Grammar Focus</div>
+  <h2 class="slide-heading">Doing or To Do?</h2>
+
+  <!-- 1. Verb + -ing -->
+  <div class="card">
+    <div class="expr-section-label">1. Verb + -ing</div>
+    <div class="expr-row">
+      <div class="expr-phrase"><span>I really <strong>enjoyed talking</strong> with you.</span></div>
+      <div class="expr-nuance"><span>enjoy / mind / suggest / avoid / finish + -ing<br>✗ I enjoyed to talk</span></div>
+    </div>
+    <div class="expr-row">
+      <div class="expr-phrase"><span>I <strong>keep forgetting</strong> his name.</span></div>
+      <div class="expr-nuance"><span>give up (= stop) / put off (= delay)<br>keep (on) (= continue) + -ing</span></div>
+    </div>
+    <div class="expr-row">
+      <div class="expr-phrase"><span>I enjoy <strong>not having</strong> to commute.</span></div>
+      <div class="expr-nuance">Negative = not + -ing</div>
+    </div>
+  </div>
+
+  <!-- 2. Verb + to -->
+  <div class="card">
+    <div class="expr-section-label">2. Verb + to …</div>
+    <div class="expr-row">
+      <div class="expr-phrase past"><span>I've <strong>decided to quit</strong> my job.</span></div>
+      <div class="expr-nuance">decide / plan / hope / promise / agree / refuse + to …</div>
+    </div>
+    <div class="expr-row">
+      <div class="expr-phrase past"><span>I <strong>can't afford to buy</strong> a new car.</span></div>
+      <div class="expr-nuance"><span>manage = succeed (after some difficulty)<br>afford = have enough money / time</span></div>
+    </div>
+    <div class="expr-row">
+      <div class="expr-phrase past"><span>I <strong>promised not to tell</strong> anyone.</span></div>
+      <div class="expr-nuance">Negative = not to …</div>
+    </div>
+  </div>
+
+  <!-- 3. Verb + someone + to -->
+  <div class="card">
+    <div class="expr-section-label">3. Verb + someone + to …</div>
+    <div class="expr-row">
+      <div class="expr-phrase"><span><strong>Do</strong> you <strong>want me to help</strong> you?</span></div>
+      <div class="expr-nuance"><span>want / would like / expect + someone + to …<br>✗ Do you want that I help you?</span></div>
+    </div>
+    <div class="expr-row">
+      <div class="expr-phrase"><span>Can you <strong>remind me to call</strong> Sam?</span></div>
+      <div class="expr-nuance">ask / tell / remind / advise / allow + someone + to …</div>
+    </div>
+    <div class="expr-row">
+      <div class="expr-phrase neg"><span><strong>Let me know</strong> if you need anything.</span></div>
+      <div class="expr-nuance"><span>make / let + someone + do<br>No "to"! ✗ made me to work</span></div>
+    </div>
+    <div class="grammar-tip">💡 <strong>suggest</strong> is different: ✗ He suggested me to go. → He <strong>suggested going</strong>.</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 2 — Quick Translation
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="2">
+  <div class="section-badge">🇯🇵 Section 2 · Quick Translation</div>
+  <h2 class="slide-heading">Quick Translation</h2>
+  <div class="time-ring">⏱ Target <span>5 min</span></div>
+  <p class="slide-sub mb-20">Read the Japanese — say the English, then tap to check</p>
+  <div id="translation-list"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 3 — Getting Ready
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="3">
+  <div class="section-badge">✅ Section 3 · Getting Ready</div>
+  <h2 class="slide-heading">Which one fits?</h2>
+  <div class="time-ring">⏱ Target <span>5 min</span></div>
+  <div id="quiz-container"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 — Listening Task 1 (Fill in the Blanks)
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="4">
+  <div class="section-badge">🎧 Section 4 · Listening Task 1</div>
+  <h2 class="slide-heading">Late-Night Studying</h2>
+  <div class="time-ring">⏱ Target <span>10 min</span></div>
+  <p class="slide-sub" style="font-size:16px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:16px;">🎧 Listen → Fill in the blanks</p>
+
+  <div class="situation-card">
+    <div class="sit-label">Situation</div>
+    <p>Sameer notices that Charlotte looks tired at Bridge and asks her what's going on.</p>
+  </div>
+
+  <div class="audio-player-card">
+    <div class="audio-title">LISTEN</div>
+    <div class="audio-subtitle">Sameer &amp; Charlotte — Bridge</div>
+    <div class="audio-controls">
+      <button class="play-btn" id="play-btn-a1" onclick="toggleAudio('a1')">▶</button>
+      <div class="audio-track-wrap">
+        <div class="audio-track-bar"><div class="audio-track-fill" id="fill-a1"></div></div>
+        <div class="audio-time" id="time-a1">0:00 / —</div>
+      </div>
+    </div>
+    <audio id="audio-a1" src="../Audio/B1-12_listening1.mp3" preload="metadata"></audio>
+    <div class="tts-label">🎵 Listen and fill the blanks below</div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div style="font-weight:600;font-size:13px;color:var(--slate);margin-bottom:12px;letter-spacing:.03em;">FILL IN THE BLANKS</div>
+    <div style="font-size:14px;line-height:2.3;color:var(--ink);" id="fill-blank-area">
+      1. Charlotte has decided to take the Japanese test in <input class="blank-input short" id="b1" placeholder="blank 1">.<br>
+      2. When Sameer first came to Japan, he kept <input class="blank-input short" id="b2" placeholder="blank 2"> the kanji he had learned.<br>
+      3. Sameer's first teacher told him to write a short <input class="blank-input short" id="b3" placeholder="blank 3"> in Japanese every day.
+    </div>
+    <button class="check-blanks-btn" onclick="checkBlanks()">Check Answers</button>
+    <div id="blank-feedback" style="margin-top:12px;display:none;"></div>
+  </div>
+
+  <div class="card mb-12">
+    <div style="font-weight:600;font-size:13px;color:var(--slate);margin-bottom:12px;letter-spacing:.03em;">VOCABULARY NOTE</div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">JLPT</div>
+      <div class="vocab-def">The Japanese-Language Proficiency Test. N5 is the easiest level and N1 is the hardest.</div>
+      <div class="vocab-ja">日本語能力試験</div>
+    </div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">persuade someone to ~</div>
+      <div class="vocab-def">To make someone agree to do something by giving them good reasons.</div>
+      <div class="vocab-ja">（人）を説得して～させる</div>
+    </div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">I know the feeling.</div>
+      <div class="vocab-def">I understand, because the same thing has happened to me.</div>
+      <div class="vocab-ja">その気持ち、よくわかる</div>
+    </div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">give it a try</div>
+      <div class="vocab-def">To try doing something to see if it works.</div>
+      <div class="vocab-ja">試しにやってみる</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">Deal!</div>
+      <div class="vocab-def">Used to say "I agree" to an offer or promise.</div>
+      <div class="vocab-ja">決まり！、それで行こう！</div>
+    </div>
+  </div>
+
+  <div class="script-card">
+    <button class="script-toggle" onclick="toggleScript('script1')">
+      <span id="script1-icon">▶</span> Show script
+    </button>
+    <div class="script-body" id="script1">
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Charlotte, you look exhausted. Have you been writing late again?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Not this time. I've <strong>decided to take</strong> the <span class="phrase-highlight" data-tip="日本語能力試験">JLPT</span> in December, so I've been studying every night.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Good for you! Which level?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">N3. My Japanese teacher <span class="phrase-highlight" data-tip="説得して～させた">persuaded me to try</span> it. Honestly, I almost <strong>gave up studying</strong> kanji last month.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text"><span class="phrase-highlight" data-tip="その気持ち、わかる">I know the feeling.</span> When I first came to Japan, I <strong>kept forgetting</strong> the ones I'd learned the week before.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Really? But you passed N1! Any tips?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Well, my first teacher <strong>told me to write</strong> a short diary in Japanese every day. And I <strong>avoided using</strong> the dictionary on my phone.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">That sounds tough, but I'll <span class="phrase-highlight" data-tip="試しにやってみる">give it a try</span>. <strong>Would</strong> you <strong>mind checking</strong> my diary sometimes?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Not at all! But only if you <strong>promise not to give up</strong> this time.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text"><span class="phrase-highlight" data-tip="決まり！">Deal!</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 — Listening Task 2 (True or False)
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="5">
+  <div class="section-badge">🎧 Section 4 · Listening Task 2</div>
+  <h2 class="slide-heading">Before We Open</h2>
+  <div class="time-ring">⏱ Target <span>10 min</span></div>
+  <p class="slide-sub" style="font-size:16px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:16px;">🎧 Listen → True or False?</p>
+
+  <div class="situation-card">
+    <div class="sit-label">Situation</div>
+    <p>Kevin is talking to the Bridge staff at a short meeting before the café opens.</p>
+  </div>
+
+  <div class="audio-player-card">
+    <div class="audio-title">LISTEN — STAFF MEETING</div>
+    <div class="audio-subtitle">Kevin's announcement</div>
+    <div class="audio-controls">
+      <button class="play-btn" id="play-btn-a2" onclick="toggleAudio('a2')">▶</button>
+      <div class="audio-track-wrap">
+        <div class="audio-track-bar"><div class="audio-track-fill" id="fill-a2"></div></div>
+        <div class="audio-time" id="time-a2">0:00 / —</div>
+      </div>
+    </div>
+    <audio id="audio-a2" src="../Audio/B1-12_listening2.mp3" preload="metadata"></audio>
+    <div class="tts-label">🎵 Listen and answer True or False</div>
+  </div>
+
+  <div class="card mb-12">
+    <div style="font-weight:600;font-size:13px;color:var(--slate);margin-bottom:12px;letter-spacing:.03em;">TRUE OR FALSE?</div>
+    <div id="listen2-questions"></div>
+  </div>
+
+  <div class="card mb-12">
+    <div style="font-weight:600;font-size:13px;color:var(--slate);margin-bottom:12px;letter-spacing:.03em;">VOCABULARY NOTE</div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">quiet zone</div>
+      <div class="vocab-def">An area where people must not talk loudly or make noise.</div>
+      <div class="vocab-ja">静かに過ごすエリア、サイレントゾーン</div>
+    </div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">phone booth</div>
+      <div class="vocab-def">A small closed space where one person can make phone or video calls.</div>
+      <div class="vocab-ja">電話ブース、通話用の個室</div>
+    </div>
+    <div class="vocab-item" style="margin-bottom:8px;">
+      <div class="vocab-term">regulars</div>
+      <div class="vocab-def">Customers who come to the same place very often.</div>
+      <div class="vocab-ja">常連客</div>
+    </div>
+    <div class="vocab-item">
+      <div class="vocab-term">save a seat</div>
+      <div class="vocab-def">To keep a seat for yourself or someone else, e.g. by putting a bag on it.</div>
+      <div class="vocab-ja">席を取っておく</div>
+    </div>
+  </div>
+
+  <div class="script-card">
+    <button class="script-toggle" onclick="toggleScript('script2')">
+      <span id="script2-icon">▶</span> Show script
+    </button>
+    <div class="script-body" id="script2">
+      <div class="script-line">"Morning, everyone. Before we open, I <strong>want to tell</strong> you about a few changes. Lately, a lot of customers have <strong>asked us to make</strong> the second floor quieter. So from next Monday, we've <strong>decided to turn</strong> it into a <span class="phrase-highlight" data-tip="静かに過ごすエリア">quiet zone</span>. People can still work up there, of course, but we won't <strong>let them take</strong> phone calls. If someone needs to talk, please <strong>ask them to use</strong> the <span class="phrase-highlight" data-tip="電話ブース">phone booths</span> on the first floor. I know some of our <span class="phrase-highlight" data-tip="常連客">regulars</span> won't <strong>enjoy hearing</strong> that, so please explain it kindly. Also, I'd <strong>like you to remind</strong> people not to <span class="phrase-highlight" data-tip="席を取っておく">save seats</span> with their bags when it's busy. Oh, and Mai — would you <strong>mind making</strong> a few signs for the tables? Your drawings are always the best. OK, that's all. Let's have a good day!"</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 6 — Dialogue Practice
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="6">
+  <div class="section-badge">💬 Section 5 · Dialogue Practice</div>
+  <h2 class="slide-heading">Aileen &amp; Mai — Read Aloud</h2>
+  <div class="time-ring">⏱ Target <span>5 min</span></div>
+
+  <div class="audio-player-card" style="margin-bottom:16px;">
+    <div class="audio-title">LISTEN FIRST</div>
+    <div class="audio-subtitle">Aileen &amp; Mai — Bridge</div>
+    <div class="audio-controls">
+      <button class="play-btn" id="play-btn-a3" onclick="toggleAudio('a3')">▶</button>
+      <div class="audio-track-wrap">
+        <div class="audio-track-bar"><div class="audio-track-fill" id="fill-a3"></div></div>
+        <div class="audio-time" id="time-a3">0:00 / —</div>
+      </div>
+    </div>
+    <audio id="audio-a3" src="../Audio/B1-12_dialogue.mp3" preload="metadata"></audio>
+    <div class="tts-label">🎵 Listen once, then practise reading aloud</div>
+  </div>
+
+  <div class="card mb-12">
+    <div style="font-size:13px;color:var(--slate);margin-bottom:14px;">Aileen stops by Bridge after work. She wants to hear about something important Mai did last week.</div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Mai! How did the interview go? <span class="phrase-highlight" data-tip="聞きたくてたまらなかった">I've been dying to hear.</span></div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Honestly, <span class="phrase-highlight" data-tip="思っていたよりよかった">better than I expected</span>! Charlotte's practice interview really helped. I <span class="phrase-highlight" data-tip="なんとか答えられた">managed to answer</span> every question in English.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">That's fantastic! What did they ask you?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">They <span class="phrase-highlight" data-tip="説明するよう求めた">asked me to describe</span> a time I solved a problem at work, so I talked about Bridge. The interviewer said she <span class="phrase-highlight" data-tip="聞いて楽しかった">enjoyed hearing</span> about it.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Perfect example. Did anything go wrong?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Well, <span class="phrase-highlight" data-tip="途中で一度">at one point</span> I <span class="phrase-highlight" data-tip="言うのをやめられなかった">couldn't stop saying</span> "um." And they <span class="phrase-highlight" data-tip="私に～してほしかった">wanted me to do</span> a short role-play with a "guest" — I almost <span class="phrase-highlight" data-tip="笑顔を忘れた">forgot to smile</span>!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Ha! Everyone gets nervous. So when will you <span class="phrase-highlight" data-tip="返事をもらう">hear back</span>?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">They <span class="phrase-highlight" data-tip="知らせると約束した">promised to let me know</span> by the end of the month. I <span class="phrase-highlight" data-tip="何度もチェックしてしまう">keep checking</span> my email every five minutes!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Try to <span class="phrase-highlight" data-tip="考えるのを避ける">avoid thinking</span> about it too much. <span class="phrase-highlight" data-tip="結果がどうであれ">Whatever happens</span>, you should be proud of yourself.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Thanks, Aileen. If I get it, I'll <span class="phrase-highlight" data-tip="知らせる">let you know</span> first!</div></div>
+  </div>
+
+  <div class="card card-mint">
+    <div style="font-size:12px;font-weight:600;color:var(--sage);margin-bottom:8px;">GRAMMAR &amp; EXPRESSIONS IN THIS DIALOGUE</div>
+    <div style="display:flex;flex-wrap:wrap;">
+      <span class="vocab-pill">managed to answer</span>
+      <span class="vocab-pill">asked me to describe</span>
+      <span class="vocab-pill">enjoyed hearing</span>
+      <span class="vocab-pill">couldn't stop saying</span>
+      <span class="vocab-pill">wanted me to do</span>
+      <span class="vocab-pill">forgot to smile</span>
+      <span class="vocab-pill">promised to let me know</span>
+      <span class="vocab-pill">keep checking</span>
+      <span class="vocab-pill">avoid thinking</span>
+      <span class="vocab-pill">I've been dying to hear.</span>
+      <span class="vocab-pill">better than I expected</span>
+      <span class="vocab-pill">hear back</span>
+      <span class="vocab-pill">Whatever happens, …</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — Express Yourself
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="7">
+  <div class="section-badge">🗣 Section 6 · Express Yourself</div>
+  <h2 class="slide-heading">Express Yourself</h2>
+  <div class="time-ring">⏱ Target <span>12 min</span></div>
+
+  <div class="roleplay-prompt">
+    <h3>Situation: "What's New with You?"</h3>
+    <p>You run into a friend you haven't seen for a few months. They ask how life has been. Tell them about the habits you have changed recently — and something you want to try next.</p>
+  </div>
+
+  <div class="card mb-12">
+    <div style="font-size:13px;font-weight:600;color:var(--slate);margin-bottom:10px;">Try to:</div>
+    <ul class="checklist">
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Talk about something new you have started recently</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Talk about something you have stopped, or are trying to stop</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Say who or what gave you the idea</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Share a goal or plan for the next few months</li>
+    </ul>
+  </div>
+
+  <div class="card card-sand mb-12">
+    <div style="font-size:12px;font-weight:600;color:var(--slate);margin-bottom:8px;letter-spacing:.04em;">📝 YOUR IDEAS (from HW)</div>
+    <div style="font-size:13px;color:var(--slate);margin-bottom:10px;">Think about the conversation you would have and write down your ideas below.</div>
+    <textarea style="width:100%;border:1.5px solid #D0D8E4;border-radius:8px;padding:12px;font-family:inherit;font-size:14px;resize:vertical;min-height:140px;background:var(--cloud);color:var(--ink);outline:none;line-height:1.6;" placeholder="e.g. I've given up drinking coffee after lunch, and I sleep much better now. / My doctor told me to walk more, so I've decided to get off the train one stop early. / I'm hoping to run a 10K race in the spring."></textarea>
+  </div>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:12px;font-weight:600;color:var(--ocean);margin-bottom:10px;">Conversation Starter</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
+      <div style="font-size:14px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Long time no see! So, what's new with you?</div>
+      <div style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><strong style="color:var(--ocean);">B:</strong> <span>Well, quite a lot, actually!</span> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span><span>.</span></div>
+    </div>
+  </div>
+
+  <div class="card card-sky">
+    <div style="font-size:12px;font-weight:600;color:var(--ocean);margin-bottom:10px;">EXAMPLE STARTERS FOR STUDENTS</div>
+    <div class="starter-list">
+      <div class="starter-item">"I've started going to a yoga class on Saturday mornings, and I really enjoy it."</div>
+      <div class="starter-item">"I finally managed to stop eating snacks late at night. It took me three tries!"</div>
+      <div class="starter-item">"My kids persuaded me to get a dog, so now I walk him twice a day."</div>
+      <div class="starter-item">"I keep telling myself to read more, but I always end up watching videos instead."</div>
+      <div class="starter-item">"I'm planning to take a cooking class this winter. I want to learn to make curry from scratch."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 8 — Try It Out
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="8">
+  <div class="section-badge">🎭 Section 7 · Try It Out</div>
+  <h2 class="slide-heading">Growing Up</h2>
+  <div class="time-ring">⏱ Target <span>10 min</span></div>
+
+  <div class="roleplay-prompt">
+    <h3>Situation: "How Strict Were Your Parents?"</h3>
+    <p>You and a friend are chatting about your childhoods. Your friend says their parents were really strict. Compare it with how you grew up — the rules at home, the freedom you had, and what your parents hoped for you.</p>
+  </div>
+
+  <div class="card mb-12">
+    <div style="font-size:13px;font-weight:600;color:var(--slate);margin-bottom:10px;">Try to include all four:</div>
+    <ul class="checklist">
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A rule you had to follow at home</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something you were — or weren't — free to do</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something your parents hoped you would do or become</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>How you feel about it now, looking back</li>
+    </ul>
+  </div>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:12px;font-weight:600;color:var(--ocean);margin-bottom:10px;">Conversation Starter</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
+      <div style="font-size:14px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> My parents were so strict when I was a kid. What about yours?</div>
+      <div style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:6px;flex-wrap:wrap;"><strong style="color:var(--ocean);">B:</strong> <span>Really? Mine were</span> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:80px;">&nbsp;</span><span>. For example,</span> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:160px;">&nbsp;</span><span>.</span></div>
+    </div>
+  </div>
+
+  <div class="card card-sky">
+    <div style="font-size:12px;font-weight:600;color:var(--ocean);margin-bottom:10px;">EXAMPLE STARTERS FOR STUDENTS</div>
+    <div class="starter-list">
+      <div class="starter-item">"My parents made me practice the piano every day, and I hated it at the time."</div>
+      <div class="starter-item">"They didn't let me have a phone until high school, so I always felt left out."</div>
+      <div class="starter-item">"My mother wanted me to become a doctor, but I decided to study art instead."</div>
+      <div class="starter-item">"We had a strict curfew — I had to be home by seven, even in high school!"</div>
+      <div class="starter-item">"Looking back, I'm really glad they encouraged me to read so much."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 9 — Section 8: Wrap-up
+══════════════════════════════════════════════ -->
+<div class="slide" data-slide="9">
+  <div class="section-badge">✨ Section 8 · Wrap-up</div>
+  <h2 class="slide-heading">Lesson Wrap-up</h2>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:13px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">🌟 TODAY'S SUCCESS</div>
+    <div style="font-size:14px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:80px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I said 'I've given up eating snacks at night' and 'My parents didn't let me have a phone'!"></textarea>
+  </div>
+
+  <div class="teacher-card">
+    <div class="teacher-label">🔧 Let's Work On</div>
+    <div style="font-size:13px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:14px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I enjoy cooking. (not: I enjoy to cook) / I want you to come. (not: I want that you come)..."></textarea>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,var(--ocean-deep),#2D9A6E);color:#fff;text-align:center;padding:28px;margin-top:4px;">
+    <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:8px;">Great lesson! 🎉</div>
+    <div style="font-size:14px;opacity:.8;margin-bottom:16px;">You can now talk about your habits, plans, and what people want you to do.</div>
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;">
+      <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">enjoy / avoid / give up + -ing</span>
+      <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">decide / hope / manage + to</span>
+      <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">want / ask / tell + someone + to</span>
+      <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">make / let + someone + do</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- /slides -->
+
+<!-- NAV -->
+<div id="nav">
+  <button class="nav-btn secondary" id="btn-prev" onclick="goSlide(-1)" disabled>← Back</button>
+  <div class="nav-dots" id="nav-dots"></div>
+  <button class="nav-btn" id="btn-next" onclick="goSlide(1)">Next →</button>
+</div>
+
+<script>
+const TOTAL_SLIDES = 10;
+let currentSlide = 0;
+
+const translations = [
+  { en: "She enjoys cooking on weekends.", ja: "彼女は週末に料理をするのを楽しんでいる。" },
+  { en: "Would you mind opening the window?", ja: "窓を開けてもらってもいいですか？" },
+  { en: "My father gave up smoking last year.", ja: "父は去年タバコをやめた。" },
+  { en: "We decided not to travel abroad this year.", ja: "私たちは今年は海外旅行に行かないことにした。" },
+  { en: "He managed to catch the last train.", ja: "彼はなんとか終電に間に合った。" },
+  { en: "My mother doesn't want me to go out late at night.", ja: "母は私に夜遅く出かけてほしくない。" },
+  { en: "My boss asked me to join the meeting tomorrow.", ja: "上司に明日の会議に出るよう頼まれた。" },
+  { en: "They don't let their kids use smartphones.", ja: "彼らは子どもにスマホを使わせていない。" },
+  { en: "Have you finished writing the report?", ja: "レポートはもう書き終わった？" },
+  { en: "Do you want me to carry your bag?", ja: "かばん、持ちましょうか？" },
+];
+
+const quizData = [
+  {
+    situation: "Q1",
+    q: "I really enjoy ______ to podcasts while I'm running.",
+    options: ["to listen", "listening"],
+    correct: 1,
+    feedback: "✅ Correct! After enjoy, we use -ing (✗ enjoy to listen)."
+  },
+  {
+    situation: "Q2",
+    q: "I'd love a new laptop, but I can't afford ______ one right now.",
+    options: ["to buy", "buying"],
+    correct: 0,
+    feedback: "✅ Correct! After afford, we use to … (can't afford to buy = don't have enough money to buy)."
+  },
+  {
+    situation: "Q3",
+    q: "My manager ______ the report by Friday.",
+    options: ["wants that I finish", "wants me to finish"],
+    correct: 1,
+    feedback: "✅ Correct! We say want + someone + to … — not \"want that …\"."
+  }
+];
+
+const blankAnswers = {
+  b1: ["December"],
+  b2: ["forgetting"],
+  b3: ["diary"]
+};
+const blankMain = ["December", "forgetting", "diary"];
+
+const listen2Qs = [
+  { q: "Many customers asked for the second floor to be quieter.",        a: true,  note: "A lot of customers have asked us to make the second floor quieter." },
+  { q: "From next Monday, customers can make phone calls on the second floor.", a: false, note: "They won't let them take calls — they should use the phone booths on the first floor." },
+  { q: "Kevin wants Mai to explain the new rule to the regulars.",        a: false, note: "He asks Mai to make some signs for the tables." },
+];
+
+const teacherExtra = {
+  express: {
+    useful: [
+      ["get into the habit of ~ing", "To start doing something regularly, so that it becomes a habit.", "～する習慣がつく", "I've got into the habit of making my own lunch."],
+      ["cut down on ~", "To eat, drink, or use less of something.", "～を減らす", "I'm trying to cut down on sugar."],
+      ["stick to ~", "To keep doing something you planned, even when it is hard.", "～を続ける、（計画などを）守る", "It's hard to stick to a diet when you eat out a lot."],
+      ["end up ~ing", "To finally do something you did not plan to do.", "結局～することになる", "I meant to go to bed early, but I ended up watching a movie."],
+      ["from scratch", "From the very beginning, without using anything already prepared.", "一から、最初から", "My grandmother makes all her bread from scratch."],
+    ],
+    followUp: [
+      "What is one habit you would really like to give up? What makes it so hard?",
+      "Who in your life has encouraged you to try something new?",
+      "Do you find it easier to start a new habit or to stop an old one?",
+      "Is there anything you used to enjoy doing as a child that you'd like to start again?",
+    ],
+    ideas: [
+      "I've stopped checking my phone first thing in the morning, and I feel much calmer.",
+      "A friend encouraged me to join a running club, and now I really enjoy running with other people.",
+      "I keep forgetting to drink enough water, so I've put a big bottle on my desk.",
+      "I've decided not to buy any new clothes for three months. It's harder than I expected!",
+      "I'm hoping to learn to play the guitar, but I can't afford to take lessons yet.",
+    ],
+    phrases: [
+      ["a morning person", "朝型の人", "I never used to be a morning person, but now I get up at six."],
+      ["make time for ~", "～のための時間を作る", "I try to make time for reading every day."],
+      ["fall back into ~", "（悪い習慣などに）逆戻りする", "I stopped eating junk food, but I fell back into it during exams."],
+      ["a fresh start", "新たなスタート、出直し", "Moving to a new city felt like a fresh start."],
+      ["screen time", "画面を見ている時間", "I've cut my screen time in half."],
+    ],
+  },
+  try: {
+    useful: [
+      ["curfew", "A time by which you must be home in the evening.", "門限", "My curfew was 9 p.m. until I was eighteen."],
+      ["get grounded", "To be punished by not being allowed to go out for a while.", "（罰として）外出禁止になる", "I got grounded for a week for lying to my parents."],
+      ["spoil", "To give a child everything they want, so that they behave badly.", "甘やかす", "My grandparents spoiled me with sweets every time I visited."],
+      ["pocket money", "Money that parents give their children regularly to spend.", "お小遣い", "I got 1,000 yen of pocket money a month."],
+      ["looking back", "When I think about it now, about the past.", "今振り返ると", "Looking back, their rules were there to protect me."],
+    ],
+    followUp: [
+      "Did you have a curfew when you were a teenager? What happened if you broke it?",
+      "Is there a rule your parents had that you'd keep — or have kept — with your own children?",
+      "Do you think parents today are stricter or more easygoing than in the past?",
+      "What did your parents want you to become? Did you follow their advice?",
+    ],
+    ideas: [
+      "My father made me wash his car every Sunday to earn my pocket money.",
+      "We weren't allowed to watch TV during dinner — we had to talk to each other.",
+      "My parents let me choose my own high school, and I really appreciated that.",
+      "My grandmother taught me to cook when I was only eight.",
+      "I'd like my kids to try lots of different sports, but I won't force them to keep going.",
+    ],
+    phrases: [
+      ["strict / easygoing", "厳しい／おおらかな", "My mom was strict, but my dad was really easygoing."],
+      ["bring up", "育てる", "I was brought up by my grandparents."],
+      ["chores", "家の手伝い、家事", "I had to do chores before I was allowed to play."],
+      ["rebel against ~", "～に反抗する", "I rebelled against my parents when I was fifteen."],
+      ["overprotective", "過保護な", "My parents were a bit overprotective — I couldn't even take the train alone."],
+    ],
+  },
+};
+
+// ── Audio Players ──────────────────────────────────────────
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.9;
+  window.speechSynthesis.speak(u);
+}
+
+function toggleAudio(id) {
+  const audio = document.getElementById('audio-' + id);
+  if (!audio) return;
+  if (!audio.paused) {
+    audio.pause();
+    return;
+  }
+  document.querySelectorAll('audio').forEach(a => {
+    if (a !== audio && !a.paused) {
+      a.pause();
+      const oid = a.id.replace('audio-', '');
+      const ob = document.getElementById('play-btn-' + oid);
+      if (ob) ob.textContent = '▶';
+    }
+  });
+  audio.play().catch(() => {});
+}
+
+function initAudioPlayer(id) {
+  const audio = document.getElementById('audio-' + id);
+  if (!audio) return;
+  const fill = document.getElementById('fill-' + id);
+  const time = document.getElementById('time-' + id);
+  const btn  = document.getElementById('play-btn-' + id);
+  audio.addEventListener('loadedmetadata', () => {
+    time.textContent = '0:00 / ' + fmtTime(Math.floor(audio.duration));
+  });
+  if (audio.readyState >= 1 && audio.duration) time.textContent = '0:00 / ' + fmtTime(Math.floor(audio.duration));
+  audio.addEventListener('timeupdate', () => {
+    if (!audio.duration) return;
+    fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+    time.textContent = fmtTime(Math.floor(audio.currentTime)) + ' / ' + fmtTime(Math.floor(audio.duration));
+  });
+  audio.addEventListener('ended', () => { btn.textContent = '▶'; fill.style.width = '100%'; });
+  audio.addEventListener('pause', () => { btn.textContent = '▶'; });
+  audio.addEventListener('play',  () => { btn.textContent = '⏹'; });
+}
+
+function fmtTime(s) {
+  return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+}
+
+function toggleScript(id) {
+  const el   = document.getElementById(id);
+  const icon = document.getElementById(id + '-icon');
+  const shown = el.classList.toggle('shown');
+  icon.textContent = shown ? '▼' : '▶';
+  el.previousElementSibling.childNodes[1].textContent = shown ? ' Hide script' : ' Show script';
+}
+
+function buildTranslations() {
+  const container = document.getElementById('translation-list');
+  translations.forEach((t, i) => {
+    const div = document.createElement('div');
+    div.className = 'translation-item';
+    div.innerHTML = `
+      <div class="translation-ja-prompt">${i+1}. ${t.ja}</div>
+      <button class="translation-reveal-btn" id="trans-btn-${i}" onclick="revealTrans(${i})">英語を見る</button>
+      <div class="translation-en-answer" id="trans-${i}" style="cursor:default;">${t.en}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+function revealTrans(i) {
+  const el  = document.getElementById('trans-' + i);
+  const btn = document.getElementById('trans-btn-' + i);
+  if (el.classList.contains('shown')) {
+    el.classList.remove('shown');
+    btn.textContent = '英語を見る';
+  } else {
+    el.classList.add('shown');
+    btn.textContent = '隠す';
+  }
+}
+
+function openTeacherWindow() {
+  const btn = document.getElementById('teacher-toggle');
+  const popup = window.open('', 'Starlight_Teacher_Key',
+    'width=580,height=720,scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no');
+  if (!popup) {
+    alert('ポップアップがブロックされました。ブラウザのポップアップ許可設定を確認してください。');
+    return;
+  }
+  btn.classList.add('active');
+  btn.textContent = '🔓 Teacher';
+  popup.onbeforeunload = () => {
+    btn.classList.remove('active');
+    btn.textContent = '🔒 Teacher';
+  };
+
+  const qtRows = translations.map((t, i) =>
+    `<tr><td>${i + 1}. ${t.ja}</td><td>${t.en}</td></tr>`
+  ).join('');
+
+  const grRows = quizData.map((q, qi) =>
+    `<tr><td><strong>Q${qi + 1}.</strong> ${q.q}</td><td>${String.fromCharCode(65 + q.correct)} — ${q.options[q.correct]}</td></tr>`
+  ).join('');
+
+  const l2Rows = listen2Qs.map((q, i) =>
+    `<tr><td>Q${i + 1}. ${q.q}</td><td>${q.a ? 'True' : 'False'}<span class="note">${q.note}</span></td></tr>`
+  ).join('');
+
+  const ideaRows = key => teacherExtra[key].ideas.map((t, i) =>
+    `<tr><td>${i + 1}.</td><td>${t}</td></tr>`).join('');
+  const phraseRows = key => teacherExtra[key].phrases.map(([term, ja, eg]) =>
+    `<tr><td>${term}</td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
+  const usefulRows = key => teacherExtra[key].useful.map(([term, def, ja, eg]) =>
+    `<tr><td>${term}<span class="note">${def}</span></td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
+  const followRows = key => teacherExtra[key].followUp.map((q, i) =>
+    `<tr><td>${i + 1}.</td><td>${q}</td></tr>`).join('');
+
+  const html = `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Teacher Answer Key — B1-12</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #1A1A2E; color: #e8e8f0; padding: 20px 22px 32px; font-size: 13px; }
+  h1 { font-size: 15px; font-weight: 700; color: #F9A825; margin-bottom: 4px; letter-spacing: .02em; }
+  .sub { font-size: 11px; color: rgba(255,255,255,.4); margin-bottom: 20px; }
+  h2 { font-size: 11px; font-weight: 700; color: #F9A825; letter-spacing: .1em; text-transform: uppercase; margin: 22px 0 8px; padding-bottom: 4px; border-bottom: 1px solid rgba(249,168,37,.3); }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 7px 10px; border-bottom: 1px solid rgba(255,255,255,.07); vertical-align: top; line-height: 1.5; }
+  td:first-child { color: rgba(255,255,255,.6); width: 52%; }
+  td:last-child { color: #4ADE80; font-weight: 600; }
+  .note { font-size: 11px; color: rgba(255,255,255,.35); font-weight: 400; display: block; margin-top: 2px; }
+  .footer { margin-top: 24px; font-size: 11px; color: rgba(255,255,255,.25); text-align: center; }
+  table.ideas td:first-child { width: 28px; }
+  table.ideas td:last-child { color: #e8e8f0; font-weight: 500; }
+  .gf-sub { font-size: 12px; font-weight: 700; color: #fff; margin: 12px 0 4px; }
+  .gf-tip { font-size: 12px; line-height: 1.7; color: rgba(255,255,255,.75); background: rgba(249,168,37,.08); border-left: 3px solid #F9A825; border-radius: 0 6px 6px 0; padding: 10px 12px; margin-top: 14px; }
+  .gf-tip b { color: #4ADE80; }
+  table.vocab td:first-child, table.vocab .note { color: #fff; }
+  table.vocab td:first-child .note { color: rgba(255,255,255,.5); }
+</style>
+</head>
+<body>
+<h1>🔓 Teacher Answer Key</h1>
+<p class="sub">B1-12 · Verb + -ing / Verb + to … / Verb + someone + to … — このウィンドウは生徒に見えません</p>
+
+<h2>📘 Grammar Focus — Summary</h2>
+<table>
+  <tr style="opacity:.5"><td>Form</td><td>Meaning / Use</td></tr>
+  <tr><td>enjoy / mind / suggest / avoid / finish + -ing</td><td>These verbs take -ing, not to<span class="note">I really enjoyed talking with you.</span></td></tr>
+  <tr><td>give up / put off / keep (on) + -ing</td><td>stop / delay / continue<span class="note">I keep forgetting his name.</span></td></tr>
+  <tr><td>not + -ing</td><td>Negative<span class="note">I enjoy not having to commute.</span></td></tr>
+  <tr><td>decide / plan / hope / promise / agree / refuse + to …</td><td>These verbs take to …<span class="note">I've decided to quit my job.</span></td></tr>
+  <tr><td>manage / afford + to …</td><td>succeed after difficulty / have enough money or time<span class="note">I can't afford to buy a new car.</span></td></tr>
+  <tr><td>not to …</td><td>Negative<span class="note">I promised not to tell anyone.</span></td></tr>
+  <tr><td>want / would like / expect + someone + to …</td><td>What you want someone to do（✗ want that …）<span class="note">Do you want me to help you?</span></td></tr>
+  <tr><td>ask / tell / remind / advise / allow + someone + to …</td><td>Asking, telling, permission<span class="note">Can you remind me to call Sam?</span></td></tr>
+  <tr><td>make / let + someone + do</td><td>No "to"（make = force, let = allow）<span class="note">Let me know if you need anything.</span></td></tr>
+</table>
+<div class="gf-tip">
+  <b>Watch for</b><br>
+  ・✗ I enjoy to cook. → <b>I enjoy cooking.</b><br>
+  ・✗ Do you want that I help you? → <b>Do you want me to help you?</b><br>
+  ・✗ She made me to wait. → <b>She made me wait.</b>（make / let の後は to なし）<br>
+  ・✗ He suggested me to go. → <b>He suggested going.</b>
+</div>
+
+<h2>📝 Quick Translation</h2>
+<table>
+  <tr style="opacity:.5"><td>Japanese</td><td>English Answer</td></tr>
+  ${qtRows}
+</table>
+
+<h2>✅ Getting Ready</h2>
+<table>
+  <tr style="opacity:.5"><td>Question</td><td>Correct Answer</td></tr>
+  ${grRows}
+</table>
+
+<h2>🎧 Listening Task 1 — Fill in the Blanks</h2>
+<table>
+  <tr style="opacity:.5"><td>Blank</td><td>Answer</td></tr>
+  <tr><td>1. Charlotte has decided to take the Japanese test in ____.</td><td>December</td></tr>
+  <tr><td>2. When Sameer first came to Japan, he kept ____ the kanji he had learned.</td><td>forgetting</td></tr>
+  <tr><td>3. Sameer's first teacher told him to write a short ____ in Japanese every day.</td><td>diary</td></tr>
+</table>
+
+<h2>🎧 Listening Task 2 — True or False</h2>
+<table>
+  <tr style="opacity:.5"><td>Statement</td><td>Answer</td></tr>
+  ${l2Rows}
+</table>
+
+<h2>🗣 Express Yourself — "What's New with You?"</h2>
+<p class="gf-sub">Useful Words &amp; Expressions</p>
+<table class="vocab">${usefulRows('express')}</table>
+<p class="gf-sub">Follow-up Questions</p>
+<table class="ideas">${followRows('express')}</table>
+<p class="gf-sub">Example Ideas</p>
+<table class="ideas">${ideaRows('express')}</table>
+<p class="gf-sub">Words &amp; Phrases for the Topic</p>
+<table class="vocab">${phraseRows('express')}</table>
+
+<h2>🎭 Try It Out — "How Strict Were Your Parents?"</h2>
+<p class="gf-sub">Useful Words &amp; Expressions</p>
+<table class="vocab">${usefulRows('try')}</table>
+<p class="gf-sub">Follow-up Questions</p>
+<table class="ideas">${followRows('try')}</table>
+<p class="gf-sub">Example Ideas</p>
+<table class="ideas">${ideaRows('try')}</table>
+<p class="gf-sub">Words &amp; Phrases for the Topic</p>
+<table class="vocab">${phraseRows('try')}</table>
+
+<p class="footer">Starlight English · Teacher only · Close this window when done</p>
+</body>
+</html>`;
+
+  popup.document.write(html);
+  popup.document.close();
+}
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  quizData.forEach((q, qi) => {
+    const div = document.createElement('div');
+    div.className = 'quiz-question';
+    const opts = q.options.map((o, oi) => `
+      <button class="quiz-option" id="qopt-${qi}-${oi}" onclick="checkQuiz(${qi},${oi})">
+        ${String.fromCharCode(65+oi)}) ${o}
+      </button>`).join('');
+    div.innerHTML = `
+      <div class="quiz-situation">${q.situation}</div>
+      <div class="quiz-q-text">${q.q}</div>
+      <div class="quiz-options">${opts}</div>
+      <div class="quiz-feedback" id="qfb-${qi}"></div>
+    `;
+    container.appendChild(div);
+  });
+}
+function checkQuiz(qi, chosen) {
+  const q = quizData[qi];
+  for (let i = 0; i < q.options.length; i++) {
+    const btn = document.getElementById(`qopt-${qi}-${i}`);
+    btn.disabled = true;
+    if (i === q.correct) btn.classList.add('correct');
+    else if (i === chosen && i !== q.correct) btn.classList.add('wrong');
+  }
+  const fb = document.getElementById(`qfb-${qi}`);
+  fb.className = 'quiz-feedback show ' + (chosen === q.correct ? 'good' : 'bad');
+  fb.textContent = chosen === q.correct
+    ? q.feedback
+    : `❌ Not quite — the answer is option ${String.fromCharCode(65 + q.correct)}.  ${q.feedback}`;
+}
+
+function normBlank(s) {
+  return s.trim().toLowerCase().replace(/[’‘]/g, "'").replace(/[!?.,"]/g, '').replace(/\s+/g, ' ');
+}
+function checkBlanks() {
+  let allCorrect = true;
+  const fb = document.getElementById('blank-feedback');
+  const results = [];
+  Object.entries(blankAnswers).forEach(([id, accepted], idx) => {
+    const input = document.getElementById(id);
+    const val = normBlank(input.value);
+    const correct = accepted.some(a => val === normBlank(a));
+    input.className = 'blank-input short ' + (correct ? 'correct-input' : 'wrong-input');
+    if (!correct) { allCorrect = false; results.push(idx); }
+  });
+  fb.style.display = 'block';
+  if (allCorrect) {
+    fb.innerHTML = '<div style="background:var(--mint);color:#1A5C42;padding:12px;border-radius:8px;font-weight:600;">✅ Perfect! All three blanks correct.</div>';
+  } else {
+    const hints = results.map(i => `Blank ${i + 1}: try "<em>${blankMain[i]}</em>"`).join(' · ');
+    fb.innerHTML = `<div style="background:#F9DEDE;color:#7A2020;padding:12px;border-radius:8px;">Some answers need a review. ${hints}</div>`;
+  }
+}
+
+function buildListen2Qs() {
+  const container = document.getElementById('listen2-questions');
+  listen2Qs.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'tf-item';
+    div.innerHTML = `
+      <div class="tf-text">${i+1}. ${q.q}</div>
+      <div class="tf-btns">
+        <button class="tf-btn" data-v="true">True</button>
+        <button class="tf-btn" data-v="false">False</button>
+      </div>
+    `;
+    const btns = div.querySelectorAll('.tf-btn');
+    btns.forEach(b => b.addEventListener('click', () => {
+      const chosen = b.dataset.v === 'true';
+      btns.forEach(x => {
+        x.disabled = true;
+        if ((x.dataset.v === 'true') === q.a) x.classList.add('correct');
+      });
+      if (chosen !== q.a) b.classList.add('wrong');
+    }));
+    container.appendChild(div);
+  });
+}
+
+function updateNav() {
+  const slides = document.querySelectorAll('.slide');
+  slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+  document.getElementById('btn-prev').disabled = currentSlide === 0;
+  document.getElementById('btn-next').textContent = currentSlide === TOTAL_SLIDES - 1 ? 'Finish' : 'Next →';
+  const dots = document.querySelectorAll('.nav-dot');
+  dots.forEach((d, i) => {
+    d.classList.remove('current', 'done');
+    if (i === currentSlide) d.classList.add('current');
+    else if (i < currentSlide) d.classList.add('done');
+  });
+  document.getElementById('progress-bar').style.width = (currentSlide / (TOTAL_SLIDES - 1) * 100) + '%';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goSlide(dir) {
+  const next = currentSlide + dir;
+  if (next < 0 || next >= TOTAL_SLIDES) return;
+  currentSlide = next;
+  updateNav();
+}
+
+let remaining = 50 * 60;
+const timerEl = document.getElementById('timer');
+setInterval(() => {
+  if (remaining <= 0) { timerEl.textContent = '00:00'; return; }
+  remaining--;
+  const m = Math.floor(remaining / 60);
+  const s = remaining % 60;
+  timerEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  if (remaining <= 300) timerEl.style.color = '#FFB74D';
+}, 1000);
+
+window.addEventListener('DOMContentLoaded', () => {
+  const dotsEl = document.getElementById('nav-dots');
+  for (let i = 0; i < TOTAL_SLIDES; i++) {
+    const d = document.createElement('div');
+    d.className = 'nav-dot';
+    d.title = 'Slide ' + (i + 1);
+    d.addEventListener('click', () => { currentSlide = i; updateNav(); });
+    dotsEl.appendChild(d);
+  }
+  buildTranslations();
+  buildQuiz();
+  buildListen2Qs();
+  initAudioPlayer('a1');
+  initAudioPlayer('a2');
+  initAudioPlayer('a3');
+  updateNav();
+});
+</script>
+</body>
+</html>
