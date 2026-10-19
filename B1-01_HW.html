@@ -511,7 +511,6 @@ main {
     <div class="hw-badge">📋 HW</div>
   </div>
 </header>
-<div id="progress-strip"><div id="progress-fill"></div></div>
 
 <main>
 
@@ -837,19 +836,6 @@ main {
   </div>
 </div>
 
-<!-- Completion banner -->
-<div id="completion-banner">
-  <h2>Homework Complete! 🎉</h2>
-  <p>Great work — you've finished all sections. See you at the next lesson!</p>
-  <div class="pill-row">
-    <span class="pill">How's it going?</span>
-    <span class="pill">What have you been up to?</span>
-    <span class="pill">It's been a while!</span>
-    <span class="pill">It was great catching up!</span>
-    <span class="pill">Let's catch up properly soon.</span>
-  </div>
-</div>
-
 </main>
 
 
@@ -954,7 +940,6 @@ function revealTrans(i) {
     ans.classList.add('show');
     btn.textContent = '答えを隠す';
   }
-  updateProgress();
 }
 
 function playQT(i) {
@@ -1012,84 +997,16 @@ function checkFitb() {
     fb.style.background = 'var(--mint)'; fb.style.color = '#1A5C42';
     fb.textContent = '✅ Perfect! All three blanks correct.';
     fitbDone = true;
-    updateProgress();
-    checkCompletion();
   } else {
     fb.style.background = '#F9DEDE'; fb.style.color = '#7A2020';
     fb.textContent = `Blank${errors.length > 1 ? 's' : ''} ${errors.join(', ')} need${errors.length === 1 ? 's' : ''} another try. Check the lesson script for hints!`;
   }
 }
 
-// ── Free writing ──────────────────────────────
-const FW_KEY = 'b1-01-hw-fw-text';
-
-function updateChar() {
-  const n = document.getElementById('fw-text').value.length;
-  document.getElementById('char-count').textContent = n;
-  updateProgress();
-}
-
-function saveText() {
-  const val = document.getElementById('fw-text').value;
-  try {
-    localStorage.setItem(FW_KEY, val);
-    const status = document.getElementById('save-status');
-    status.classList.add('show');
-    setTimeout(() => status.classList.remove('show'), 2000);
-  } catch(e) {
-    alert('Could not save — storage may be unavailable.');
-  }
-}
-
-function loadSavedText() {
-  try {
-    const saved = localStorage.getItem(FW_KEY);
-    if (saved) {
-      document.getElementById('fw-text').value = saved;
-      document.getElementById('char-count').textContent = saved.length;
-    }
-  } catch(e) {}
-}
-
-// ── Progress & score ───────────────────────────
-function updateProgress() {
-  const revealed = document.querySelectorAll('.trans-answer.show').length;
-  const fwLen = document.getElementById('fw-text').value.trim().length;
-
-  // trans(10) + fitb(1) + fw(1)
-  const total = transData.length + 1 + 1;
-  let done = revealed + (fitbDone ? 1 : 0) + (fwLen > 10 ? 1 : 0);
-  done = Math.min(done, total);
-  const pct = Math.round(done / total * 100);
-
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('pct-num').textContent = pct;
-  // hide quiz score chip since MC is read-only
-  document.getElementById('score-num').textContent = fitbDone ? '3' : '—';
-  document.getElementById('score-total').textContent = '3';
-}
-
-function checkCompletion() {
-  const fwLen = document.getElementById('fw-text').value.trim().length;
-  if (fitbDone && fwLen > 10) {
-    document.getElementById('completion-banner').style.display = 'block';
-    document.getElementById('completion-banner').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-}
-
-// ── Reset ──────────────────────────────────────
-function resetAll() {
-  if (!confirm('Reset all answers? (Saved text will also be cleared)')) return;
-  try { localStorage.removeItem(FW_KEY); } catch(e) {}
-  location.reload();
-}
-
 // ── Init ───────────────────────────────────────
 buildTrans();
 buildMC();
 buildListen();
-loadSavedText();
-updateProgress();
 </script>
 </body>
 </html>
