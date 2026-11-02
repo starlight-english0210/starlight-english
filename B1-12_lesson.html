@@ -157,6 +157,8 @@
 
   /* ── Fill blanks ── */
   .blank-input { border: none; border-bottom: 2px solid var(--ocean); background: transparent; font-size: 15px; font-family: inherit; color: var(--ink); width: 180px; padding: 2px 4px; outline: none; transition: border-color .15s; }
+  .blank-line { padding: 4px 0; }
+  .blank-num { font-weight: 700; color: var(--ocean-deep); margin-right: 4px; }
   .blank-input:focus { border-color: var(--amber); }
   .blank-input.correct-input { border-color: var(--correct); color: var(--correct); }
   .blank-input.wrong-input   { border-color: var(--wrong); color: var(--wrong); }
@@ -269,6 +271,23 @@
   .tf-btn.wrong   { background: #F9DEDE; border-color: var(--wrong); color: var(--wrong); }
   .tf-btn:disabled { cursor: default; }
   .blank-input.short { width: 140px; }
+  /* Grammar Focus page: body text 16px */
+  [data-slide="1"] .expr-phrase, [data-slide="1"] .expr-nuance, [data-slide="1"] .example-block,
+  [data-slide="1"] .strength-bar, [data-slide="1"] .grammar-tip { font-size: 16px; }
+  /* Larger body text: Getting Ready, Listening 1 & 2, Dialogue situation, Express Yourself, Try It Out */
+  .quiz-q-text, .quiz-option, .quiz-feedback,
+  .situation-card p, .roleplay-prompt p, .checklist li,
+  .vocab-term, .vocab-def, .vocab-ja, .blank-input, .check-blanks-btn { font-size: 16px; }
+  #fill-blank-area { font-size: 16px !important; }
+  .script-line, .tf-btn { font-size: 16px; }
+  [data-slide="4"] .card > div > div, [data-slide="5"] .card > div > div { font-size: 16px; }
+  [id^="listen"] div, [id^="listen"] > div > div, .listen-answer { font-size: 16px !important; }
+  [data-slide="4"] .tf-text, [data-slide="5"] .tf-text { font-size: 16px; }
+  .situation-card .sit-label { font-size: 12px; }
+  [data-slide="6"] .dialogue-text { transition: background .15s; }
+  [data-slide="6"] .dialogue-text:hover { background: #CFE3F2; }
+  [data-slide="9"] .vocab-pill { font-size: 14px; }
+  [data-slide="7"] .card-sand div, [data-slide="7"] .card-sand textarea { font-size: 16px !important; }
 </style>
 </head>
 <body>
@@ -410,10 +429,10 @@
 
   <div class="card" style="margin-top:16px;">
     <div style="font-weight:700;font-size:16px;color:var(--ocean-deep);margin-bottom:12px;">Fill in the blanks</div>
-    <div style="font-size:14px;line-height:2.3;color:var(--ink);" id="fill-blank-area">
-      1. Charlotte has decided to take the Japanese test in <input class="blank-input short" id="b1" placeholder="blank 1">.<br>
-      2. When Sameer first came to Japan, he kept <input class="blank-input short" id="b2" placeholder="blank 2"> the kanji he had learned.<br>
-      3. Sameer's first teacher told him to write a short <input class="blank-input short" id="b3" placeholder="blank 3"> in Japanese every day.
+    <div style="font-size:15px;line-height:2.3;color:var(--ink);" id="fill-blank-area">
+      <div class="blank-line"><span class="blank-num">(1)</span> Charlotte has decided to take the Japanese test in <input class="blank-input short" id="b1" placeholder="blank 1">.</div>
+      <div class="blank-line"><span class="blank-num">(2)</span> When Sameer first came to Japan, he kept <input class="blank-input short" id="b2" placeholder="blank 2"> the kanji he had learned.</div>
+      <div class="blank-line"><span class="blank-num">(3)</span> Sameer's first teacher told him to write a short <input class="blank-input short" id="b3" placeholder="blank 3"> in Japanese every day.</div>
     </div>
     <button class="check-blanks-btn" onclick="checkBlanks()">Check Answers</button>
     <div id="blank-feedback" style="margin-top:12px;display:none;"></div>
@@ -447,23 +466,6 @@
       <div class="vocab-ja">決まり！、それで行こう！</div>
     </div>
   </div>
-
-  <div class="script-card">
-    <button class="script-toggle" onclick="toggleScript('script1')">
-      <span id="script1-icon">▶</span> Show script
-    </button>
-    <div class="script-body" id="script1">
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Charlotte, you look exhausted. Have you been writing late again?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Not this time. I've <strong>decided to take</strong> the <span class="phrase-highlight" data-tip="日本語能力試験">JLPT</span> in December, so I've been studying every night.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Good for you! Which level?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">N3. My Japanese teacher <span class="phrase-highlight" data-tip="説得して～させた">persuaded me to try</span> it. Honestly, I almost <strong>gave up studying</strong> kanji last month.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text"><span class="phrase-highlight" data-tip="その気持ち、わかる">I know the feeling.</span> When I first came to Japan, I <strong>kept forgetting</strong> the ones I'd learned the week before.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Really? But you passed N1! Any tips?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Well, my first teacher <strong>told me to write</strong> a short diary in Japanese every day. And I <strong>avoided using</strong> the dictionary on my phone.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">That sounds tough, but I'll <span class="phrase-highlight" data-tip="試しにやってみる">give it a try</span>. <strong>Would</strong> you <strong>mind checking</strong> my diary sometimes?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Not at all! But only if you <strong>promise not to give up</strong> this time.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text"><span class="phrase-highlight" data-tip="決まり！">Deal!</span></div></div>
-    </div>
   </div>
 </div>
 
@@ -524,7 +526,7 @@
       <span id="script2-icon">▶</span> Show script
     </button>
     <div class="script-body" id="script2">
-      <div class="script-line">"Morning, everyone. Before we open, I <strong>want to tell</strong> you about a few changes. Lately, a lot of customers have <strong>asked us to make</strong> the second floor quieter. So from next Monday, we've <strong>decided to turn</strong> it into a <span class="phrase-highlight" data-tip="静かに過ごすエリア">quiet zone</span>. People can still work up there, of course, but we won't <strong>let them take</strong> phone calls. If someone needs to talk, please <strong>ask them to use</strong> the <span class="phrase-highlight" data-tip="電話ブース">phone booths</span> on the first floor. I know some of our <span class="phrase-highlight" data-tip="常連客">regulars</span> won't <strong>enjoy hearing</strong> that, so please explain it kindly. Also, I'd <strong>like you to remind</strong> people not to <span class="phrase-highlight" data-tip="席を取っておく">save seats</span> with their bags when it's busy. Oh, and Mai — would you <strong>mind making</strong> a few signs for the tables? Your drawings are always the best. OK, that's all. Let's have a good day!"</div>
+      <div class="script-line">"Morning, everyone. Before we open, I want to tell you about a few changes. Lately, a lot of customers have asked us to make the second floor quieter. So from next Monday, we've decided to turn it into a quiet zone. People can still work up there, of course, but we won't let them take phone calls. If someone needs to talk, please ask them to use the phone booths on the first floor. I know some of our regulars won't enjoy hearing that, so please explain it kindly. Also, I'd like you to remind people not to save seats with their bags when it's busy. Oh, and Mai — would you mind making a few signs for the tables? Your drawings are always the best. OK, that's all. Let's have a good day!"</div>
     </div>
   </div>
 </div>
@@ -554,16 +556,16 @@
   </div>
 
   <div class="card mb-12">
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Mai! How did the interview go? <span class="phrase-highlight" data-tip="聞きたくてたまらなかった">I've been dying to hear.</span></div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Honestly, <span class="phrase-highlight" data-tip="思っていたよりよかった">better than I expected</span>! Charlotte's practice interview really helped. I <span class="phrase-highlight" data-tip="なんとか答えられた">managed to answer</span> every question in English.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">That's fantastic! What did they ask you?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">They <span class="phrase-highlight" data-tip="説明するよう求めた">asked me to describe</span> a time I solved a problem at work, so I talked about Bridge. The interviewer said she <span class="phrase-highlight" data-tip="聞いて楽しかった">enjoyed hearing</span> about it.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Perfect example. Did anything go wrong?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Well, <span class="phrase-highlight" data-tip="途中で一度">at one point</span> I <span class="phrase-highlight" data-tip="言うのをやめられなかった">couldn't stop saying</span> "um." And they <span class="phrase-highlight" data-tip="私に～してほしかった">wanted me to do</span> a short role-play with a "guest" — I almost <span class="phrase-highlight" data-tip="笑顔を忘れた">forgot to smile</span>!</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Ha! Everyone gets nervous. So when will you <span class="phrase-highlight" data-tip="返事をもらう">hear back</span>?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">They <span class="phrase-highlight" data-tip="知らせると約束した">promised to let me know</span> by the end of the month. I <span class="phrase-highlight" data-tip="何度もチェックしてしまう">keep checking</span> my email every five minutes!</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Try to <span class="phrase-highlight" data-tip="考えるのを避ける">avoid thinking</span> about it too much. <span class="phrase-highlight" data-tip="結果がどうであれ">Whatever happens</span>, you should be proud of yourself.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Thanks, Aileen. If I get it, I'll <span class="phrase-highlight" data-tip="知らせる">let you know</span> first!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Mai! How did the interview go? I've been dying to hear.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Honestly, better than I expected! Charlotte's practice interview really helped. I managed to answer every question in English.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">That's fantastic! What did they ask you?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">They asked me to describe a time I solved a problem at work, so I talked about Bridge. The interviewer said she enjoyed hearing about it.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Perfect example. Did anything go wrong?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Well, at one point I couldn't stop saying "um." And they wanted me to do a short role-play with a "guest" — I almost forgot to smile!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Ha! Everyone gets nervous. So when will you hear back?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">They promised to let me know by the end of the month. I keep checking my email every five minutes!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Try to avoid thinking about it too much. Whatever happens, you should be proud of yourself.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Thanks, Aileen. If I get it, I'll let you know first!</div></div>
   </div>
 
 </div>
@@ -586,34 +588,24 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Talk about something new you have started recently</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Talk about something you have stopped, or are trying to stop</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Say who or what gave you the idea</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Share a goal or plan for the next few months</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something new you have started</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something you have stopped, or are trying to stop</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Who or what gave you the idea</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A goal or plan for the next few months</li>
     </ul>
   </div>
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
-    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">A:</strong> Hey, long time no see! You look great.</div>
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">B:</strong> Thanks! So, what's new with you?</div>
-      <div style="font-size:14px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span>.</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Hey, long time no see! You look great.</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Thanks! So, what's new with you?</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"I've started going to a yoga class on Saturday mornings, and I really enjoy it."</div>
-      <div class="starter-item">"I finally managed to stop eating snacks late at night. It took me three tries!"</div>
-      <div class="starter-item">"My kids persuaded me to get a dog, so now I walk him twice a day."</div>
-      <div class="starter-item">"I keep telling myself to read more, but I always end up watching videos instead."</div>
-      <div class="starter-item">"I'm planning to take a cooking class this winter. I want to learn to make curry from scratch."</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -628,7 +620,7 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to include:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
       <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A rule you had to follow at home</li>
       <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something you were — or weren't — free to do</li>
@@ -639,23 +631,13 @@
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
-    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">A:</strong> I was just talking with a friend about how we grew up.</div>
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">B:</strong> Oh yeah? Were your parents strict?</div>
-      <div style="font-size:14px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span>.</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> I was just talking with a friend about how we grew up.</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Oh yeah? Were your parents strict?</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"My parents made me practice the piano every day, and I hated it at the time."</div>
-      <div class="starter-item">"They didn't let me have a phone until high school, so I always felt left out."</div>
-      <div class="starter-item">"My mother wanted me to become a doctor, but I decided to study art instead."</div>
-      <div class="starter-item">"We had a strict curfew — I had to be home by seven, even in high school!"</div>
-      <div class="starter-item">"Looking back, I'm really glad they encouraged me to read so much."</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -666,19 +648,28 @@
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">🌟 TODAY'S SUCCESS</div>
-    <div style="font-size:15px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I said 'I've given up eating snacks at night' and 'My parents didn't let me have a phone'!"></textarea>
+    <div style="font-size:16px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I said 'I've given up eating snacks at night' and 'My parents didn't let me have a phone'!"></textarea>
   </div>
 
   <div class="teacher-card">
     <div class="teacher-label" style="font-size:16px;letter-spacing:.05em;">🔧 Let's Work On</div>
-    <div style="font-size:15px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I enjoy cooking. (not: I enjoy to cook) / I want you to come. (not: I want that you come)..."></textarea>
+    <div style="font-size:16px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I enjoy cooking. (not: I enjoy to cook) / I want you to come. (not: I want that you come)..."></textarea>
+  </div>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">😊 I CAN NOW...</div>
+    <ul class="checklist">
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Choose <strong>-ing</strong> or <strong>to …</strong> after common verbs (<strong>enjoy doing</strong> / <strong>decide to do</strong>)</span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Say what you want others to do with <strong>want / ask / tell + someone + to …</strong></span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Talk about rules with <strong>make / let + someone + do</strong></span></li>
+    </ul>
   </div>
 
   <div class="card" style="background:linear-gradient(135deg,var(--ocean-deep),#2D9A6E);color:#fff;text-align:center;padding:28px;margin-top:4px;">
     <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:8px;">Great lesson! 🎉</div>
-    <div style="font-size:14px;opacity:.8;margin-bottom:16px;">You can now talk about your habits, plans, and what people want you to do.</div>
+    <div style="font-size:16px;opacity:.8;margin-bottom:16px;">You can now talk about your habits, plans, and what people want you to do.</div>
     <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;">
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">enjoy / avoid / give up + -ing</span>
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">decide / hope / manage + to</span>
@@ -774,11 +765,9 @@ const teacherExtra = {
       "I'm hoping to learn to play the guitar, but I can't afford to take lessons yet.",
     ],
     phrases: [
-      ["a morning person", "朝型の人", "I never used to be a morning person, but now I get up at six."],
-      ["make time for ~", "～のための時間を作る", "I try to make time for reading every day."],
-      ["fall back into ~", "（悪い習慣などに）逆戻りする", "I stopped eating junk food, but I fell back into it during exams."],
-      ["a fresh start", "新たなスタート、出直し", "Moving to a new city felt like a fresh start."],
-      ["screen time", "画面を見ている時間", "I've cut my screen time in half."],
+      ["make time for ~", "～のための時間を作る", "I try to make time for reading every day.", "To plan your day so that you can do something."],
+      ["fall back into ~", "（悪い習慣などに）逆戻りする", "I stopped eating junk food, but I fell back into it during exams.", "To start doing a bad habit again."],
+      ["a fresh start", "新たなスタート、出直し", "Moving to a new city felt like a fresh start.", "A chance to begin again and do something new."],
     ],
   },
   try: {
@@ -803,24 +792,15 @@ const teacherExtra = {
       "I'd like my kids to try lots of different sports, but I won't force them to keep going.",
     ],
     phrases: [
-      ["strict / easygoing", "厳しい／おおらかな", "My mom was strict, but my dad was really easygoing."],
-      ["bring up", "育てる", "I was brought up by my grandparents."],
-      ["chores", "家の手伝い、家事", "I had to do chores before I was allowed to play."],
-      ["rebel against ~", "～に反抗する", "I rebelled against my parents when I was fifteen."],
-      ["overprotective", "過保護な", "My parents were a bit overprotective — I couldn't even take the train alone."],
+      ["bring up", "育てる", "I was brought up by my grandparents.", "To take care of a child until they become an adult."],
+      ["chores", "家の手伝い、家事", "I had to do chores before I was allowed to play.", "Regular small jobs around the house."],
+      ["rebel against ~", "～に反抗する", "I rebelled against my parents when I was fifteen.", "To refuse to obey the people in charge."],
+      ["overprotective", "過保護な", "My parents were a bit overprotective — I couldn't even take the train alone.", "Too careful about keeping someone safe."],
     ],
   },
 };
 
 // ── Audio Players ──────────────────────────────────────────
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; u.rate = 0.9;
-  window.speechSynthesis.speak(u);
-}
-
 function toggleAudio(id) {
   const audio = document.getElementById('audio-' + id);
   if (!audio) return;
@@ -925,8 +905,8 @@ function openTeacherWindow() {
 
   const ideaRows = key => teacherExtra[key].ideas.map((t, i) =>
     `<tr><td>${i + 1}.</td><td>${t}</td></tr>`).join('');
-  const phraseRows = key => teacherExtra[key].phrases.map(([term, ja, eg]) =>
-    `<tr><td>${term}</td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
+  const phraseRows = key => teacherExtra[key].phrases.map(([term, ja, eg, def]) =>
+    `<tr><td>${term}<span class="note">${def}</span></td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
   const usefulRows = key => teacherExtra[key].useful.map(([term, def, ja, eg]) =>
     `<tr><td>${term}<span class="note">${def}</span></td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
   const followRows = key => teacherExtra[key].followUp.map((q, i) =>
@@ -971,16 +951,16 @@ function openTeacherWindow() {
   <tr><td>decide / plan / hope / promise / agree / refuse + to …</td><td>These verbs take to …<span class="note">I've decided to quit my job.</span></td></tr>
   <tr><td>manage / afford + to …</td><td>succeed after difficulty / have enough money or time<span class="note">I can't afford to buy a new car.</span></td></tr>
   <tr><td>not to …</td><td>Negative<span class="note">I promised not to tell anyone.</span></td></tr>
-  <tr><td>want / would like / expect + someone + to …</td><td>What you want someone to do（✗ want that …）<span class="note">Do you want me to help you?</span></td></tr>
+  <tr><td>want / would like / expect + someone + to …</td><td>What you want someone to do (✗ want that …)<span class="note">Do you want me to help you?</span></td></tr>
   <tr><td>ask / tell / remind / advise / allow + someone + to …</td><td>Asking, telling, permission<span class="note">Can you remind me to call Sam?</span></td></tr>
-  <tr><td>make / let + someone + do</td><td>No "to"（make = force, let = allow）<span class="note">Let me know if you need anything.</span></td></tr>
+  <tr><td>make / let + someone + do</td><td>No "to" (make = force, let = allow)<span class="note">Let me know if you need anything.</span></td></tr>
 </table>
 <div class="gf-tip">
   <b>Watch for</b><br>
-  ・✗ I enjoy to cook. → <b>I enjoy cooking.</b><br>
-  ・✗ Do you want that I help you? → <b>Do you want me to help you?</b><br>
-  ・✗ She made me to wait. → <b>She made me wait.</b>（make / let の後は to なし）<br>
-  ・✗ He suggested me to go. → <b>He suggested going.</b>
+  • ✗ I enjoy to cook. → <b>I enjoy cooking.</b><br>
+  • ✗ Do you want that I help you? → <b>Do you want me to help you?</b><br>
+  • ✗ She made me to wait. → <b>She made me wait.</b> (no "to" after make / let)<br>
+  • ✗ He suggested me to go. → <b>He suggested going.</b>
 </div>
 
 <h2>📝 Quick Translation</h2>
@@ -998,9 +978,9 @@ function openTeacherWindow() {
 <h2>🎧 Listening Task 1 — Fill in the Blanks</h2>
 <table>
   <tr style="opacity:.5"><td>Blank</td><td>Answer</td></tr>
-  <tr><td>1. Charlotte has decided to take the Japanese test in ____.</td><td>December</td></tr>
-  <tr><td>2. When Sameer first came to Japan, he kept ____ the kanji he had learned.</td><td>forgetting</td></tr>
-  <tr><td>3. Sameer's first teacher told him to write a short ____ in Japanese every day.</td><td>diary</td></tr>
+  <tr><td>(1) Charlotte has decided to take the Japanese test in ____.</td><td>December</td></tr>
+  <tr><td>(2) When Sameer first came to Japan, he kept ____ the kanji he had learned.</td><td>forgetting</td></tr>
+  <tr><td>(3) Sameer's first teacher told him to write a short ____ in Japanese every day.</td><td>diary</td></tr>
 </table>
 
 <h2>🎧 Listening Task 2 — True or False</h2>
@@ -1010,24 +990,38 @@ function openTeacherWindow() {
 </table>
 
 <h2>🗣 Express Yourself — "What's New with You?"</h2>
-<p class="gf-sub">Useful Words &amp; Expressions</p>
-<table class="vocab">${usefulRows('express')}</table>
-<p class="gf-sub">Follow-up Questions</p>
-<table class="ideas">${followRows('express')}</table>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"I've started going to a yoga class on Saturday mornings, and I really enjoy it."</td></tr>
+  <tr><td>2.</td><td>"I finally managed to stop eating snacks late at night. It took me three tries!"</td></tr>
+  <tr><td>3.</td><td>"My kids persuaded me to get a dog, so now I walk him twice a day."</td></tr>
+  <tr><td>4.</td><td>"I keep telling myself to read more, but I always end up watching videos instead."</td></tr>
+  <tr><td>5.</td><td>"I'm planning to take a cooking class this winter. I want to learn to make curry from scratch."</td></tr>
+</table>
 <p class="gf-sub">Example Ideas</p>
 <table class="ideas">${ideaRows('express')}</table>
-<p class="gf-sub">Words &amp; Phrases for the Topic</p>
-<table class="vocab">${phraseRows('express')}</table>
+<p class="gf-sub">Useful Words &amp; Expressions</p>
+<table class="vocab">${usefulRows('express')}  ${phraseRows('express')}
+</table>
+<p class="gf-sub">Follow-up Questions</p>
+<table class="ideas">${followRows('express')}</table>
 
 <h2>🎭 Try It Out — "How Strict Were Your Parents?"</h2>
-<p class="gf-sub">Useful Words &amp; Expressions</p>
-<table class="vocab">${usefulRows('try')}</table>
-<p class="gf-sub">Follow-up Questions</p>
-<table class="ideas">${followRows('try')}</table>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"My parents made me practice the piano every day, and I hated it at the time."</td></tr>
+  <tr><td>2.</td><td>"They didn't let me have a phone until high school, so I always felt left out."</td></tr>
+  <tr><td>3.</td><td>"My mother wanted me to become a doctor, but I decided to study art instead."</td></tr>
+  <tr><td>4.</td><td>"We had a strict curfew — I had to be home by seven, even in high school!"</td></tr>
+  <tr><td>5.</td><td>"Looking back, I'm really glad they encouraged me to read so much."</td></tr>
+</table>
 <p class="gf-sub">Example Ideas</p>
 <table class="ideas">${ideaRows('try')}</table>
-<p class="gf-sub">Words &amp; Phrases for the Topic</p>
-<table class="vocab">${phraseRows('try')}</table>
+<p class="gf-sub">Useful Words &amp; Expressions</p>
+<table class="vocab">${usefulRows('try')}  ${phraseRows('try')}
+</table>
+<p class="gf-sub">Follow-up Questions</p>
+<table class="ideas">${followRows('try')}</table>
 
 <p class="footer">Starlight English · Teacher only · Close this window when done</p>
 </body>

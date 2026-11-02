@@ -157,6 +157,8 @@
 
   /* ── Fill blanks ── */
   .blank-input { border: none; border-bottom: 2px solid var(--ocean); background: transparent; font-size: 15px; font-family: inherit; color: var(--ink); width: 180px; padding: 2px 4px; outline: none; transition: border-color .15s; }
+  .blank-line { padding: 4px 0; }
+  .blank-num { font-weight: 700; color: var(--ocean-deep); margin-right: 4px; }
   .blank-input:focus { border-color: var(--amber); }
   .blank-input.correct-input { border-color: var(--correct); color: var(--correct); }
   .blank-input.wrong-input   { border-color: var(--wrong); color: var(--wrong); }
@@ -242,6 +244,22 @@
   .teacher-ans-item:last-child { border-bottom: none; }
   .teacher-ans-q { font-weight: 600; color: #7A5800; }
   .teacher-ans-a { color: #1A5C42; font-weight: 600; }
+  /* Grammar Focus page: body text 16px */
+  [data-slide="1"] .expr-phrase, [data-slide="1"] .expr-nuance, [data-slide="1"] .example-block,
+  [data-slide="1"] .strength-bar, [data-slide="1"] .grammar-tip { font-size: 16px; }
+  /* Larger body text: Getting Ready, Listening 1 & 2, Dialogue situation, Express Yourself, Try It Out */
+  .quiz-q-text, .quiz-option, .quiz-feedback,
+  .situation-card p, .roleplay-prompt p, .checklist li,
+  .vocab-term, .vocab-def, .vocab-ja, .blank-input, .check-blanks-btn { font-size: 16px; }
+  #fill-blank-area { font-size: 16px !important; }
+  [data-slide="4"] .card > div > div, [data-slide="5"] .card > div > div { font-size: 16px; }
+  [id^="listen"] div, [id^="listen"] > div > div, .listen-answer { font-size: 16px !important; }
+  [data-slide="4"] .tf-text, [data-slide="5"] .tf-text { font-size: 16px; }
+  .situation-card .sit-label { font-size: 12px; }
+  [data-slide="6"] .dialogue-text { transition: background .15s; }
+  [data-slide="6"] .dialogue-text:hover { background: #CFE3F2; }
+  [data-slide="9"] .vocab-pill { font-size: 14px; }
+  [data-slide="7"] .card-sand div, [data-slide="7"] .card-sand textarea { font-size: 16px !important; }
 </style>
 </head>
 <body>
@@ -439,11 +457,11 @@
     <div class="script-body" id="script1">
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">How's it going so far, Mai?</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Pretty well! I'm still getting used to the espresso machine, though.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">Ha, everyone struggles with it at first. You'll <span class="phrase-highlight" data-tip="コツをつかむ、慣れる">get the hang of it</span>.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text"><em style="color:var(--slate)">(walks in)</em> Kevin! <span class="phrase-highlight" data-tip="久しぶり！">Long time no see!</span></div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">Ha, everyone struggles with it at first. You'll get the hang of it.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text"><em style="color:var(--slate)">(walks in)</em> Kevin! Long time no see!</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">Charlotte! It's been a while. What have you been up to?</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">I've been traveling for work — just got back from Hokkaido yesterday. Four cities in four days! Oh — who's this?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">This is Mai, our new part-timer. Mai, this is Charlotte — she's basically a <span class="phrase-highlight" data-tip="常連、欠かせない存在">permanent fixture</span> here.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">This is Mai, our new part-timer. Mai, this is Charlotte — she's basically a permanent fixture here.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Nice to meet you! I'm Mai.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Welcome to Bridge! You're going to love it here.</div></div>
     </div>
@@ -475,8 +493,10 @@
 
   <div class="card" style="margin-top:16px;">
     <div style="font-weight:700;font-size:16px;color:var(--ocean-deep);margin-bottom:12px;">Fill in the blanks</div>
-    <div style="font-size:14px;line-height:2.2;color:var(--ink);" id="fill-blank-area">
-      "Hey, Raj! <input class="blank-input" id="b1" placeholder="blank 1"> — I genuinely can't believe it's been almost six months. I hope things are good on your end. <input class="blank-input" id="b2" placeholder="blank 2">? I just finished a big project at work, so I finally have a bit of breathing room. Anyway, I'd love to catch up soon. <input class="blank-input" id="b3" placeholder="blank 3"> — let's find a time for a video call this month."
+    <div style="font-size:15px;line-height:2.3;color:var(--ink);" id="fill-blank-area">
+      <div class="blank-line"><span class="blank-num">(1)</span> Hey, Raj! <input class="blank-input" id="b1" placeholder="blank 1"> — I genuinely can't believe it's been almost six months.</div>
+      <div class="blank-line"><span class="blank-num">(2)</span> I hope things are good on your end. <input class="blank-input" id="b2" placeholder="blank 2">?</div>
+      <div class="blank-line"><span class="blank-num">(3)</span> Anyway, I'd love to catch up soon. <input class="blank-input" id="b3" placeholder="blank 3"> — let's find a time for a video call this month.</div>
     </div>
     <button class="check-blanks-btn" onclick="checkBlanks()">Check Answers</button>
     <div id="blank-feedback" style="margin-top:12px;display:none;"></div>
@@ -508,15 +528,15 @@
   </div>
 
   <div class="card mb-12">
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Sameer! <span class="phrase-highlight" data-tip="久しぶり！">How have you been?</span> It's been a while.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Aileen! Great to see you. Honestly, <span class="phrase-highlight" data-tip="バタバタしていた">it's been pretty hectic</span> — we had a major system rollout last week.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Oh wow. <span class="phrase-highlight" data-tip="どうだった？">How did that go?</span></div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Better than expected, actually. A few late nights, but the team <span class="phrase-highlight" data-tip="乗り越えた、やり遂げた">pulled through</span>. What about you? Anything new?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Sameer! How have you been? It's been a while.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Aileen! Great to see you. Honestly, it's been pretty hectic — we had a major system rollout last week.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Oh wow. How did that go?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Better than expected, actually. A few late nights, but the team pulled through. What about you? Anything new?</div></div>
     <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Actually, quite a lot! We just signed a deal with a company in Germany.<br>I've been preparing for our first online meeting with their global team.</div></div>
     <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">That's exciting! Is the meeting in English?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Yes, all in English. <span class="phrase-highlight" data-tip="全然プレッシャーじゃないよ（皮肉）">No pressure at all.</span></div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Yes, all in English. No pressure at all.</div></div>
     <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">You'll be great. You always are.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Thank you. <span class="phrase-highlight" data-tip="もう行かないと">Anyway, I should get going</span> — I have a 3 o'clock.<br>But <span class="phrase-highlight" data-tip="ちゃんとゆっくり話そう">let's catch up properly soon!</span></div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Thank you. Anyway, I should get going — I have a 3 o'clock.<br>But let's catch up properly soon!</div></div>
     <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Absolutely. Good luck with the meeting!</div></div>
   </div>
 </div>
@@ -539,11 +559,11 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Open naturally — don't just say "Hello"</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Ask at least one follow-up question to show genuine interest</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Use one expression from today to wrap up the chat</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>What you've been up to</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>What's new with your partner</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>When to catch up next</li>
     </ul>
   </div>
 
@@ -551,19 +571,11 @@
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
     <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
       <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Oh, (name)!</div>
-      <div style="font-size:22px;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><strong style="color:var(--ocean);">B:</strong> <span>Wow, (name)!</span> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:180px;">&nbsp;</span>. <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:160px;">&nbsp;</span>?</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Wow, (name)!</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"Oh! I haven't seen you in ages. How's it going?"</div>
-      <div class="starter-item">"What have you been up to lately? You seem so busy these days."</div>
-      <div class="starter-item">"It's been a while! How are things? I heard you had a big deadline last week."</div>
-      <div class="starter-item">"Hey! I was just thinking about you the other day. What have you been up to?"</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -578,12 +590,12 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to include:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>An opener that fits the long time apart</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A question about what they've been doing</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A genuine reaction to something they share</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A natural way to end the conversation</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>How long it's been</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>What you've both been doing</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something exciting in your life</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>When to meet again</li>
     </ul>
   </div>
 
@@ -591,19 +603,11 @@
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
     <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
       <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Oh my goodness! Is that you, (name)?</div>
-      <div style="font-size:22px;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;"><strong style="color:var(--ocean);">B:</strong> <span>Oh wow! (name)!</span> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Oh wow! (name)!</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"Oh my goodness! I can't believe it! It's been over a year! How have you been?"</div>
-      <div class="starter-item">"No way! Long time no see! What have you been up to?"</div>
-      <div class="starter-item">"I was literally just wondering how you were doing! It's been forever — how's everything?"</div>
-      <div class="starter-item">"I've been meaning to reach out for months. How have you been? You look great!"</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -615,21 +619,30 @@
   <!-- Today's Success -->
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">🌟 TODAY'S SUCCESS</div>
-    <div style="font-size:15px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I used 'What have you been up to?' naturally in the dialogue!"></textarea>
+    <div style="font-size:16px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I used 'What have you been up to?' naturally in the dialogue!"></textarea>
   </div>
 
   <!-- Let's Work On -->
   <div class="teacher-card">
     <div class="teacher-label" style="font-size:16px;letter-spacing:.05em;">🔧 Let's Work On</div>
-    <div style="font-size:15px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. Try to use more follow-up questions..."></textarea>
+    <div style="font-size:16px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. Try to use more follow-up questions..."></textarea>
+  </div>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">😊 I CAN NOW...</div>
+    <ul class="checklist">
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Open and close a conversation naturally with someone you haven't seen in a while</span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Ask what someone has been up to recently</span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Respond naturally and show genuine interest</span></li>
+    </ul>
   </div>
 
   <!-- Great Lesson -->
   <div class="card" style="background:linear-gradient(135deg,var(--ocean-deep),#2D9A6E);color:#fff;text-align:center;padding:28px;margin-top:4px;">
     <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:8px;">Great lesson! 🎉</div>
-    <div style="font-size:14px;opacity:.8;margin-bottom:16px;">You covered all the key expressions for natural small talk.</div>
+    <div style="font-size:16px;opacity:.8;margin-bottom:16px;">You covered all the key expressions for natural small talk.</div>
     <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;">
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">How's it going?</span>
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">What have you been up to?</span>
@@ -702,14 +715,6 @@ const blankAnswers = {
 };
 
 // ── Audio Players ──────────────────────────────────────────
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; u.rate = 0.9;
-  window.speechSynthesis.speak(u);
-}
-
 function toggleAudio(id) {
   const audio = document.getElementById('audio-' + id);
   if (!audio) return;
@@ -860,12 +865,19 @@ function openTeacherWindow() {
 
 <h2>🎧 Listening Task 2 — Fill in the Blanks</h2>
 <table>
-  <tr><td>Blank 1</td><td>It's been a while <span class="note">also accepted: "Long time no see"</span></td></tr>
-  <tr><td>Blank 2</td><td>What have you been up to</td></tr>
-  <tr><td>Blank 3</td><td>We should do this more often <span class="note">also accepted: "Let's catch up properly soon" / "Let's not let that happen again"</span></td></tr>
+  <tr><td>(1) Hey, Raj! ____ — I genuinely can't believe it's been almost six months.</td><td>It's been a while <span class="note">also accepted: "Long time no see"</span></td></tr>
+  <tr><td>(2) I hope things are good on your end. ____?</td><td>What have you been up to</td></tr>
+  <tr><td>(3) Anyway, I'd love to catch up soon. ____ — let's find a time for a video call this month.</td><td>We should do this more often <span class="note">also accepted: "Let's catch up properly soon" / "Let's not let that happen again"</span></td></tr>
 </table>
 
 <h2>🗣 Express Yourself — "Catching Up"</h2>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"Oh! I haven't seen you in ages. How's it going?"</td></tr>
+  <tr><td>2.</td><td>"What have you been up to lately? You seem so busy these days."</td></tr>
+  <tr><td>3.</td><td>"It's been a while! How are things? I heard you had a big deadline last week."</td></tr>
+  <tr><td>4.</td><td>"Hey! I was just thinking about you the other day. What have you been up to?"</td></tr>
+</table>
 <p class="gf-sub">💡 Teacher topic hints (things you could say when asked "What have you been up to?")</p>
 <table class="ideas">
   <tr><td>1.</td><td>I've been really busy with a project at work. A new team member joined, so there's been a lot of catching up and coordinating.</td></tr>
@@ -888,6 +900,13 @@ function openTeacherWindow() {
 </table>
 
 <h2>🎭 Try It Out — "Old Friends"</h2>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"Oh my goodness! I can't believe it! It's been over a year! How have you been?"</td></tr>
+  <tr><td>2.</td><td>"No way! Long time no see! What have you been up to?"</td></tr>
+  <tr><td>3.</td><td>"I was literally just wondering how you were doing! It's been forever — how's everything?"</td></tr>
+  <tr><td>4.</td><td>"I've been meaning to reach out for months. How have you been? You look great!"</td></tr>
+</table>
 <p class="gf-sub">💡 Teacher topic hints (things you could say when asked "What have you been up to?")</p>
 <table class="ideas">
   <tr><td>1.</td><td>I changed jobs recently. There's been a lot to learn in the new environment, but I'm starting to get used to it.</td></tr>

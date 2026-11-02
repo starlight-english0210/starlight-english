@@ -269,6 +269,23 @@
   .tf-btn.wrong   { background: #F9DEDE; border-color: var(--wrong); color: var(--wrong); }
   .tf-btn:disabled { cursor: default; }
   .blank-input.short { width: 140px; }
+  /* Grammar Focus page: body text 16px */
+  [data-slide="1"] .expr-phrase, [data-slide="1"] .expr-nuance, [data-slide="1"] .example-block,
+  [data-slide="1"] .strength-bar, [data-slide="1"] .grammar-tip { font-size: 16px; }
+  /* Larger body text: Getting Ready, Listening 1 & 2, Dialogue situation, Express Yourself, Try It Out */
+  .quiz-q-text, .quiz-option, .quiz-feedback,
+  .situation-card p, .roleplay-prompt p, .checklist li,
+  .vocab-term, .vocab-def, .vocab-ja, .blank-input, .check-blanks-btn { font-size: 16px; }
+  #fill-blank-area { font-size: 16px !important; }
+  .script-line, .tf-btn { font-size: 16px; }
+  [data-slide="4"] .card > div > div, [data-slide="5"] .card > div > div { font-size: 16px; }
+  [id^="listen"] div, [id^="listen"] > div > div, .listen-answer { font-size: 16px !important; }
+  [data-slide="4"] .tf-text, [data-slide="5"] .tf-text { font-size: 16px; }
+  .situation-card .sit-label { font-size: 12px; }
+  [data-slide="6"] .dialogue-text { transition: background .15s; }
+  [data-slide="6"] .dialogue-text:hover { background: #CFE3F2; }
+  [data-slide="9"] .vocab-pill { font-size: 14px; }
+  [data-slide="7"] .card-sand div, [data-slide="7"] .card-sand textarea { font-size: 16px !important; }
 </style>
 </head>
 <body>
@@ -452,13 +469,13 @@
     </button>
     <div class="script-body" id="script1">
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Morning, Kevin. What's going on upstairs? It sounds like a construction site.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">Sorry about the noise. The second floor <strong>is being</strong> <span class="phrase-highlight" data-tip="改装する">redone</span> — new flooring and new lighting.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Really? I thought that <span class="phrase-highlight" data-tip="～するはずだった">was supposed to</span> <strong>be finished</strong> last week.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">It was, but some of the materials <strong>were delayed</strong>. Now we<strong>'ve been told</strong> it'll <strong>be done</strong> by Friday.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text"><span class="phrase-highlight" data-tip="それなら仕方ないね">Fair enough.</span> So where can I work today? I've got a video call with my team in Bangalore at ten.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">The meeting room<strong>'s already been booked</strong> for you, and the Wi-Fi in there <strong>was upgraded</strong> last month.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">That's a relief. Are the new lights <strong>being put in</strong> by the same company?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">No, that<strong>'s being</strong> <span class="phrase-highlight" data-tip="担当される">handled</span> by a local electrician. And the whole floor <strong>has to be checked</strong> by a <span class="phrase-highlight" data-tip="安全検査官">safety inspector</span> before we can reopen it.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">Sorry about the noise. The second floor is being redone — new flooring and new lighting.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Really? I thought that was supposed to be finished last week.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">It was, but some of the materials were delayed. Now we've been told it'll be done by Friday.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Fair enough. So where can I work today? I've got a video call with my team in Bangalore at ten.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">The meeting room's already been booked for you, and the Wi-Fi in there was upgraded last month.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">That's a relief. Are the new lights being put in by the same company?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">No, that's being handled by a local electrician. And the whole floor has to be checked by a safety inspector before we can reopen it.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Makes sense. Well, I'm looking forward to seeing it.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Kevin</span><div class="dialogue-text">Me too. Honestly, I'll be glad when it's all over!</div></div>
     </div>
@@ -527,7 +544,7 @@
       <span id="script2-icon">▶</span> Show script
     </button>
     <div class="script-body" id="script2">
-      <div class="script-line">"Good morning, everyone. Today I'd like to introduce my hometown, Matsumoto. It's best known for its castle, which <strong>was built</strong> in the late 1500s and <strong>has been</strong> <span class="phrase-highlight" data-tip="指定される">designated</span> as a <span class="phrase-highlight" data-tip="国宝">National Treasure</span>. Surprisingly, it <strong>was</strong> almost <span class="phrase-highlight" data-tip="取り壊す">torn down</span> in the 1870s, but it <strong>was saved</strong> by local people, who <span class="phrase-highlight" data-tip="資金を集める">raised money</span> to buy it back. These days, it<strong>'s visited</strong> by nearly a million people a year. At the moment, a lot of old shops in the town center <strong>are being</strong> <span class="phrase-highlight" data-tip="～に変えられる">turned into</span> cafés and galleries, so it might look quite different the next time you visit. I hope you get the chance to see it someday. Thank you."</div>
+      <div class="script-line">"Good morning, everyone. Today I'd like to introduce my hometown, Matsumoto. It's best known for its castle, which was built in the late 1500s and has been designated as a National Treasure. Surprisingly, it was almost torn down in the 1870s, but it was saved by local people, who raised money to buy it back. These days, it's visited by nearly a million people a year. At the moment, a lot of old shops in the town center are being turned into cafés and galleries, so it might look quite different the next time you visit. I hope you get the chance to see it someday. Thank you."</div>
     </div>
   </div>
 </div>
@@ -557,16 +574,16 @@
   </div>
 
   <div class="card mb-12">
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Charlotte! You look like you've just won the lottery. What's going on?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">Almost as good! My article on Onomichi <span class="phrase-highlight" data-tip="取り上げられた">has been picked up by</span> a major travel magazine.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">No way! Congratulations! How did that happen?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)"><span class="phrase-highlight" data-tip="どうやら～らしい">Apparently</span>, it <span class="phrase-highlight" data-tip="シェアされた">was shared</span> online by one of their editors, and I <span class="phrase-highlight" data-tip="連絡を受けた">was contacted</span> the next day. They've even asked me to write a monthly column.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">That's huge! <span class="phrase-highlight" data-tip="報酬は支払われるの？">Will you be paid</span> per article?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">Yes, and pretty well, actually. <span class="phrase-highlight" data-tip="唯一の難点は">The only catch is</span> that everything <span class="phrase-highlight" data-tip="承認されなければならない">has to be approved</span> by the chief editor before it goes out.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Hmm, that could be a bit frustrating.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)"><span class="phrase-highlight" data-tip="本当にそうなの">Tell me about it.</span> I'm not used to <span class="phrase-highlight" data-tip="言われること">being told</span> what to cut. But I guess it's <span class="phrase-highlight" data-tip="仕方のないこと">part of the deal</span>.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text" onclick="speak(this.innerText)">Exactly — and it's a great opportunity. Let's celebrate. Dinner's on me tonight!</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">You don't have to do that! ...Well, <span class="phrase-highlight" data-tip="そこまで言うなら">if you insist</span>. Thank you, Aileen!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Charlotte! You look like you've just won the lottery. What's going on?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Almost as good! My article on Onomichi has been picked up by a major travel magazine.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">No way! Congratulations! How did that happen?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Apparently, it was shared online by one of their editors, and I was contacted the next day. They've even asked me to write a monthly column.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">That's huge! Will you be paid per article?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Yes, and pretty well, actually. The only catch is that everything has to be approved by the chief editor before it goes out.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Hmm, that could be a bit frustrating.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Tell me about it. I'm not used to being told what to cut. But I guess it's part of the deal.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Exactly — and it's a great opportunity. Let's celebrate. Dinner's on me tonight!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">You don't have to do that! ...Well, if you insist. Thank you, Aileen!</div></div>
   </div>
 
 </div>
@@ -589,34 +606,24 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Say where it came from, or who made it</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Explain how it came to you (a gift, something passed down, a lucky find…)</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Describe something that has happened to it over the years</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Explain why it still matters to you</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Where it came from, or who made it</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>How it came to you</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something that has happened to it over the years</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Why it still matters to you</li>
     </ul>
   </div>
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
-    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">A:</strong> Do you see this (watch)? I've had it for years.</div>
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">B:</strong> That's a nice (watch)! Is there a story behind it?</div>
-      <div style="font-size:14px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span>.</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Do you see this (watch)? I've had it for years.</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> That's a nice (watch)! Is there a story behind it?</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"This bag was handmade by a leather craftsman in Kyoto. I had to wait three months for it to be finished."</div>
-      <div class="starter-item">"I was given this pen when I was promoted, and I've signed every important document with it since."</div>
-      <div class="starter-item">"This guitar used to belong to my uncle. It was played at countless live shows before it was passed on to me."</div>
-      <div class="starter-item">"The screen was cracked when I dropped it in Taiwan, but it's never been fixed — it reminds me of that trip."</div>
-      <div class="starter-item">"This photo was taken by a stranger in Paris. It's the only picture of my wife and me from our honeymoon."</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -631,34 +638,24 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to include:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something new that has appeared since they were last here</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something new that has appeared</li>
       <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something that is going on right now</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something that has disappeared, and how you feel about it</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A plan for the future — and whether you think it is a good idea</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something that has disappeared</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A plan for the future</li>
     </ul>
   </div>
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
-    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">A:</strong> Welcome back! It's been years since you were last here, right?</div>
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">B:</strong> Yes! Wow, it looks so different. What happened?</div>
-      <div style="font-size:14px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span>.</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Welcome back! It's been years since you were last here, right?</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Yes! Wow, it looks so different. What happened?</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"The old station building was torn down a few years ago, and a huge shopping complex has been built in its place."</div>
-      <div class="starter-item">"The whole area by the river is being redeveloped, so half the roads are closed at the moment."</div>
-      <div class="starter-item">"Remember that little bookshop we used to hang out in? It was forced to close when the rent went up."</div>
-      <div class="starter-item">"A new high-speed rail line is supposed to be completed by 2030, but I'll believe it when I see it."</div>
-      <div class="starter-item">"Honestly, I think local people should have been asked before they cut down all those trees."</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -669,19 +666,28 @@
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">🌟 TODAY'S SUCCESS</div>
-    <div style="font-size:15px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I said 'This watch was given to me by my grandfather' and described my town with 'is being built'!"></textarea>
+    <div style="font-size:16px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I said 'This watch was given to me by my grandfather' and described my town with 'is being built'!"></textarea>
   </div>
 
   <div class="teacher-card">
     <div class="teacher-label" style="font-size:16px;letter-spacing:.05em;">🔧 Let's Work On</div>
-    <div style="font-size:15px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. My bag was stolen. (not: I was stolen my bag) / It happened. (not: It was happened)..."></textarea>
+    <div style="font-size:16px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. My bag was stolen. (not: I was stolen my bag) / It happened. (not: It was happened)..."></textarea>
+  </div>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">😊 I CAN NOW...</div>
+    <ul class="checklist">
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Choose between <strong>active</strong> and <strong>passive</strong> depending on what you want to focus on</span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Describe news, changes, and guesses with <strong>has been done</strong> / <strong>is being done</strong> / <strong>might have been done</strong></span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Talk about your own experiences with <strong>I was born</strong> / <strong>I was offered</strong> / <strong>being told</strong></span></li>
+    </ul>
   </div>
 
   <div class="card" style="background:linear-gradient(135deg,var(--ocean-deep),#2D9A6E);color:#fff;text-align:center;padding:28px;margin-top:4px;">
     <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:8px;">Great lesson! 🎉</div>
-    <div style="font-size:14px;opacity:.8;margin-bottom:16px;">You can now talk about what happens to things and people — not just who does it.</div>
+    <div style="font-size:16px;opacity:.8;margin-bottom:16px;">You can now talk about what happens to things and people — not just who does it.</div>
     <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;">
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">be + p.p.</span>
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">has been done</span>
@@ -764,11 +770,10 @@ const teacherExtra = {
       "I've been told it's worth quite a lot of money, but I'd never sell it.",
     ],
     phrases: [
-      ["heirloom", "家宝、先祖伝来の品", "This clock is a family heirloom. It's been in our family for over 100 years."],
-      ["keepsake", "形見、記念の品", "I kept one of her scarves as a keepsake."],
-      ["vintage", "年代物の、ヴィンテージの", "This vintage jacket was made in the 1970s."],
-      ["be engraved with ~", "～が刻まれている", "The watch is engraved with my grandfather's initials."],
-      ["one of a kind", "世界に一つだけの", "It was made by hand, so it's one of a kind."],
+      ["heirloom", "家宝、先祖伝来の品", "This clock is a family heirloom. It's been in our family for over 100 years.", "A valuable object passed down through a family for many years."],
+      ["keepsake", "形見、記念の品", "I kept one of her scarves as a keepsake.", "A small object you keep to remember a person or time."],
+      ["be engraved with ~", "～が刻まれている", "The watch is engraved with my grandfather's initials.", "To have words or a design cut into the surface."],
+      ["one of a kind", "世界に一つだけの", "It was made by hand, so it's one of a kind.", "The only one of its type; very special."],
     ],
   },
   try: {
@@ -780,24 +785,16 @@ const teacherExtra = {
       "A new stadium is going to be built, but nobody has been told how it'll be paid for.",
     ],
     phrases: [
-      ["redevelopment", "再開発", "The area around the port is under redevelopment."],
-      ["be merged with ~", "～と統合される", "Our branch was merged with the Osaka office last year."],
-      ["depopulation", "過疎化、人口減少", "Depopulation is a big problem in many rural towns."],
-      ["revitalize", "活性化する、再生させる", "The town is trying to revitalize the old shopping street."],
-      ["be replaced by ~", "～に取って代わられる", "The old bus stop was replaced by a new shelter."],
+      ["redevelopment", "再開発", "The area around the port is under redevelopment.", "The process of rebuilding an area with new buildings."],
+      ["be merged with ~", "～と統合される", "Our branch was merged with the Osaka office last year.", "To be joined with another group to make one."],
+      ["depopulation", "過疎化、人口減少", "Depopulation is a big problem in many rural towns.", "A fall in the number of people living in an area."],
+      ["revitalize", "活性化する、再生させる", "The town is trying to revitalize the old shopping street.", "To give new life and energy to something."],
+      ["be replaced by ~", "～に取って代わられる", "The old bus stop was replaced by a new shelter.", "To have something new take its place."],
     ],
   },
 };
 
 // ── Audio Players ──────────────────────────────────────────
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; u.rate = 0.9;
-  window.speechSynthesis.speak(u);
-}
-
 function toggleAudio(id) {
   const audio = document.getElementById('audio-' + id);
   if (!audio) return;
@@ -906,8 +903,8 @@ function openTeacherWindow() {
 
   const ideaRows = key => teacherExtra[key].ideas.map((t, i) =>
     `<tr><td>${i + 1}.</td><td>${t}</td></tr>`).join('');
-  const phraseRows = key => teacherExtra[key].phrases.map(([term, ja, eg]) =>
-    `<tr><td>${term}</td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
+  const phraseRows = key => teacherExtra[key].phrases.map(([term, ja, eg, def]) =>
+    `<tr><td>${term}<span class="note">${def}</span></td><td>${ja}<span class="note">"${eg}"</span></td></tr>`).join('');
 
   const html = `<!DOCTYPE html>
 <html lang="ja">
@@ -949,16 +946,16 @@ function openTeacherWindow() {
   <tr><td>is / was being + p.p.</td><td>In progress<span class="note">The elevator is being checked now.</span></td></tr>
   <tr><td>will / can / must + be + p.p.</td><td>Modal + passive<span class="note">The report must be finished by Friday.</span></td></tr>
   <tr><td>might have been + p.p.</td><td>Guess about the past<span class="note">It might have been sent to the wrong address.</span></td></tr>
-  <tr><td>was / were born</td><td>Always past（✗ I am born）<span class="note">Where were you born?</span></td></tr>
+  <tr><td>was / were born</td><td>Always past (✗ I am born)<span class="note">Where were you born?</span></td></tr>
   <tr><td>I was given / offered / asked …</td><td>Two-object verbs → start with the person<span class="note">I was offered a new job.</span></td></tr>
   <tr><td>being + p.p.</td><td>After like / hate / remember / without<span class="note">I hate being told what to do.</span></td></tr>
   <tr><td>get + p.p.</td><td>Casual = be (things that happen)<span class="note">I got invited. / Nobody got hurt.</span></td></tr>
 </table>
 <div class="gf-tip">
   <b>Watch for</b><br>
-  ・✗ I was stolen my wallet. → <b>My wallet was stolen.</b><br>
-  ・✗ The house built in 1981. → <b>was built</b>（be を忘れない）<br>
-  ・✗ It was happened. → <b>It happened.</b>（happen は受け身にならない）
+  • ✗ I was stolen my wallet. → <b>My wallet was stolen.</b><br>
+  • ✗ The house built in 1981. → <b>was built</b> (don't forget be)<br>
+  • ✗ It was happened. → <b>It happened.</b> (happen has no passive form)
 </div>
 
 <h2>📝 Quick Translation</h2>
@@ -986,6 +983,16 @@ function openTeacherWindow() {
 </table>
 
 <h2>🗣 Express Yourself — "Is There a Story Behind It?"</h2>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"This bag was handmade by a leather craftsman in Kyoto. I had to wait three months for it to be finished."</td></tr>
+  <tr><td>2.</td><td>"I was given this pen when I was promoted, and I've signed every important document with it since."</td></tr>
+  <tr><td>3.</td><td>"This guitar used to belong to my uncle. It was played at countless live shows before it was passed on to me."</td></tr>
+  <tr><td>4.</td><td>"The screen was cracked when I dropped it in Taiwan, but it's never been fixed — it reminds me of that trip."</td></tr>
+  <tr><td>5.</td><td>"This photo was taken by a stranger in Paris. It's the only picture of my wife and me from our honeymoon."</td></tr>
+</table>
+<p class="gf-sub">Example Ideas</p>
+<table class="ideas">${ideaRows('express')}</table>
 <p class="gf-sub">Useful Words &amp; Expressions</p>
 <table class="vocab">
   <tr><td>be passed down (through generations)<span class="note">To be given from older family members to younger ones over a long time.</span></td><td>（代々）受け継がれる<span class="note">"This tea set has been passed down through four generations."</span></td></tr>
@@ -993,6 +1000,7 @@ function openTeacherWindow() {
   <tr><td>hold a special place in my heart<span class="note">To be very important to me emotionally.</span></td><td>私にとって特別な存在だ<span class="note">"This old camera holds a special place in my heart."</span></td></tr>
   <tr><td>It's seen better days.<span class="note">It is old and in bad condition now.</span></td><td>だいぶくたびれている、昔ほどの状態ではない<span class="note">"My backpack has seen better days, but I can't throw it away."</span></td></tr>
   <tr><td>irreplaceable<span class="note">So special that nothing else could take its place.</span></td><td>かけがえのない、代わりのきかない<span class="note">"The letters were irreplaceable, so I was devastated when they were lost."</span></td></tr>
+  ${phraseRows('express')}
 </table>
 <p class="gf-sub">Follow-up Questions</p>
 <table class="ideas">
@@ -1001,12 +1009,18 @@ function openTeacherWindow() {
   <tr><td>3.</td><td>Do you think people value things less now that almost everything can be bought online?</td></tr>
   <tr><td>4.</td><td>What is something you were given that meant more to you than you expected?</td></tr>
 </table>
-<p class="gf-sub">Example Ideas</p>
-<table class="ideas">${ideaRows('express')}</table>
-<p class="gf-sub">Words &amp; Phrases for the Topic</p>
-<table class="vocab">${phraseRows('express')}</table>
 
 <h2>🎭 Try It Out — "It's Changed So Much!"</h2>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"The old station building was torn down a few years ago, and a huge shopping complex has been built in its place."</td></tr>
+  <tr><td>2.</td><td>"The whole area by the river is being redeveloped, so half the roads are closed at the moment."</td></tr>
+  <tr><td>3.</td><td>"Remember that little bookshop we used to hang out in? It was forced to close when the rent went up."</td></tr>
+  <tr><td>4.</td><td>"A new high-speed rail line is supposed to be completed by 2030, but I'll believe it when I see it."</td></tr>
+  <tr><td>5.</td><td>"Honestly, I think local people should have been asked before they cut down all those trees."</td></tr>
+</table>
+<p class="gf-sub">Example Ideas</p>
+<table class="ideas">${ideaRows('try')}</table>
 <p class="gf-sub">Useful Words &amp; Expressions</p>
 <table class="vocab">
   <tr><td>in its place<span class="note">In the place where something used to be.</span></td><td>その跡地に、その代わりに<span class="note">"The old cinema was knocked down, and a parking lot was built in its place."</span></td></tr>
@@ -1014,6 +1028,7 @@ function openTeacherWindow() {
   <tr><td>I'll believe it when I see it.<span class="note">I doubt it will really happen.</span></td><td>実際に見るまでは信じられないね<span class="note">"They say the new road will be finished next year. I'll believe it when I see it."</span></td></tr>
   <tr><td>for better or worse<span class="note">Whether the result is good or bad.</span></td><td>良くも悪くも<span class="note">"For better or worse, the town has become much more touristy."</span></td></tr>
   <tr><td>lose its charm<span class="note">To stop being special or attractive.</span></td><td>魅力を失う、らしさがなくなる<span class="note">"The area is more convenient now, but it's lost some of its charm."</span></td></tr>
+  ${phraseRows('try')}
 </table>
 <p class="gf-sub">Follow-up Questions</p>
 <table class="ideas">
@@ -1022,10 +1037,6 @@ function openTeacherWindow() {
   <tr><td>3.</td><td>Who should decide what gets built in a town — the government, companies, or local people?</td></tr>
   <tr><td>4.</td><td>What do you think your town will be known for in twenty years?</td></tr>
 </table>
-<p class="gf-sub">Example Ideas</p>
-<table class="ideas">${ideaRows('try')}</table>
-<p class="gf-sub">Words &amp; Phrases for the Topic</p>
-<table class="vocab">${phraseRows('try')}</table>
 
 <p class="footer">Starlight English · Teacher only · Close this window when done</p>
 </body>

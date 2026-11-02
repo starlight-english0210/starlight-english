@@ -524,6 +524,8 @@ main {
   font-weight: 600;
 }
 .fitb-block .fitb-input { width: 130px; }
+.blank-line { padding: 4px 0; }
+.blank-num { font-weight: 700; color: var(--ocean-deep); margin-right: 4px; }
 
 /* ── Grammar Focus ── */
 .gf-sec { margin-bottom: 18px; }
@@ -681,11 +683,9 @@ main {
   </div>
   <div class="section-body">
     <div class="fitb-block">
-      "Hi everyone, it's Charlotte! Last weekend I visited an onsen in Hakone for the first time, so here are my top tips."<br><br>
-      "First, you <input class="fitb-input" id="b1" placeholder="(1)"> wash your body before you get into the bath. Everyone does it — no exceptions."<br><br>
-      "Second, you <input class="fitb-input" id="b2" placeholder="(2)"> put your towel in the water. I almost did!"<br><br>
-      "Third, you don't have to bring your own towel — most places rent them. And finally, you should drink plenty of water afterwards."<br><br>
-      "I didn't, and I felt dizzy all evening. I really <input class="fitb-input" id="b3" placeholder="(3)"> more water! See you next time!"
+      <div class="blank-line"><span class="blank-num">(1)</span> First, you <input class="fitb-input" id="b1" placeholder="(1)"> wash your body before you get into the bath.</div>
+      <div class="blank-line"><span class="blank-num">(2)</span> Second, you <input class="fitb-input" id="b2" placeholder="(2)"> put your towel in the water.</div>
+      <div class="blank-line"><span class="blank-num">(3)</span> I really <input class="fitb-input" id="b3" placeholder="(3)"> more water!</div>
     </div>
   </div>
 </div>

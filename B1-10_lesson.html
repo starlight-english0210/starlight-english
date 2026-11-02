@@ -258,6 +258,20 @@
   .expr-phrase.past { background: #4A5A78; }
   .expr-phrase.past:hover { background: #3A4862; }
   .grammar-tip { background: #FFF8E1; border-left: 3px solid #F9A825; border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 13px; color: #6B5200; margin-top: 10px; line-height: 1.6; }
+  /* Grammar Focus page: body text matches .strength-word (16px) */
+  [data-slide="1"] .expr-phrase, [data-slide="1"] .expr-nuance, [data-slide="1"] .example-block,
+  [data-slide="1"] .strength-bar, [data-slide="1"] .grammar-tip { font-size: 16px; }
+  /* Larger body text: Getting Ready, Listening 1 & 2, Dialogue situation, Express Yourself, Try It Out */
+  .quiz-q-text, .quiz-option, .quiz-feedback, .tf-text,
+  .situation-card p, .roleplay-prompt p, .checklist li,
+  .vocab-term, .vocab-def, .vocab-ja, .blank-input, .check-blanks-btn { font-size: 16px; }
+  #fill-blank-area { font-size: 16px !important; }
+  [data-slide="9"] .vocab-pill { font-size: 14px; }
+  [data-slide="6"] .dialogue-text { transition: background .15s; }
+  [data-slide="6"] .dialogue-text:hover { background: #CFE3F2; }
+  [data-slide="4"] .tf-text { font-size: 16px; }
+  .situation-card .sit-label { font-size: 12px; }
+  [data-slide="7"] .card-sand div, [data-slide="7"] .card-sand textarea { font-size: 16px !important; }
 
   /* ── True / False ── */
   .tf-item { margin-bottom: 14px; }
@@ -269,6 +283,8 @@
   .tf-btn.wrong   { background: #F9DEDE; border-color: var(--wrong); color: var(--wrong); }
   .tf-btn:disabled { cursor: default; }
   .blank-input.short { width: 140px; }
+  .blank-line { padding: 4px 0; }
+  .blank-num { font-weight: 700; color: var(--ocean-deep); margin-right: 4px; }
 </style>
 </head>
 <body>
@@ -358,11 +374,11 @@
     <div class="expr-section-label">3. Negatives — Completely Different!</div>
     <div class="expr-row">
       <div class="expr-phrase neg">You mustn't tell anyone.</div>
-      <div class="expr-nuance">Don't do it! (禁止)</div>
+      <div class="expr-nuance">Don't do it!</div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase neg">You don't have to come.</div>
-      <div class="expr-nuance">Not necessary — but you can (不要) = don't need to</div>
+      <div class="expr-nuance">Not necessary — but you can = don't need to</div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase neg">You shouldn't stay up late.</div>
@@ -383,7 +399,7 @@
     </div>
     <div class="expr-row">
       <div class="expr-phrase past">I should have left earlier.</div>
-      <div class="expr-nuance">I didn't, and it was a mistake (後悔)</div>
+      <div class="expr-nuance">I didn't, and it was a mistake</div>
     </div>
   </div>
 </div>
@@ -460,13 +476,13 @@
     <div class="script-body" id="script1">
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Welcome to the team, Leo! Before you start, let me tell you a few things.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Leo</span><div class="dialogue-text">Great, thanks. I want to get everything right.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">First, you <strong>have to</strong> wear your ID badge <span class="phrase-highlight" data-tip="常に">at all times</span>. Security is very strict about that.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">First, you have to wear your ID badge at all times. Security is very strict about that.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Leo</span><div class="dialogue-text">Okay. What about working from home?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">You <strong>don't have to</strong> come to the office on Fridays. Most of us work from home that day.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">You don't have to come to the office on Fridays. Most of us work from home that day.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Leo</span><div class="dialogue-text">Oh, nice! That's good to know.</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">But you <strong>mustn't</strong> take <span class="phrase-highlight" data-tip="顧客資料">client files</span> home. They <strong>have to</strong> stay in the office.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">But you mustn't take client files home. They have to stay in the office.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Leo</span><div class="dialogue-text">Understood. Anything else?</div></div>
-      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Just one piece of advice — you <strong>should</strong> join the team lunch on Wednesdays. It's the best way to <span class="phrase-highlight" data-tip="知り合う、親しくなる">get to know</span> everyone.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Aileen</span><div class="dialogue-text">Just one piece of advice — you should join the team lunch on Wednesdays. It's the best way to get to know everyone.</div></div>
       <div class="dialogue-line"><span class="dialogue-speaker-tag">Leo</span><div class="dialogue-text">Sounds fun! I'll be there.</div></div>
     </div>
   </div>
@@ -498,8 +514,10 @@
 
   <div class="card mb-12">
     <div style="font-weight:700;font-size:16px;color:var(--ocean-deep);margin-bottom:12px;">Fill in the blanks</div>
-    <div style="font-size:14px;line-height:2.3;color:var(--ink);" id="fill-blank-area">
-      "Hi everyone, it's Charlotte! Last weekend I visited an onsen in Hakone for the first time, so here are my top tips. First, you <input class="blank-input short" id="b1" placeholder="blank 1"> wash your body before you get into the bath. Everyone does it — no exceptions. Second, you <input class="blank-input short" id="b2" placeholder="blank 2"> put your towel in the water. I almost did! Third, you don't have to bring your own towel — most places rent them. And finally, you should drink plenty of water afterwards. I didn't, and I felt dizzy all evening. I really <input class="blank-input short" id="b3" placeholder="blank 3"> more water! See you next time!"
+    <div style="font-size:15px;line-height:2.3;color:var(--ink);" id="fill-blank-area">
+      <div class="blank-line"><span class="blank-num">(1)</span> First, you <input class="blank-input short" id="b1" placeholder="blank 1"> wash your body before you get into the bath.</div>
+      <div class="blank-line"><span class="blank-num">(2)</span> Second, you <input class="blank-input short" id="b2" placeholder="blank 2"> put your towel in the water.</div>
+      <div class="blank-line"><span class="blank-num">(3)</span> I really <input class="blank-input short" id="b3" placeholder="blank 3"> more water!</div>
     </div>
     <button class="check-blanks-btn" onclick="checkBlanks()">Check Answers</button>
     <div id="blank-feedback" style="margin-top:12px;display:none;"></div>
@@ -545,16 +563,16 @@
   </div>
 
   <div class="card mb-12">
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Charlotte, do you have a minute? I <span class="phrase-highlight" data-tip="～しなければならない">have to do</span> an interview for a hotel internship next week — all in English.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">Mai, that's amazing! Congratulations!</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Thanks, but I'm so nervous. <span class="phrase-highlight" data-tip="～しなければいけない？">Do I have to wear</span> a suit?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">For a hotel, you definitely <span class="phrase-highlight" data-tip="～したほうがいい">should</span>. <span class="phrase-highlight" data-tip="第一印象">First impressions</span> really matter in <span class="phrase-highlight" data-tip="ホスピタリティ業界（接客業）">hospitality</span>.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Okay. Should I memorize all my answers?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">No, you <span class="phrase-highlight" data-tip="～する必要はない">don't need to</span>. Just prepare a few good stories. But you <span class="phrase-highlight" data-tip="～してはいけない">mustn't be</span> late — hotels are really <span class="phrase-highlight" data-tip="～に厳しい">strict about</span> time.</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">Got it. What if I don't understand a question?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">Then just ask them to repeat it. At my first interview, I guessed and gave a strange answer. I <span class="phrase-highlight" data-tip="～すべきだった（後悔）">should have asked</span>!</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text" onclick="speak(this.innerText)">(laughs) Okay, <span class="phrase-highlight" data-tip="納得したよ">you've convinced me</span>. Could you practice with me this weekend?</div></div>
-    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text" onclick="speak(this.innerText)">Of course! Let's do a <span class="phrase-highlight" data-tip="模擬面接">mock interview</span> on Saturday.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Charlotte, do you have a minute? I have to do an interview for a hotel internship next week — all in English.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Mai, that's amazing! Congratulations!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Thanks, but I'm so nervous. Do I have to wear a suit?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">For a hotel, you definitely should. First impressions really matter in hospitality.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Okay. Should I memorize all my answers?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">No, you don't need to. Just prepare a few good stories. But you mustn't be late — hotels are really strict about time.</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">Got it. What if I don't understand a question?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Then just ask them to repeat it. At my first interview, I guessed and gave a strange answer. I should have asked!</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Mai</span><div class="dialogue-text">(laughs) Okay, you've convinced me. Could you practice with me this weekend?</div></div>
+    <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Of course! Let's do a mock interview on Saturday.</div></div>
   </div>
 
 </div>
@@ -577,33 +595,23 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Explain at least two important rules</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Tell them one thing they don't need to worry about</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Give one piece of friendly advice</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Important rules</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Things they don't need to worry about</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Friendly advice</li>
     </ul>
   </div>
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
-    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">A:</strong> Hi, you must be the new member! Welcome!</div>
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">B:</strong> Thanks! It's my first week. Is there anything I should know?</div>
-      <div style="font-size:14px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span>.</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> Hi, you must be the new member! Welcome!</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Thanks! It's my first week. Is there anything I should know?</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"Welcome! First, you have to sign in at the front desk every morning."</div>
-      <div class="starter-item">"You mustn't use your phone in the meeting room. The manager is really strict about that."</div>
-      <div class="starter-item">"Don't worry — you don't have to wear a suit. Most people dress casually."</div>
-      <div class="starter-item">"You should bring your own mug. The paper cups run out quickly."</div>
-      <div class="starter-item">"If you have any questions, you should ask Ms. Tanaka. She knows everything!"</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -618,10 +626,9 @@
   </div>
 
   <div class="card mb-12">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Try to include:</div>
+    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">Let's talk about...</div>
     <ul class="checklist">
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something important they need to do or prepare</li>
-      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something they don't need to worry about</li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>Something they need to / don't need to do or worry about</li>
       <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A piece of friendly advice</li>
       <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div>A mistake or experience you had there</li>
     </ul>
@@ -629,23 +636,13 @@
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--ocean);">💬 Conversation Starter</div>
-    <div style="background:var(--cloud);border-radius:8px;padding:14px 16px;border-left:3px solid var(--ocean);">
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">A:</strong> I heard you're going to (place) next month!</div>
-      <div style="font-size:14px;color:var(--ink);margin-bottom:8px;"><strong style="color:var(--ocean);">B:</strong> Yes! You've been there, right? Any tips?</div>
-      <div style="font-size:14px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:200px;">&nbsp;</span>.</div>
+    <div style="background:var(--cloud);border-radius:8px;padding:16px 18px;border-left:3px solid var(--ocean);">
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">A:</strong> I heard you're going to (place) next month!</div>
+      <div style="font-size:22px;color:var(--ink);margin-bottom:10px;"><strong style="color:var(--ocean);">B:</strong> Yes! You've been there, right? Any tips?</div>
+      <div style="font-size:22px;color:var(--ink);"><strong style="color:var(--ocean);">A:</strong> <span style="display:inline-block;border-bottom:2px solid var(--ink);min-width:220px;">&nbsp;</span>.</div>
     </div>
   </div>
 
-  <div class="card card-sky">
-    <div style="font-size:16px;font-weight:700;color:var(--ocean-deep);margin-bottom:10px;">💡 Example starters</div>
-    <div class="starter-list">
-      <div class="starter-item">"You have to book the popular restaurants early. They fill up weeks in advance."</div>
-      <div class="starter-item">"You don't need to bring much cash. You can pay by card almost everywhere."</div>
-      <div class="starter-item">"You should get a travel pass. It saves a lot of money."</div>
-      <div class="starter-item">"When I went, I had to wait two hours at immigration. You should arrive early."</div>
-      <div class="starter-item">"I should have packed a warmer jacket. It was freezing at night!"</div>
-    </div>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
@@ -656,19 +653,28 @@
 
   <div class="card card-sky mb-12">
     <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">🌟 TODAY'S SUCCESS</div>
-    <div style="font-size:15px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I used 'You don't have to…' and 'You should…' naturally when giving tips!"></textarea>
+    <div style="font-size:16px;color:var(--ink);margin-bottom:10px;">What went well today? Write one thing you're proud of.</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:90px;border:1.5px solid var(--ocean);border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. I used 'You don't have to…' and 'You should…' naturally when giving tips!"></textarea>
   </div>
 
   <div class="teacher-card">
     <div class="teacher-label" style="font-size:16px;letter-spacing:.05em;">🔧 Let's Work On</div>
-    <div style="font-size:15px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
-    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. Remember: mustn't = don't do it / don't have to = not necessary..."></textarea>
+    <div style="font-size:16px;color:#7A5800;margin-bottom:10px;">Teacher: note anything to focus on next time</div>
+    <textarea style="width:100%;box-sizing:border-box;min-height:100px;border:1.5px solid #E0C060;border-radius:8px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);background:#fff;resize:vertical;" placeholder="e.g. Remember: mustn't = don't do it / don't have to = not necessary..."></textarea>
+  </div>
+
+  <div class="card card-sky mb-12">
+    <div style="font-size:16px;font-weight:700;color:var(--ocean);letter-spacing:.05em;margin-bottom:10px;">😊 I CAN NOW...</div>
+    <ul class="checklist">
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Explain rules and give advice with <strong>must</strong> / <strong>have to</strong> / <strong>should</strong></span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Tell the difference between <strong>mustn't</strong> and <strong>don't have to</strong></span></li>
+      <li><div class="check-circle" onclick="this.classList.toggle('checked');this.textContent=this.classList.contains('checked')?'✓':''"></div><span>Talk about the past with <strong>had to</strong> and <strong>should have</strong></span></li>
+    </ul>
   </div>
 
   <div class="card" style="background:linear-gradient(135deg,var(--ocean-deep),#2D9A6E);color:#fff;text-align:center;padding:28px;margin-top:4px;">
     <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:8px;">Great lesson! 🎉</div>
-    <div style="font-size:14px;opacity:.8;margin-bottom:16px;">You can now explain rules and give advice at the right strength.</div>
+    <div style="font-size:16px;opacity:.8;margin-bottom:16px;">You can now explain rules and give advice at the right strength.</div>
     <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px;">
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">must ＞ have to ＞ should</span>
       <span class="vocab-pill" style="background:rgba(255,255,255,.18);color:#fff;">mustn't ≠ don't have to</span>
@@ -742,14 +748,6 @@ const blankAnswers = {
 const blankMain = ["have to", "mustn't", "should have drunk"];
 
 // ── Audio Players ──────────────────────────────────────────
-function speak(text) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'en-US'; u.rate = 0.9;
-  window.speechSynthesis.speak(u);
-}
-
 function toggleAudio(id) {
   const audio = document.getElementById('audio-' + id);
   if (!audio) return;
@@ -889,16 +887,16 @@ function openTeacherWindow() {
   <tr><td>must</td><td>Strong — speaker's own view / written rules<span class="note">I must call my mom. / Seat belts must be worn.</span></td></tr>
   <tr><td>have to</td><td>Strong — rule or fact from outside (more common in speech)<span class="note">I have to work on Saturdays. / Do you have to …?</span></td></tr>
   <tr><td>should</td><td>Advice — a good idea (weaker)<span class="note">You should get more rest.</span></td></tr>
-  <tr><td>mustn't</td><td>Don't do it!（禁止）<span class="note">You mustn't tell anyone.</span></td></tr>
-  <tr><td>don't have to / don't need to</td><td>Not necessary — but you can（不要）<span class="note">You don't have to come.</span></td></tr>
-  <tr><td>had to / didn't have to</td><td>Past of must &amp; have to（×I musted）<span class="note">I had to leave early.</span></td></tr>
-  <tr><td>should have + p.p.</td><td>I didn't, and it was a mistake（後悔）<span class="note">I should have left earlier.</span></td></tr>
+  <tr><td>mustn't</td><td>Don't do it!<span class="note">You mustn't tell anyone.</span></td></tr>
+  <tr><td>don't have to / don't need to</td><td>Not necessary — but you can<span class="note">You don't have to come.</span></td></tr>
+  <tr><td>had to / didn't have to</td><td>Past of must &amp; have to (not "I musted")<span class="note">I had to leave early.</span></td></tr>
+  <tr><td>should have + p.p.</td><td>I didn't, and it was a mistake<span class="note">I should have left earlier.</span></td></tr>
 </table>
 <div class="gf-tip">
   <b>Watch for</b><br>
-  ・「～しなくてもいい」を <b>mustn't</b> と言う → 不要は <b>don't have to</b><br>
-  ・過去に must を使う（×Yesterday I must…）→ <b>had to</b><br>
-  ・アドバイスに must を使いすぎる → 良い考えなら <b>should</b>
+  • Saying <b>mustn't</b> to mean "not necessary" → use <b>don't have to</b><br>
+  • Using must for the past (×Yesterday I must…) → use <b>had to</b><br>
+  • Overusing must for advice → use <b>should</b> when it's simply a good idea
 </div>
 
 <h2>📝 Quick Translation</h2>
@@ -921,18 +919,36 @@ function openTeacherWindow() {
 
 <h2>🎧 Listening Task 2 — Fill in the Blanks</h2>
 <table>
-  <tr><td>Blank 1</td><td>have to</td></tr>
-  <tr><td>Blank 2</td><td>mustn't <span class="note">also accepted: "must not"</span></td></tr>
-  <tr><td>Blank 3</td><td>should have drunk <span class="note">also accepted: "should've drunk"</span></td></tr>
+  <tr><td>(1) First, you ____ wash your body before you get into the bath.</td><td>have to</td></tr>
+  <tr><td>(2) Second, you ____ put your towel in the water.</td><td>mustn't <span class="note">also accepted: "must not"</span></td></tr>
+  <tr><td>(3) I really ____ more water!</td><td>should have drunk <span class="note">also accepted: "should've drunk"</span></td></tr>
 </table>
 
 <h2>🗣 Express Yourself — "The New Member"</h2>
+<p class="gf-sub">Example Starters</p>
+<table class="ideas">
+  <tr><td>1.</td><td>"Welcome! First, you have to sign in at the front desk every morning."</td></tr>
+  <tr><td>2.</td><td>"You mustn't use your phone in the meeting room. The manager is really strict about that."</td></tr>
+  <tr><td>3.</td><td>"Don't worry — you don't have to wear a suit. Most people dress casually."</td></tr>
+  <tr><td>4.</td><td>"You should bring your own mug. The paper cups run out quickly."</td></tr>
+  <tr><td>5.</td><td>"If you have any questions, you should ask Ms. Tanaka. She knows everything!"</td></tr>
+</table>
+<p class="gf-sub">Example Ideas</p>
+<table class="ideas">
+  <tr><td>1.</td><td>You have to clock in by nine, even if you work from home.</td></tr>
+  <tr><td>2.</td><td>You mustn't eat at your desk — there's a break room for that.</td></tr>
+  <tr><td>3.</td><td>You don't have to answer emails after 7 p.m.</td></tr>
+  <tr><td>4.</td><td>You should learn everyone's names in the first week.</td></tr>
+  <tr><td>5.</td><td>You don't need to bring lunch. The café on the first floor is cheap and good.</td></tr>
+</table>
 <p class="gf-sub">Useful Words &amp; Expressions</p>
 <table class="vocab">
   <tr><td>be strict about ~<span class="note">To make sure a rule is always followed.</span></td><td>～に厳しい、～にうるさい<span class="note">"Our teacher is very strict about being on time."</span></td></tr>
   <tr><td>It's frowned upon.<span class="note">It's not officially banned, but people think it's not a good thing to do.</span></td><td>（ルールではないが）良く思われない<span class="note">"You can leave at 5, but leaving before your boss is a bit frowned upon."</span></td></tr>
   <tr><td>It's up to you.<span class="note">You can decide — there is no rule.</span></td><td>あなた次第だよ、好きにしていいよ<span class="note">"You don't have to join the lunch group. It's up to you."</span></td></tr>
   <tr><td>You'll get used to it.<span class="note">It feels difficult now, but soon it will feel normal.</span></td><td>そのうち慣れるよ<span class="note">"The system is a bit confusing at first, but you'll get used to it."</span></td></tr>
+  <tr><td>show someone around<span class="note">To guide someone and show them the different parts of a place.</span></td><td>（人を）案内する<span class="note">"Let me show you around the office."</span></td></tr>
+  <tr><td>get the hang of it<span class="note">To learn how to do something after some practice.</span></td><td>コツをつかむ、慣れる<span class="note">"Don't worry — you'll get the hang of it soon."</span></td></tr>
 </table>
 <p class="gf-sub">Follow-up Questions</p>
 <table class="ideas">
@@ -941,37 +957,15 @@ function openTeacherWindow() {
   <tr><td>3.</td><td>What's the best advice you got when you started something new?</td></tr>
   <tr><td>4.</td><td>Did you use <em>mustn't</em> and <em>don't have to</em> correctly? Can you give one more example of each?</td></tr>
 </table>
-<p class="gf-sub">Example Ideas</p>
-<table class="ideas">
-  <tr><td>1.</td><td>You have to sign in at the front desk every morning.</td></tr>
-  <tr><td>2.</td><td>You mustn't eat at your desk — there's a break room for that.</td></tr>
-  <tr><td>3.</td><td>You don't have to answer emails after 7 p.m.</td></tr>
-  <tr><td>4.</td><td>You should learn everyone's names in the first week.</td></tr>
-  <tr><td>5.</td><td>You don't need to bring lunch. The café on the first floor is cheap and good.</td></tr>
-</table>
-<p class="gf-sub">Words &amp; Phrases for the Topic</p>
-<table class="vocab">
-  <tr><td>dress code</td><td>服装規定<span class="note">"There's no strict dress code, so smart casual is fine."</span></td></tr>
-  <tr><td>orientation</td><td>新人研修、オリエンテーション<span class="note">"You have to attend the orientation on Monday."</span></td></tr>
-  <tr><td>show someone around</td><td>（人を）案内する<span class="note">"Let me show you around the office."</span></td></tr>
-  <tr><td>ask for help</td><td>助けを求める<span class="note">"You should ask for help if you're not sure."</span></td></tr>
-  <tr><td>get the hang of it</td><td>コツをつかむ、慣れる<span class="note">"Don't worry — you'll get the hang of it soon."</span></td></tr>
-</table>
 
 <h2>🎭 Try It Out — "Any Tips?"</h2>
-<p class="gf-sub">Useful Words &amp; Expressions</p>
-<table class="vocab">
-  <tr><td>It's a must.<span class="note">Something you really should not miss. (Here, <em>must</em> is a noun.)</span></td><td>絶対外せない、必須だよ<span class="note">"If you go to Osaka, trying takoyaki is a must."</span></td></tr>
-  <tr><td>just in case<span class="note">To be prepared if something happens.</span></td><td>念のため<span class="note">"You should bring an umbrella, just in case."</span></td></tr>
-  <tr><td>learn (something) the hard way<span class="note">To learn something by making a mistake or having a bad experience.</span></td><td>痛い目にあって学ぶ<span class="note">"I learned the hard way that you have to check the last train time."</span></td></tr>
-  <tr><td>Take it from me.<span class="note">Believe me — I know from my own experience.</span></td><td>経験者の私が言うんだから間違いないよ<span class="note">"Take it from me — you should wear comfortable shoes."</span></td></tr>
-</table>
-<p class="gf-sub">Follow-up Questions</p>
+<p class="gf-sub">Example Starters</p>
 <table class="ideas">
-  <tr><td>1.</td><td>What is the most useful travel tip you have ever received?</td></tr>
-  <tr><td>2.</td><td>Have you ever learned something the hard way on a trip? What should you have done?</td></tr>
-  <tr><td>3.</td><td>What do visitors to your hometown have to see or try?</td></tr>
-  <tr><td>4.</td><td>Which was easier for you today: giving rules or giving advice? Why?</td></tr>
+  <tr><td>1.</td><td>"You have to book the popular restaurants early. They fill up weeks in advance."</td></tr>
+  <tr><td>2.</td><td>"You don't need to bring much cash. You can pay by card almost everywhere."</td></tr>
+  <tr><td>3.</td><td>"You should get a travel pass. It saves a lot of money."</td></tr>
+  <tr><td>4.</td><td>"When I went, I had to wait two hours at immigration. You should arrive early."</td></tr>
+  <tr><td>5.</td><td>"I should have packed a warmer jacket. It was freezing at night!"</td></tr>
 </table>
 <p class="gf-sub">Example Ideas</p>
 <table class="ideas">
@@ -981,13 +975,23 @@ function openTeacherWindow() {
   <tr><td>4.</td><td>You shouldn't try to see everything in one day. Take it slow.</td></tr>
   <tr><td>5.</td><td>I had to walk a lot, so I should have brought better shoes.</td></tr>
 </table>
-<p class="gf-sub">Words &amp; Phrases for the Topic</p>
+<p class="gf-sub">Useful Words &amp; Expressions</p>
 <table class="vocab">
-  <tr><td>itinerary</td><td>旅程、旅行の予定表<span class="note">"You should plan your itinerary before you go."</span></td></tr>
-  <tr><td>book in advance</td><td>事前に予約する<span class="note">"You have to book the museum tickets in advance."</span></td></tr>
-  <tr><td>jet lag</td><td>時差ボケ<span class="note">"I had terrible jet lag for three days."</span></td></tr>
-  <tr><td>off the beaten track</td><td>あまり知られていない場所、穴場<span class="note">"You should visit some places off the beaten track."</span></td></tr>
-  <tr><td>tourist trap</td><td>観光客向けのぼったくり・がっかりスポット<span class="note">"That street is a bit of a tourist trap."</span></td></tr>
+  <tr><td>It's a must.<span class="note">Something you really should not miss. (Here, <em>must</em> is a noun.)</span></td><td>絶対外せない、必須だよ<span class="note">"If you go to Osaka, trying takoyaki is a must."</span></td></tr>
+  <tr><td>learn (something) the hard way<span class="note">To learn something by making a mistake or having a bad experience.</span></td><td>痛い目にあって学ぶ<span class="note">"I learned the hard way that you have to check the last train time."</span></td></tr>
+  <tr><td>Take it from me.<span class="note">Believe me — I know from my own experience.</span></td><td>経験者の私が言うんだから間違いないよ<span class="note">"Take it from me — you should wear comfortable shoes."</span></td></tr>
+  <tr><td>itinerary<span class="note">A plan of where you will go and what you will do on a trip.</span></td><td>旅程、旅行の予定表<span class="note">"You should plan your itinerary before you go."</span></td></tr>
+  <tr><td>book in advance<span class="note">To reserve something before the day you need it.</span></td><td>事前に予約する<span class="note">"You have to book the museum tickets in advance."</span></td></tr>
+  <tr><td>jet lag<span class="note">Feeling tired and confused after flying across different time zones.</span></td><td>時差ボケ<span class="note">"I had terrible jet lag for three days."</span></td></tr>
+  <tr><td>off the beaten track<span class="note">In a quiet place that not many tourists visit.</span></td><td>あまり知られていない場所、穴場<span class="note">"You should visit some places off the beaten track."</span></td></tr>
+  <tr><td>tourist trap<span class="note">A place that is crowded or overpriced because it is popular with tourists.</span></td><td>観光客向けのぼったくり・がっかりスポット<span class="note">"That street is a bit of a tourist trap."</span></td></tr>
+</table>
+<p class="gf-sub">Follow-up Questions</p>
+<table class="ideas">
+  <tr><td>1.</td><td>What is the most useful travel tip you have ever received?</td></tr>
+  <tr><td>2.</td><td>Have you ever learned something the hard way on a trip? What should you have done?</td></tr>
+  <tr><td>3.</td><td>What do visitors to your hometown have to see or try?</td></tr>
+  <tr><td>4.</td><td>Which was easier for you today: giving rules or giving advice? Why?</td></tr>
 </table>
 
 <p class="footer">Starlight English · Teacher only · Close this window when done</p>
