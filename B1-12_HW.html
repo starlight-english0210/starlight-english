@@ -543,6 +543,60 @@ main {
 .gf-struct { background: var(--sand); border-radius: 8px; padding: 9px 12px; margin-bottom: 8px; font-size: 13px; line-height: 1.7; }
 .gf-struct .cap { font-size: 11px; font-weight: 700; color: var(--ocean); letter-spacing: .06em; }
 .gf-struct .hl { color: var(--ocean); font-weight: 700; }
+/* ── Grammar Focus tables (B1-01 GF handout style) ── */
+.gt-sec { margin-bottom: 22px; }
+.gt-sec:last-child { margin-bottom: 0; }
+.gt-h { display: flex; align-items: stretch; background: #E6F0FB; margin-bottom: 10px; }
+.gt-l { background: #1B5FBF; color: #fff; width: 44px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+.gt-title { padding: 9px 12px; font-size: 15px; color: #1A3E8C; font-weight: 500; }
+.gt-title-ja { font-size: 14px; }
+.gt-lead { font-size: 13.5px; line-height: 1.7; color: var(--ink); margin-bottom: 10px; padding: 0 4px; }
+.gt-table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.6; }
+.gt-table th { background: #F2F4F7; color: var(--ink); font-weight: 500; text-align: left; padding: 8px 10px; border: 1px solid #E3E7ED; }
+.gt-table td { padding: 10px; border: 1px solid #E3E7ED; vertical-align: top; }
+.gt-form { width: 26%; color: var(--ink); font-weight: 600; }
+.gt-mean { width: 32%; color: var(--ink); }
+.gt-ex { color: var(--ink); }
+.gt-ex .hl { color: #2F6FE0; }
+.gt-ja { font-size: 12px; color: var(--slate); margin-bottom: 6px; }
+.gt-ja:last-child { margin-bottom: 0; }
+.gt-struct { border: 1.5px solid #6E9FE8; background: #F3F7FE; padding: 10px 12px; margin-top: 10px; font-size: 13px; }
+.gt-struct .cap { color: #1A3E8C; font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+.gt-struct table { width: 100%; border-collapse: collapse; }
+.gt-struct td { padding: 6px 8px; border-top: 1px solid #DDE6F5; }
+.gt-sec .gf-note { margin-top: 8px; }
+@media (max-width: 560px) {
+  .gt-table thead { display: none; }
+  .gt-table, .gt-table tbody, .gt-table tr, .gt-table td { display: block; width: 100%; }
+  .gt-table tr { border: 1px solid #E3E7ED; margin-bottom: 8px; }
+  .gt-table td { border: none; border-top: 1px solid #EEF2F7; padding: 8px 10px; }
+  .gt-table td:first-child { border-top: none; background: #F2F4F7; }
+}
+/* ── Header: GIU units ── */
+.header-giu { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border-radius: 14px; padding: 4px 12px; }
+.gt-list { list-style: none; padding: 0 4px; margin: 0; font-size: 13.5px; line-height: 1.6; }
+.gt-list li { position: relative; padding: 6px 0 6px 22px; }
+.gt-list li::before { content: "○"; position: absolute; left: 2px; top: 6px; color: #6E9FE8; }
+.gt-list .gt-ja { margin-bottom: 0; }
+/* ── Main body text: 14px everywhere (2026-11-05) ── */
+.gt-lead, .gt-table, .gt-table th, .gt-table td, .gt-form, .gt-mean, .gt-ex, .gt-list, .gt-struct,
+.trans-row td, .trans-answer, .mc-question, .mc-option, .listen-q-text, .fitb-input, .fitb-block, .fitb-block .fitb-input,
+.d-bubble, .exp-def, .vocab-def, .fw-prompt, .fw-example { font-size: 14px; }
+/* ── English text: 16px / Japanese body stays 14px (2026-11-05) ── */
+.gt-form, .gt-ex, .gt-list .gt-ex, .trans-answer, .mc-question, .mc-option, .listen-q-text, .fitb-input,
+.fitb-block, .fitb-block .fitb-input, .d-bubble, .exp-term, .exp-def, .fw-prompt, .fw-example { font-size: 16px; }
+.gt-mean, .gt-lead, .gt-table th { font-size: 14px; }
+.gt-table td.gt-form { font-size: 16px; width: 31%; }
+.gt-table td.gt-mean { width: 29%; }
+/* ── English text: 15px (2026-11-05, round 2) ── */
+.gt-form, .gt-ex, .gt-list .gt-ex, .gt-table td.gt-form, .trans-answer, .mc-question, .mc-option, .listen-q-text, .fitb-input,
+.fitb-block, .fitb-block .fitb-input, .d-bubble, .exp-term, .exp-def, .fw-prompt, .fw-example, .fw-task, .gf-note { font-size: 15px; }
+/* ── Express Yourself: situation / task split ── */
+.fw-prompt { margin-bottom: 12px; }
+.fw-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; opacity: .7; margin-bottom: 6px; }
+.fw-task { background: var(--sand); border-radius: 10px; padding: 16px 18px; color: var(--ink); line-height: 1.65; }
+.fw-task-head { font-weight: 700; color: var(--ocean-deep); margin-bottom: 10px; }
+.fw-task .fw-example { background: var(--white); color: var(--ink); opacity: 1; border-left: 3px solid var(--ocean); border-radius: 0 7px 7px 0; }
 </style>
 </head>
 <body>
@@ -552,6 +606,7 @@ main {
     <div>
       <div class="header-label">B1 · LESSON 12 · STARLIGHT ENGLISH</div>
       <div class="header-title">Verb + -ing / Verb + to … — Homework</div>
+      <div class="header-giu">📗 English Grammar in Use — Units 53–55</div>
     </div>
     <div class="hw-badge">📋 HW</div>
   </div>
@@ -570,37 +625,57 @@ main {
   </div>
   <div class="section-body">
 
-    <div class="gf-sec">
-      <div class="gf-h"><span class="l">A</span>動詞 ＋ -ing</div>
-      <div class="gf-lead">動詞の後ろに別の動詞を続けるとき、<b>-ing にするか to … にするかは前の動詞で決まります</b>。次の動詞の後ろは <b>-ing</b>（to は使えません）。</div>
-      <div class="gf-row"><div class="gf-form">enjoy / mind / finish /<br>avoid / suggest ＋ -ing</div><div><div class="gf-mean">楽しむ／気にする（嫌がる）／終える／避ける／提案する。<b>Would you mind -ing?</b> ＝「～していただけますか」</div><div class="gf-ex"><span class="hl">Would</span> you <span class="hl">mind turning</span> the music down?</div><div class="gf-ja">（音楽の音量を下げていただけますか？）</div></div></div>
-      <div class="gf-row"><div class="gf-form">give up / put off /<br>keep (on) ＋ -ing</div><div><div class="gf-mean">give up ＝ やめる／put off ＝ 先延ばしにする／keep (on) ＝ ～し続ける・何度も～する</div><div class="gf-ex">She <span class="hl">kept talking</span> during the movie.</div><div class="gf-ja">（彼女は映画の間ずっとしゃべっていた。）</div></div></div>
-      <div class="gf-row"><div class="gf-form">not ＋ -ing</div><div><div class="gf-mean">否定は -ing の前に not を置く。</div><div class="gf-ex">He <span class="hl">suggested not going</span> out because of the storm.</div><div class="gf-ja">（嵐なので出かけないようにしようと彼は提案した。）</div></div></div>
+    <div class="gt-sec">
+      <div class="gt-h"><span class="gt-l">A</span><span class="gt-title">動詞 ＋ -ing</span></div>
+      <div class="gt-lead">動詞の後ろに別の動詞を続けるとき、<b>-ing にするか to … にするかは前の動詞で決まります</b>。次の動詞の後ろは <b>-ing</b>（to は使えません）。</div>
+      <table class="gt-table">
+        <thead><tr><th>表現</th><th>ニュアンス・特徴</th><th>例文</th></tr></thead>
+        <tbody>
+          <tr><td class="gt-form">enjoy / mind / finish /<br>avoid / suggest ＋ -ing</td><td class="gt-mean">楽しむ／気にする（嫌がる）／終える／避ける／提案する。<b>Would you mind -ing?</b> ＝「～していただけますか」</td><td><div class="gt-ex"><span class="hl">Would</span> you <span class="hl">mind turning</span> the music down?</div><div class="gt-ja">（音楽の音量を下げていただけますか？）</div></td></tr>
+          <tr><td class="gt-form">give up / put off /<br>keep (on) ＋ -ing</td><td class="gt-mean">give up ＝ やめる／put off ＝ 先延ばしにする／keep (on) ＝ ～し続ける・何度も～する</td><td><div class="gt-ex">She <span class="hl">kept talking</span> during the movie.</div><div class="gt-ja">（彼女は映画の間ずっとしゃべっていた。）</div></td></tr>
+          <tr><td class="gt-form">not ＋ -ing</td><td class="gt-mean">否定は -ing の前に not を置く。</td><td><div class="gt-ex">He <span class="hl">suggested not going</span> out because of the storm.</div><div class="gt-ja">（嵐なので出かけないようにしようと彼は提案した。）</div></td></tr>
+        </tbody>
+      </table>
       <div class="gf-note">※ ×Would you mind to turn … → ○ Would you <b>mind turning</b> …　／　×He suggested to go. → ○ He <b>suggested going</b>.</div>
     </div>
 
-    <div class="gf-sec">
-      <div class="gf-h"><span class="l">B</span>動詞 ＋ to …</div>
-      <div class="gf-lead">次の動詞の後ろは <b>to ＋ 動詞の原形</b>。「これからすること」に向かう意味の動詞が多いのが特徴です。</div>
-      <div class="gf-row"><div class="gf-form">decide / plan / hope /<br>promise / agree / refuse<br>＋ to …</div><div><div class="gf-mean">決める／計画する／望む／約束する／同意する／断る</div><div class="gf-ex">She <span class="hl">refused to answer</span> my question.</div><div class="gf-ja">（彼女は私の質問に答えるのを拒んだ。）</div></div></div>
-      <div class="gf-row"><div class="gf-form">manage / afford ＋ to …</div><div><div class="gf-mean">manage ＝（苦労して）なんとか～できる／can't afford ＝（お金・時間の）余裕がない</div><div class="gf-ex">Did you <span class="hl">manage to get</span> tickets?</div><div class="gf-ja">（チケット、なんとか取れた？）</div></div></div>
-      <div class="gf-row"><div class="gf-form">not to …</div><div><div class="gf-mean">否定は to の前に not を置く。</div><div class="gf-ex">He <span class="hl">decided not to apply</span> for the job.</div><div class="gf-ja">（彼はその仕事に応募しないことにした。）</div></div></div>
-    </div>
+    <div class="gt-sec">
+      <div class="gt-h"><span class="gt-l">B</span><span class="gt-title">動詞 ＋ to …</span></div>
+      <div class="gt-lead">次の動詞の後ろは <b>to ＋ 動詞の原形</b>。「これからすること」に向かう意味の動詞が多いのが特徴です。</div>
+      <table class="gt-table">
+        <thead><tr><th>表現</th><th>ニュアンス・特徴</th><th>例文</th></tr></thead>
+        <tbody>
+          <tr><td class="gt-form">decide / plan / hope /<br>promise / agree / refuse<br>＋ to …</td><td class="gt-mean">決める／計画する／望む／約束する／同意する／断る</td><td><div class="gt-ex">She <span class="hl">refused to answer</span> my question.</div><div class="gt-ja">（彼女は私の質問に答えるのを拒んだ。）</div></td></tr>
+          <tr><td class="gt-form">manage / afford ＋ to …</td><td class="gt-mean">manage ＝（苦労して）なんとか～できる／can't afford ＝（お金・時間の）余裕がない</td><td><div class="gt-ex">Did you <span class="hl">manage to get</span> tickets?</div><div class="gt-ja">（チケット、なんとか取れた？）</div></td></tr>
+          <tr><td class="gt-form">not to …</td><td class="gt-mean">否定は to の前に not を置く。</td><td><div class="gt-ex">He <span class="hl">decided not to apply</span> for the job.</div><div class="gt-ja">（彼はその仕事に応募しないことにした。）</div></td></tr>
+        </tbody>
+      </table>
+      </div>
 
-    <div class="gf-sec">
-      <div class="gf-h"><span class="l">C</span>動詞 ＋ 人 ＋ to …</div>
-      <div class="gf-lead">「<b>人に</b>～してほしい・～するように頼む／言う」は、動詞の後ろに<b>人</b>を入れて <b>to …</b> を続けます。</div>
-      <div class="gf-struct"><div class="cap">THE STRUCTURE IS:</div>I <b>want to go</b>.（自分が行きたい）<br>↓ 人を入れる<br>I <span class="hl">want you to go</span>.（あなたに行ってほしい）</div>
-      <div class="gf-row"><div class="gf-form">want / would like /<br>expect ＋ 人 ＋ to …</div><div><div class="gf-mean">人に～してほしい／～すると思っている（期待する）。<b>Do you want me to …? / Would you like me to …?</b> ＝「～しましょうか？」</div><div class="gf-ex"><span class="hl">Would</span> you <span class="hl">like me to take</span> a picture?</div><div class="gf-ja">（写真、撮りましょうか？）</div></div></div>
-      <div class="gf-row"><div class="gf-form">ask / tell / remind /<br>advise / allow<br>＋ 人 ＋ to …</div><div><div class="gf-mean">頼む／言う（指示する）／思い出させる／勧める／許可する</div><div class="gf-ex">The doctor <span class="hl">told me to rest</span> for a few days.</div><div class="gf-ja">（医者に数日休むように言われた。）</div></div></div>
+    <div class="gt-sec">
+      <div class="gt-h"><span class="gt-l">C</span><span class="gt-title">動詞 ＋ 人 ＋ to …</span></div>
+      <div class="gt-lead">「<b>人に</b>～してほしい・～するように頼む／言う」は、動詞の後ろに<b>人</b>を入れて <b>to …</b> を続けます。</div>
+      <div class="gt-struct"><div class="cap">THE STRUCTURE IS:</div>I <b>want to go</b>.（自分が行きたい）<br>↓ 人を入れる<br>I <span class="hl">want you to go</span>.（あなたに行ってほしい）</div>
+      <table class="gt-table">
+        <thead><tr><th>表現</th><th>ニュアンス・特徴</th><th>例文</th></tr></thead>
+        <tbody>
+          <tr><td class="gt-form">want / would like /<br>expect ＋ 人 ＋ to …</td><td class="gt-mean">人に～してほしい／～すると思っている（期待する）。<b>Do you want me to …? / Would you like me to …?</b> ＝「～しましょうか？」</td><td><div class="gt-ex"><span class="hl">Would</span> you <span class="hl">like me to take</span> a picture?</div><div class="gt-ja">（写真、撮りましょうか？）</div></td></tr>
+          <tr><td class="gt-form">ask / tell / remind /<br>advise / allow<br>＋ 人 ＋ to …</td><td class="gt-mean">頼む／言う（指示する）／思い出させる／勧める／許可する</td><td><div class="gt-ex">The doctor <span class="hl">told me to rest</span> for a few days.</div><div class="gt-ja">（医者に数日休むように言われた。）</div></td></tr>
+        </tbody>
+      </table>
       <div class="gf-note">※ want の後ろに that 節は使いません：×I want that you help me. → ○ I <b>want you to help</b> me.</div>
     </div>
 
-    <div class="gf-sec neg">
-      <div class="gf-h"><span class="l">D</span>make / let ＋ 人 ＋ 動詞の原形（to なし）</div>
-      <div class="gf-lead">make と let は、人の後ろに <b>to を付けずに動詞の原形</b>を続けます。</div>
-      <div class="gf-row"><div class="gf-form">make ＋ 人 ＋ 動詞の原形</div><div><div class="gf-mean">（無理に・強制的に）～させる</div><div class="gf-ex">The teacher <span class="hl">made us rewrite</span> the essay.</div><div class="gf-ja">（先生は私たちに作文を書き直させた。）</div></div></div>
-      <div class="gf-row"><div class="gf-form">let ＋ 人 ＋ 動詞の原形</div><div><div class="gf-mean">（許可して）～させてあげる。<b>Let me …</b> ＝「私に～させて」</div><div class="gf-ex">My boss <span class="hl">let me leave</span> early today.</div><div class="gf-ja">（今日は上司が早く帰らせてくれた。）</div></div></div>
+    <div class="gt-sec">
+      <div class="gt-h"><span class="gt-l">D</span><span class="gt-title">make / let ＋ 人 ＋ 動詞の原形（to なし）</span></div>
+      <div class="gt-lead">make と let は、人の後ろに <b>to を付けずに動詞の原形</b>を続けます。</div>
+      <table class="gt-table">
+        <thead><tr><th>表現</th><th>ニュアンス・特徴</th><th>例文</th></tr></thead>
+        <tbody>
+          <tr><td class="gt-form">make ＋ 人 ＋ 動詞の原形</td><td class="gt-mean">（無理に・強制的に）～させる</td><td><div class="gt-ex">The teacher <span class="hl">made us rewrite</span> the essay.</div><div class="gt-ja">（先生は私たちに作文を書き直させた。）</div></td></tr>
+          <tr><td class="gt-form">let ＋ 人 ＋ 動詞の原形</td><td class="gt-mean">（許可して）～させてあげる。<b>Let me …</b> ＝「私に～させて」</td><td><div class="gt-ex">My boss <span class="hl">let me leave</span> early today.</div><div class="gt-ja">（今日は上司が早く帰らせてくれた。）</div></td></tr>
+        </tbody>
+      </table>
       <div class="gf-note">※ ×She made me to wait. → ○ She <b>made me wait</b>.<br>※ suggest は「人 ＋ to」の形をとりません：×She suggested me to see a doctor. → ○ She <b>suggested seeing</b> a doctor.</div>
     </div>
 
@@ -644,43 +719,35 @@ main {
       <div class="section-title">Listening 1 — Fill in the Blanks (in class)</div>
     </div>
   </div>
-  <div class="section-body" id="listen-body"></div>
-</div>
-
-<!-- ④ Vocabulary Note (Listening 1) -->
-<div class="section-card">
-  <div class="section-header">
-    <div class="section-icon icon-green">📖</div>
-    <div>
-      <div class="section-title">Listening 1 Vocabulary Note</div>
-      <div class="section-sub">今日の重要語彙を確認しましょう。</div>
-    </div>
-  </div>
   <div class="section-body">
-    <div class="vocab-item">
-      <div class="vocab-term">JLPT</div>
-      <div class="vocab-def">The Japanese-Language Proficiency Test. N5 is the easiest level and N1 is the hardest.</div>
-      <div class="vocab-ja">日本語能力試験</div>
+    <div id="listen-body"></div>
+    <div style="margin-top:18px;border-top:1px solid #EEF2F7;padding-top:16px;">
+      <div style="font-size:12px;font-weight:600;color:var(--slate);margin-bottom:12px;">VOCABULARY NOTE</div>
+      <div class="exp-item">
+      <div class="exp-term">JLPT</div>
+      <div class="exp-def">The Japanese-Language Proficiency Test. N5 is the easiest level and N1 is the hardest.</div>
+      <div class="exp-ja">日本語能力試験</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">persuade someone to ~</div>
-      <div class="vocab-def">To make someone agree to do something by giving them good reasons.</div>
-      <div class="vocab-ja">（人）を説得して～させる</div>
+    <div class="exp-item">
+      <div class="exp-term">persuade someone to ~</div>
+      <div class="exp-def">To make someone agree to do something by giving them good reasons.</div>
+      <div class="exp-ja">（人）を説得して～させる</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">I know the feeling.</div>
-      <div class="vocab-def">I understand, because the same thing has happened to me.</div>
-      <div class="vocab-ja">その気持ち、よくわかる</div>
+    <div class="exp-item">
+      <div class="exp-term">I know the feeling.</div>
+      <div class="exp-def">I understand, because the same thing has happened to me.</div>
+      <div class="exp-ja">その気持ち、よくわかる</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">give it a try</div>
-      <div class="vocab-def">To try doing something to see if it works.</div>
-      <div class="vocab-ja">試しにやってみる</div>
+    <div class="exp-item">
+      <div class="exp-term">give it a try</div>
+      <div class="exp-def">To try doing something to see if it works.</div>
+      <div class="exp-ja">試しにやってみる</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">Deal!</div>
-      <div class="vocab-def">Used to say &quot;I agree&quot; to an offer or promise.</div>
-      <div class="vocab-ja">決まり！、それで行こう！</div>
+    <div class="exp-item">
+      <div class="exp-term">Deal!</div>
+      <div class="exp-def">Used to say &quot;I agree&quot; to an offer or promise.</div>
+      <div class="exp-ja">決まり！、それで行こう！</div>
+    </div>
     </div>
   </div>
 </div>
@@ -694,37 +761,30 @@ main {
       <div class="section-sub">Kevin's staff meeting</div>
     </div>
   </div>
-  <div class="section-body" id="listen2-body"></div>
-</div>
-
-<!-- ⑤-2 Vocabulary Note (Listening 2) -->
-<div class="section-card">
-  <div class="section-header">
-    <div class="section-icon icon-green">📖</div>
-    <div>
-      <div class="section-title">Listening 2 Vocabulary Note</div>
-    </div>
-  </div>
   <div class="section-body">
-    <div class="vocab-item">
-      <div class="vocab-term">quiet zone</div>
-      <div class="vocab-def">An area where people must not talk loudly or make noise.</div>
-      <div class="vocab-ja">静かに過ごすエリア、サイレントゾーン</div>
+    <div id="listen2-body"></div>
+    <div style="margin-top:18px;border-top:1px solid #EEF2F7;padding-top:16px;">
+      <div style="font-size:12px;font-weight:600;color:var(--slate);margin-bottom:12px;">VOCABULARY NOTE</div>
+      <div class="exp-item">
+      <div class="exp-term">quiet zone</div>
+      <div class="exp-def">An area where people must not talk loudly or make noise.</div>
+      <div class="exp-ja">静かに過ごすエリア、サイレントゾーン</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">phone booth</div>
-      <div class="vocab-def">A small closed space where one person can make phone or video calls.</div>
-      <div class="vocab-ja">電話ブース、通話用の個室</div>
+    <div class="exp-item">
+      <div class="exp-term">phone booth</div>
+      <div class="exp-def">A small closed space where one person can make phone or video calls.</div>
+      <div class="exp-ja">電話ブース、通話用の個室</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">regulars</div>
-      <div class="vocab-def">Customers who come to the same place very often.</div>
-      <div class="vocab-ja">常連客</div>
+    <div class="exp-item">
+      <div class="exp-term">regulars</div>
+      <div class="exp-def">Customers who come to the same place very often.</div>
+      <div class="exp-ja">常連客</div>
     </div>
-    <div class="vocab-item">
-      <div class="vocab-term">save a seat</div>
-      <div class="vocab-def">To keep a seat for yourself or someone else, e.g. by putting a bag on it.</div>
-      <div class="vocab-ja">席を取っておく</div>
+    <div class="exp-item">
+      <div class="exp-term">save a seat</div>
+      <div class="exp-def">To keep a seat for yourself or someone else, e.g. by putting a bag on it.</div>
+      <div class="exp-ja">席を取っておく</div>
+    </div>
     </div>
   </div>
 </div>
@@ -747,15 +807,15 @@ main {
     </audio>
   </div>
     <div class="dialogue-line"><span class="d-speaker">Aileen</span><div class="d-bubble">Mai! How did the interview go? <span class="phrase-hl" data-tip="聞きたくてたまらなかった">I've been dying to hear.</span></div></div>
-    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">Honestly, <span class="phrase-hl" data-tip="思っていたよりよかった">better than I expected</span>! Charlotte's practice interview really helped. I <span class="phrase-hl" data-tip="なんとか答えられた">managed to answer</span> every question in English.</div></div>
+    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">Honestly, <span class="phrase-hl" data-tip="思っていたよりよかった">better than I expected</span>! Charlotte's practice interview really helped. I managed to answer every question in English.</div></div>
     <div class="dialogue-line"><span class="d-speaker">Aileen</span><div class="d-bubble">That's fantastic! What did they ask you?</div></div>
-    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">They <span class="phrase-hl" data-tip="説明するよう求めた">asked me to describe</span> a time I solved a problem at work, so I talked about Bridge. The interviewer said she <span class="phrase-hl" data-tip="聞いて楽しかった">enjoyed hearing</span> about it.</div></div>
+    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">They asked me to describe a time I solved a problem at work, so I talked about Bridge. The interviewer said she enjoyed hearing about it.</div></div>
     <div class="dialogue-line"><span class="d-speaker">Aileen</span><div class="d-bubble">Perfect example. Did anything go wrong?</div></div>
-    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">Well, <span class="phrase-hl" data-tip="途中で一度">at one point</span> I <span class="phrase-hl" data-tip="言うのをやめられなかった">couldn't stop saying</span> "um." And they <span class="phrase-hl" data-tip="私に～してほしかった">wanted me to do</span> a short role-play with a "guest" — I almost <span class="phrase-hl" data-tip="笑顔を忘れた">forgot to smile</span>!</div></div>
+    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">Well, <span class="phrase-hl" data-tip="途中で一度">at one point</span> I couldn't stop saying "um." And they wanted me to do a short role-play with a "guest" — I almost forgot to smile!</div></div>
     <div class="dialogue-line"><span class="d-speaker">Aileen</span><div class="d-bubble">Ha! Everyone gets nervous. So when will you <span class="phrase-hl" data-tip="返事をもらう">hear back</span>?</div></div>
-    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">They <span class="phrase-hl" data-tip="知らせると約束した">promised to let me know</span> by the end of the month. I <span class="phrase-hl" data-tip="何度もチェックしてしまう">keep checking</span> my email every five minutes!</div></div>
-    <div class="dialogue-line"><span class="d-speaker">Aileen</span><div class="d-bubble">Try to <span class="phrase-hl" data-tip="考えるのを避ける">avoid thinking</span> about it too much. <span class="phrase-hl" data-tip="結果がどうであれ">Whatever happens</span>, you should be proud of yourself.</div></div>
-    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">Thanks, Aileen. If I get it, I'll <span class="phrase-hl" data-tip="知らせる">let you know</span> first!</div></div>
+    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">They promised to let me know by the end of the month. I keep checking my email every five minutes!</div></div>
+    <div class="dialogue-line"><span class="d-speaker">Aileen</span><div class="d-bubble">Try to avoid thinking about it too much. <span class="phrase-hl" data-tip="結果がどうであれ">Whatever happens</span>, you should be proud of yourself.</div></div>
+    <div class="dialogue-line"><span class="d-speaker">Mai</span><div class="d-bubble">Thanks, Aileen. If I get it, I'll let you know first!</div></div>
 
     <div style="margin-top:18px;border-top:1px solid #EEF2F7;padding-top:16px;">
       <div style="font-size:12px;font-weight:600;color:var(--slate);margin-bottom:12px;">EXPRESSIONS EXPLANATION</div>
@@ -799,8 +859,11 @@ main {
   </div>
   <div class="section-body">
     <div class="fw-prompt">
+      <div class="fw-label">SITUATION</div>
       You run into a friend you haven't seen for a few months. They ask how life has been. Tell them about the habits you have changed recently — and something you want to try next.
-      <div style="font-weight:700;margin-top:12px;margin-bottom:6px;">Think about the conversation you would have and write down your ideas.</div>
+    </div>
+    <div class="fw-task">
+      <div class="fw-task-head">Think about the conversation you would have and write down your ideas.</div>
       <div class="fw-example">e.g. I've given up drinking coffee after lunch, and I sleep much better now.</div>
       <div class="fw-example" style="margin-top:6px;">e.g. My doctor told me to walk more, so I've decided to get off the train one stop early.</div>
       <div class="fw-example" style="margin-top:6px;">e.g. I'm hoping to run a 10K race in the spring.</div>

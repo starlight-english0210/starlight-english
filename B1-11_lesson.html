@@ -727,24 +727,24 @@ const translations = [
 const quizData = [
   {
     situation: "Q1",
-    q: "A big accident ______ on the highway last night, but luckily nobody ______.",
-    options: ["was happened / hurt", "happened / got hurt"],
+    q: "Something strange ______ at the office yesterday. Everyone is talking about it.",
+    options: ["was happened", "happened"],
     correct: 1,
-    feedback: "✅ Correct! \"Happen\" has no object, so it can never be passive (✗ was happened). \"Got hurt\" = \"was hurt\" — get is common in speech for things that happen to people."
+    feedback: "✅ Correct! \"Happen\" has no object, so it can never be passive (✗ was happened)."
   },
   {
     situation: "Q2",
-    q: "I still haven't received the package. It ______ to my old address.",
-    options: ["might have sent", "might have been sent"],
+    q: "I can't find my umbrella anywhere. It ______ by mistake.",
+    options: ["might have taken", "might have been taken"],
     correct: 1,
-    feedback: "✅ Correct! The package did not send anything — someone sent it. A guess about the past in the passive = might have been + p.p."
+    feedback: "✅ Correct! The umbrella did not take anything — someone took it. A guess about the past in the passive = might have been + p.p."
   },
   {
     situation: "Q3",
-    q: "I couldn't drive to work last week because my car ______ at the garage.",
-    options: ["was repairing", "was being repaired"],
+    q: "Sorry, you can't use the meeting room right now. It ______.",
+    options: ["is cleaning", "is being cleaned"],
     correct: 1,
-    feedback: "✅ Correct! The car was not doing the repairing — the work was in progress at that time. Use was being + p.p."
+    feedback: "✅ Correct! The room is not cleaning anything — someone is cleaning it right now. Passive in progress = is being + p.p."
   }
 ];
 
@@ -842,7 +842,7 @@ function toggleScript(id) {
   const icon = document.getElementById(id + '-icon');
   const shown = el.classList.toggle('shown');
   icon.textContent = shown ? '▼' : '▶';
-  el.previousElementSibling.childNodes[1].textContent = shown ? ' Hide script' : ' Show script';
+  el.previousElementSibling.lastChild.textContent = shown ? ' Hide script\n    ' : ' Show script\n    ';
 }
 
 function buildTranslations() {

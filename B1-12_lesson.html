@@ -308,12 +308,11 @@
 ══════════════════════════════════════════════ -->
 <div class="slide active" data-slide="0">
   <div class="section-badge">📐 B1-12 · Grammar — Verb + -ing / to</div>
-  <h1 class="slide-heading">Doing or To Do?</h1>
   <p class="slide-sub">enjoy doing / decide to do / want someone to do — 50-min lesson</p>
 
   <div class="card" style="background:linear-gradient(135deg,#1B6CA8,#2D9A6E);color:#fff;padding:26px 28px;margin-bottom:14px;">
     <div style="font-size:13px;opacity:.7;margin-bottom:10px;font-weight:500;">Today's Grammar Focus</div>
-    <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:10px;">verb + -ing &nbsp;/&nbsp; verb (+ someone) + to …</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:10px;">Doing or To Do?</div>
     <div style="font-size:14px;opacity:.85;line-height:1.6;">The first verb decides the form of the second verb.</div>
   </div>
 
@@ -466,6 +465,23 @@
       <div class="vocab-ja">決まり！、それで行こう！</div>
     </div>
   </div>
+
+  <div class="script-card">
+    <button class="script-toggle" onclick="toggleScript('script1')">
+      <span id="script1-icon">▶</span> Show script
+    </button>
+    <div class="script-body" id="script1">
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Charlotte, you look exhausted. Have you been writing late again?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Not this time. I've decided to take the JLPT in December, so I've been studying every night.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Good for you! Which level?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">N3. My Japanese teacher persuaded me to try it. Honestly, I almost gave up studying kanji last month.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">I know the feeling. When I first came to Japan, I kept forgetting the ones I'd learned the week before.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Really? But you passed N1! Any tips?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Well, my first teacher told me to write a short diary in Japanese every day. And I avoided using the dictionary on my phone.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">That sounds tough, but I'll give it a try. Would you mind checking my diary sometimes?</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Sameer</span><div class="dialogue-text">Not at all! But only if you promise not to give up this time.</div></div>
+      <div class="dialogue-line"><span class="dialogue-speaker-tag">Charlotte</span><div class="dialogue-text">Deal!</div></div>
+    </div>
   </div>
 </div>
 
@@ -708,24 +724,24 @@ const translations = [
 const quizData = [
   {
     situation: "Q1",
-    q: "I really enjoy ______ to podcasts while I'm running.",
-    options: ["to listen", "listening"],
+    q: "Have you finished ______ your room yet?",
+    options: ["to clean", "cleaning"],
     correct: 1,
-    feedback: "✅ Correct! After enjoy, we use -ing (✗ enjoy to listen)."
+    feedback: "✅ Correct! After finish, we use -ing (✗ finish to clean)."
   },
   {
     situation: "Q2",
-    q: "I'd love a new laptop, but I can't afford ______ one right now.",
-    options: ["to buy", "buying"],
+    q: "We hope ______ you again soon.",
+    options: ["to see", "seeing"],
     correct: 0,
-    feedback: "✅ Correct! After afford, we use to … (can't afford to buy = don't have enough money to buy)."
+    feedback: "✅ Correct! After hope, we use to … (✗ hope seeing)."
   },
   {
     situation: "Q3",
-    q: "My manager ______ the report by Friday.",
-    options: ["wants that I finish", "wants me to finish"],
-    correct: 1,
-    feedback: "✅ Correct! We say want + someone + to … — not \"want that …\"."
+    q: "My parents didn't ______ me ______ a phone until I was fifteen.",
+    options: ["let / have", "let / to have"],
+    correct: 0,
+    feedback: "✅ Correct! let + someone + do — no \"to\" (✗ let me to have)."
   }
 ];
 
@@ -848,7 +864,7 @@ function toggleScript(id) {
   const icon = document.getElementById(id + '-icon');
   const shown = el.classList.toggle('shown');
   icon.textContent = shown ? '▼' : '▶';
-  el.previousElementSibling.childNodes[1].textContent = shown ? ' Hide script' : ' Show script';
+  el.previousElementSibling.lastChild.textContent = shown ? ' Hide script\n    ' : ' Show script\n    ';
 }
 
 function buildTranslations() {

@@ -681,24 +681,24 @@ const translations = [
 const quizData = [
   {
     situation: "Q1",
-    q: "You see your neighbor while getting the mail. You saw them just two days ago. What's the natural greeting?",
+    q: "You see a colleague at the elevator. You spoke with them just yesterday. You want to say a friendly greeting.",
     options: ["Long time no see!", "How's it going?"],
     correct: 1,
     feedback: "✅ Correct! \"Long time no see\" implies a long absence. For someone you see regularly, \"How's it going?\" is the natural choice."
   },
   {
     situation: "Q2",
-    q: "Your coworker says their big presentation went really well this morning. How do you ask more?",
-    options: ["What have you been up to?", "Oh wow — how did it go?"],
-    correct: 1,
-    feedback: "✅ Correct! They already told you about the presentation, so asking \"how did it go?\" is the natural follow-up to show genuine interest."
+    q: "Your friend tells you she just got promoted — something she has been working toward for two years. You want to react and hear more.",
+    options: ["That's amazing! Tell me more!", "Anything new with you?"],
+    correct: 0,
+    feedback: "✅ Correct! She already shared her news, so \"Anything new?\" would be strange. \"That's amazing! Tell me more!\" shows genuine excitement."
   },
   {
     situation: "Q3",
-    q: "You've been chatting with an old friend at a café for 30 minutes. You need to leave for an appointment. What do you say?",
-    options: ["Anything new with you?", "It was so great catching up! Let's do this again soon."],
+    q: "You have been talking with an old school friend at a café for 30 minutes. You need to leave for a dentist appointment. How do you close?",
+    options: ["What have you been up to?", "It was so great catching up! Let's do this again soon."],
     correct: 1,
-    feedback: "✅ Correct! \"Anything new?\" would open a new topic. Option B naturally wraps up the conversation on a warm note."
+    feedback: "✅ Correct! Option A opens a new topic. Option B naturally wraps up the conversation on a warm note."
   }
 ];
 
@@ -762,7 +762,7 @@ function toggleScript(id) {
   const icon = document.getElementById(id + '-icon');
   const shown = el.classList.toggle('shown');
   icon.textContent = shown ? '▼' : '▶';
-  el.previousElementSibling.childNodes[1].textContent = shown ? ' Hide script' : ' Show script';
+  el.previousElementSibling.lastChild.textContent = shown ? ' Hide script\n    ' : ' Show script\n    ';
 }
 
 function buildTranslations() {

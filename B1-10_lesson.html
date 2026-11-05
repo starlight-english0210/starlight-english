@@ -713,24 +713,24 @@ const translations = [
 const quizData = [
   {
     situation: "Q1",
-    q: "Tomorrow is a national holiday, so you ______ go to work. You can sleep in!",
+    q: "It's Sunday tomorrow, so you ______ wake up early. You can relax!",
     options: ["mustn't", "don't have to"],
     correct: 1,
-    feedback: "✅ Correct! Going to work is not necessary, so \"don't have to\" fits. \"Mustn't\" would mean going to work is forbidden."
+    feedback: "✅ Correct! Waking up early is not necessary, so \"don't have to\" fits. \"Mustn't\" would mean waking up early is forbidden."
   },
   {
     situation: "Q2",
-    q: "Your friend has had a small headache since this morning. You want to give friendly advice.",
-    options: ["You have to take a break.", "You should take a break."],
+    q: "Your coworker looks very tired. You want to give friendly advice.",
+    options: ["You have to go home early today.", "You should go home early today."],
     correct: 1,
     feedback: "✅ Correct! \"Should\" is friendly advice. \"Have to\" sounds like there is no choice — too strong here."
   },
   {
     situation: "Q3",
-    q: "Yesterday the trains stopped, so I ______ take a taxi to the office.",
+    q: "Last night my phone battery died, so I ______ use a public phone.",
     options: ["must", "had to"],
     correct: 1,
-    feedback: "✅ Correct! \"Must\" has no past form. Use \"had to\" for past obligation."
+    feedback: "✅ Correct! \"Must\" has no past form. Use \"had to\" for something that was necessary in the past."
   }
 ];
 
@@ -795,7 +795,7 @@ function toggleScript(id) {
   const icon = document.getElementById(id + '-icon');
   const shown = el.classList.toggle('shown');
   icon.textContent = shown ? '▼' : '▶';
-  el.previousElementSibling.childNodes[1].textContent = shown ? ' Hide script' : ' Show script';
+  el.previousElementSibling.lastChild.textContent = shown ? ' Hide script\n    ' : ' Show script\n    ';
 }
 
 function buildTranslations() {
