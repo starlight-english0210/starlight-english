@@ -144,6 +144,14 @@
   .audio-track-wrap { flex: 1; display: flex; flex-direction: column; gap: 6px; }
   .audio-track-bar  { height: 4px; background: rgba(255,255,255,.2); border-radius: 4px; overflow: hidden; cursor: pointer; }
   .audio-track-fill { height: 100%; background: #81D4C6; width: 0%; transition: width .1s linear; }
+  /* seek + skip (2026-11-10) */
+  .audio-track-hit { padding: 9px 0; margin: -9px 0; cursor: pointer; touch-action: none; }
+  .audio-track-hit .audio-track-bar { height: 6px; overflow: visible; position: relative; }
+  .audio-track-hit .audio-track-fill { position: relative; border-radius: 4px; }
+  .audio-track-hit .audio-track-fill::after { content: ''; position: absolute; right: -7px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
+  .audio-track-hit.dragging .audio-track-fill { transition: none; }
+  .skip-btn { height: 34px; min-width: 46px; padding: 0 10px; border-radius: 17px; background: rgba(255,255,255,.12); border: none; color: #fff; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; flex-shrink: 0; transition: background .15s; }
+  .skip-btn:hover { background: rgba(255,255,255,.25); }
   .audio-time  { font-size: 11px; opacity: .55; font-variant-numeric: tabular-nums; }
   .tts-label   { font-size: 11px; opacity: .5; margin-top: 6px; font-style: italic; }
 
@@ -307,11 +315,10 @@
 <div class="slide active" data-slide="0">
   <div class="section-badge">📐 B1-11 · Grammar — Passive ①②</div>
   <h1 class="slide-heading">The Passive</h1>
-  <p class="slide-sub">is done / was done / being done — 50-min lesson</p>
 
   <div class="card" style="background:linear-gradient(135deg,#1B6CA8,#2D9A6E);color:#fff;padding:26px 28px;margin-bottom:14px;">
     <div style="font-size:13px;opacity:.7;margin-bottom:10px;font-weight:500;">Today's Grammar Focus</div>
-    <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:10px;">be + past participle</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:10px;">is done / was done / being done</div>
     <div style="font-size:14px;opacity:.85;line-height:1.6;">Focus on what happens — not on who does it.</div>
   </div>
 
@@ -334,14 +341,14 @@
 
   <!-- 1. Why use the passive -->
   <div class="card">
-    <div class="expr-section-label">1. Why Use the Passive? &nbsp;(be + past participle)</div>
+    <div class="expr-section-label">1. Why Use the Passive? &nbsp;(is done / was done)</div>
     <div class="expr-row">
       <div class="expr-phrase"><span>Somebody stole my wallet.<br>→ My wallet <strong>was stolen</strong>.</span></div>
       <div class="expr-nuance"><span>Focus = the wallet<br>Doer unknown → no "by"</span></div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase"><span>People speak English here.<br>→ English <strong>is spoken</strong> here.</span></div>
-      <div class="expr-nuance"><span>is / are + p.p. = usually happens<br>Doer obvious → no "by"</span></div>
+      <div class="expr-nuance"><span>is spoken / are made = usually happens<br>Doer obvious → no "by"</span></div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase"><span>The castle <strong>was saved by</strong> local people.</span></div>
@@ -354,19 +361,19 @@
     <div class="expr-section-label">2. Other Forms</div>
     <div class="expr-row">
       <div class="expr-phrase past"><span>The meeting <strong>has been put off</strong>.</span></div>
-      <div class="expr-nuance">has / have been + p.p. = recent news</div>
+      <div class="expr-nuance">has been done = recent news</div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase past"><span>The elevator <strong>is being checked</strong> now.</span></div>
-      <div class="expr-nuance">is / was being + p.p. = in progress</div>
+      <div class="expr-nuance">is being done / was being done = in progress</div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase past"><span>The report <strong>must be finished</strong> by Friday.</span></div>
-      <div class="expr-nuance">will / can / must + be + p.p.</div>
+      <div class="expr-nuance">will be done / can be done / must be done</div>
     </div>
     <div class="expr-row">
       <div class="expr-phrase past"><span>It <strong>might have been sent</strong> to the wrong address.</span></div>
-      <div class="expr-nuance">might have been + p.p. = guess about the past</div>
+      <div class="expr-nuance">might have been done = guess about the past</div>
     </div>
   </div>
 
@@ -383,7 +390,7 @@
     </div>
     <div class="expr-row">
       <div class="expr-phrase"><span>People tell me what to do. I hate it.<br>→ I hate <strong>being told</strong> what to do.</span></div>
-      <div class="expr-nuance">like / hate / remember + being + p.p.</div>
+      <div class="expr-nuance">like / hate / remember + being done</div>
     </div>
     <div class="grammar-tip">💡 Casual: <strong>get</strong> = be &nbsp;→&nbsp; I <strong>got invited</strong>. / Nobody <strong>got hurt</strong>.</div>
   </div>
@@ -416,9 +423,11 @@
     <div class="audio-title">LISTEN</div>
     <div class="audio-subtitle">Sameer &amp; Kevin — Bridge</div>
     <div class="audio-controls">
+      <button class="skip-btn" onclick="skipAudio('a1',-5)" title="5秒戻る">−5s</button>
       <button class="play-btn" id="play-btn-a1" onclick="toggleAudio('a1')">▶</button>
+      <button class="skip-btn" onclick="skipAudio('a1',5)" title="5秒進む">+5s</button>
       <div class="audio-track-wrap">
-        <div class="audio-track-bar"><div class="audio-track-fill" id="fill-a1"></div></div>
+        <div class="audio-track-hit" id="hit-a1"><div class="audio-track-bar"><div class="audio-track-fill" id="fill-a1"></div></div></div>
         <div class="audio-time" id="time-a1">0:00 / —</div>
       </div>
     </div>
@@ -492,9 +501,11 @@
     <div class="audio-title">LISTEN</div>
     <div class="audio-subtitle">Mai's presentation</div>
     <div class="audio-controls">
+      <button class="skip-btn" onclick="skipAudio('a2',-5)" title="5秒戻る">−5s</button>
       <button class="play-btn" id="play-btn-a2" onclick="toggleAudio('a2')">▶</button>
+      <button class="skip-btn" onclick="skipAudio('a2',5)" title="5秒進む">+5s</button>
       <div class="audio-track-wrap">
-        <div class="audio-track-bar"><div class="audio-track-fill" id="fill-a2"></div></div>
+        <div class="audio-track-hit" id="hit-a2"><div class="audio-track-bar"><div class="audio-track-fill" id="fill-a2"></div></div></div>
         <div class="audio-time" id="time-a2">0:00 / —</div>
       </div>
     </div>
@@ -559,9 +570,11 @@
     <div class="audio-title">LISTEN FIRST</div>
     <div class="audio-subtitle">Aileen &amp; Charlotte — Bridge</div>
     <div class="audio-controls">
+      <button class="skip-btn" onclick="skipAudio('a3',-5)" title="5秒戻る">−5s</button>
       <button class="play-btn" id="play-btn-a3" onclick="toggleAudio('a3')">▶</button>
+      <button class="skip-btn" onclick="skipAudio('a3',5)" title="5秒進む">+5s</button>
       <div class="audio-track-wrap">
-        <div class="audio-track-bar"><div class="audio-track-fill" id="fill-a3"></div></div>
+        <div class="audio-track-hit" id="hit-a3"><div class="audio-track-bar"><div class="audio-track-fill" id="fill-a3"></div></div></div>
         <div class="audio-time" id="time-a3">0:00 / —</div>
       </div>
     </div>
@@ -831,6 +844,31 @@ function initAudioPlayer(id) {
   audio.addEventListener('ended', () => { btn.textContent = '▶'; fill.style.width = '100%'; });
   audio.addEventListener('pause', () => { btn.textContent = '▶'; });
   audio.addEventListener('play',  () => { btn.textContent = '⏹'; });
+}
+
+// ── Seek bar + 5-second skip (2026-11-10) ──────────────────
+function skipAudio(id, sec) {
+  const audio = document.getElementById('audio-' + id);
+  if (!audio || !audio.duration) return;
+  audio.currentTime = Math.min(Math.max(audio.currentTime + sec, 0), audio.duration);
+}
+function initSeek(id) {
+  const audio = document.getElementById('audio-' + id);
+  const hit   = document.getElementById('hit-' + id);
+  if (!audio || !hit) return;
+  const bar = hit.querySelector('.audio-track-bar');
+  const seekTo = e => {
+    if (!audio.duration) return;
+    const r = bar.getBoundingClientRect();
+    const ratio = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+    audio.currentTime = ratio * audio.duration;
+    document.getElementById('fill-' + id).style.width = (ratio * 100) + '%';
+  };
+  hit.addEventListener('pointerdown', e => { hit.classList.add('dragging'); hit.setPointerCapture(e.pointerId); seekTo(e); });
+  hit.addEventListener('pointermove', e => { if (hit.classList.contains('dragging')) seekTo(e); });
+  const end = () => hit.classList.remove('dragging');
+  hit.addEventListener('pointerup', end);
+  hit.addEventListener('pointercancel', end);
 }
 
 function fmtTime(s) {
@@ -1170,8 +1208,11 @@ window.addEventListener('DOMContentLoaded', () => {
   buildListen1Qs();
   buildListen2Qs();
   initAudioPlayer('a1');
+  initSeek('a1');
   initAudioPlayer('a2');
+  initSeek('a2');
   initAudioPlayer('a3');
+  initSeek('a3');
   updateNav();
 });
 </script>
