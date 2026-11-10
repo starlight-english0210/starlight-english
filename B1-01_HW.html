@@ -554,6 +554,8 @@ main {
 .fw-task { background: var(--sand); border-radius: 10px; padding: 16px 18px; color: var(--ink); line-height: 1.65; }
 .fw-task-head { font-weight: 700; color: var(--ocean-deep); margin-bottom: 10px; }
 .fw-task .fw-example { background: var(--white); color: var(--ink); opacity: 1; border-left: 3px solid var(--ocean); border-radius: 0 7px 7px 0; }
+/* ── Mobile: GF table cells full width (fix 2026-11-10; the 31% / 29% widths above overrode the 560px rule) ── */
+@media (max-width: 560px) { .gt-table td.gt-form, .gt-table td.gt-mean { width: 100%; } }
 </style>
 </head>
 <body>
